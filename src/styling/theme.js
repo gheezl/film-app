@@ -10,8 +10,8 @@ const darkMode = {
         600: "#8b8b8b"
     },
     primary: {
-        100: "00bcd4",
-        200: "47c4d9",
+        100: "#00bcd4",
+        200: "#47c4d9",
         300: "#67cbde",
         400: "#81d3e2",
         500: "#99dae7",
@@ -52,8 +52,8 @@ const themeSettings = {
             secondary: darkMode.mixed[200]
         },
         background: {
-            main: darkMode.background[100],
-            secondary: darkMode.background[200]
+            main: darkMode.surface[100],
+            secondary: darkMode.surface[200]
         }
     }
 }
