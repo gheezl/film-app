@@ -1,3 +1,5 @@
+import { createTheme } from "@mui/material"
+
 const darkMode = {
     surface: {
         100: "#121212",
@@ -39,6 +41,23 @@ const lightMode = {
     }
 }
 
-const themeSettings = () => {
-
+const themeSettings = {
+    palette: {
+        primary: {
+            main: darkMode.primary[100],
+            secondary: darkMode.primary[200]
+        },
+        secondary: {
+            main: darkMode.mixed[100],
+            secondary: darkMode.mixed[200]
+        },
+        background: {
+            main: darkMode.background[100],
+            secondary: darkMode.background[200]
+        }
+    }
 }
+
+const theme = createTheme(themeSettings);
+
+export default theme;

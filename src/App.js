@@ -1,11 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 
+import { ThemeProvider } from '@mui/material';
+import theme from './styling/theme';
+
 function App() {
   return (
-    <div>
+    <ThemeProvider theme={theme} >
 
-    </div>
+    </ThemeProvider>
   );
 }
 
