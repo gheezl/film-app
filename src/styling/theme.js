@@ -27,19 +27,18 @@ const darkMode = {
     }
 }
 
-
 // TODO fill out our light mode colors, will do after most development is finished
-const lightMode = {
-    surface: {
+// const lightMode = {
+//     surface: {
 
-    },
-    primary: {
+//     },
+//     primary: {
 
-    },
-    mixed: {
+//     },
+//     mixed: {
 
-    }
-}
+//     }
+// }
 
 const themeSettings = {
     palette: {
