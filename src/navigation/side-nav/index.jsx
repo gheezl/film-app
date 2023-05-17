@@ -30,20 +30,20 @@ const SideNav = () => {
                         <Typography variant="h6" >Trending</Typography>
                     </Link>
                 </MenuItem>
-                <MenuItem
-                    icon={<ContactsRounded />}
-                >
-                    <Link to="/genres">
+                <Link to="/genres">
+                    <MenuItem
+                        icon={<ContactsRounded />}
+                    >
                         <Typography variant="h6" >Genres</Typography>
-                    </Link>
-                </MenuItem>
-                <MenuItem
-                    icon={<Search />}
-                >
-                    <Link to="/search">
+                    </MenuItem>
+                </Link>
+                <Link to="/search">
+                    <MenuItem
+                        icon={<Search />}
+                    >
                         <Typography variant="h6" >Search</Typography>
-                    </Link>
-                </MenuItem>
+                    </MenuItem>
+                </Link>
             </Menu>
         </Sidebar>
     )

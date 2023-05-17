@@ -1,1 +1,13 @@
-// ! we will communicate with our tmdb APi in this file
+const APIKey = ""
+
+const APIEndpoints = {
+    auth: ""
+}
+
+export const getTrendingFilms = () => {
+
+}
+
+export const authenticate = () => {
+
+}
