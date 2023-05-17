@@ -27,7 +27,7 @@ const darkMode = {
     }
 }
 
-// TODO fill out our light mode colors, will do after most development is finished
+// TODO fill out our light mode colors, will do after most development with dark mode is finished
 // const lightMode = {
 //     surface: {
 
@@ -51,10 +51,40 @@ const themeSettings = {
             secondary: darkMode.mixed[200]
         },
         background: {
-            main: darkMode.surface[100],
-            secondary: darkMode.surface[200]
+            default: darkMode.surface[100],
         }
-    }
+    },
+    typography: {
+        allVariants: {
+            color: darkMode.primary[400]
+        },
+        // fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+        fontSize: 12,
+        h1: {
+            // fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+            fontSize: 40,
+        },
+        h2: {
+            // fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+            fontSize: 32,
+        },
+        h3: {
+            // fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+            fontSize: 24,
+        },
+        h4: {
+            // fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+            fontSize: 20,
+        },
+        h5: {
+            // fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+            fontSize: 16,
+        },
+        h6: {
+            // fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+            fontSize: 14,
+        },
+    },
 }
 
 const theme = createTheme(themeSettings);
