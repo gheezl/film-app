@@ -12,7 +12,20 @@ import Home from './pages/home';
 import Film from './pages/individual-film';
 import Search from './pages/search';
 
-function App() {
+import { getTrendingFilms, getNowPlayingFilms, getIndividualFilm, getPopularFilms, getTopRatedFilms, getUpcomingFilms } from './services/tmdbServices';
+import { useEffect } from 'react';
+
+const App = () => {
+
+  useEffect(() => {
+    getTrendingFilms();
+    getNowPlayingFilms();
+    getIndividualFilm("Avengers");
+    getPopularFilms();
+    getTopRatedFilms();
+    getUpcomingFilms();
+  }, [])
+
   return (
     <ThemeProvider theme={theme} >
       <CssBaseline />
