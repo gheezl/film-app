@@ -1,6 +1,6 @@
 const Genres = () => {
     return (
-        <div></div>
+        <div>Genres page</div>
     )
 }
 

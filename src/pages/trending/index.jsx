@@ -1,6 +1,6 @@
 const Trending = () => {
     return (
-        <div></div>
+        <div>trending page</div>
     )
 }
 

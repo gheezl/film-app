@@ -1,6 +1,7 @@
-import { MenuOutlined, Home, TrendingUp, ContactsRounded, VideoStable, Search } from "@mui/icons-material";
+import { MenuOutlined, Home, TrendingUp, ContactsRounded, Search } from "@mui/icons-material";
 import { Typography, useTheme } from "@mui/material";
 import { Sidebar, Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
+import { Link } from "react-router-dom";
 
 const SideNav = () => {
     const theme = useTheme();
@@ -18,27 +19,30 @@ const SideNav = () => {
                 <MenuItem
                     icon={<Home />}
                 >
-                    <Typography variant="h6" >Home</Typography>
+                    <Link to="/">
+                        <Typography variant="h6" >Home</Typography>
+                    </Link>
                 </MenuItem>
                 <MenuItem
                     icon={<TrendingUp />}
                 >
-                    <Typography variant="h6" >Trending</Typography>
+                    <Link to="/trending">
+                        <Typography variant="h6" >Trending</Typography>
+                    </Link>
                 </MenuItem>
                 <MenuItem
                     icon={<ContactsRounded />}
                 >
-                    <Typography variant="h6" >Genres</Typography>
-                </MenuItem>
-                <MenuItem
-                    icon={<VideoStable />}
-                >
-                    <Typography variant="h6" >Film</Typography>
+                    <Link to="/genres">
+                        <Typography variant="h6" >Genres</Typography>
+                    </Link>
                 </MenuItem>
                 <MenuItem
                     icon={<Search />}
                 >
-                    <Typography variant="h6" >Search</Typography>
+                    <Link to="/search">
+                        <Typography variant="h6" >Search</Typography>
+                    </Link>
                 </MenuItem>
             </Menu>
         </Sidebar>
