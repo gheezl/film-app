@@ -12,7 +12,6 @@ export const TmdbProvider = ({ children }) => {
     const [upcomingFilms, setUpcomingFilms] = useState({});
 
     useEffect(() => {
-        // Function to fetch data from API
         const fetchData = async () => {
             try {
                 setNowPlaying(await getNowPlayingFilms());
@@ -21,14 +20,13 @@ export const TmdbProvider = ({ children }) => {
                 setUpcomingFilms(await getUpcomingFilms());
             } catch (error) {
                 console.error('Error fetching data:', error);
-                // setLoading(false);
             }
         };
 
-        fetchData(); // Call the fetch data function on component mount
+        fetchData();
 
         return () => {
-            // Cleanup function if necessary
+            // will add clean up here later
         };
     }, []);
 
