@@ -1,43 +1,43 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 import { getNowPlayingFilms, getPopularFilms, getTopRatedFilms, getUpcomingFilms } from '../services/tmdbServices';
 
-// Create a new context
 export const TmdbContext = createContext();
 
-// Create a provider component
 export const TmdbProvider = ({ children }) => {
+    // this is the data to display on the home page
     const [nowPlaying, setNowPlaying] = useState({});
     const [popularFilms, setPopularFilms] = useState({});
     const [topRatedFilms, setTopRatedFilms] = useState({});
     const [upcomingFilms, setUpcomingFilms] = useState({});
 
-    const getNowPlaying = () => {
-        setNowPlaying(getNowPlayingFilms())
-    }
+    useEffect(() => {
+        // Function to fetch data from API
+        const fetchData = async () => {
+            try {
+                setNowPlaying(await getNowPlayingFilms());
+                setPopularFilms(await getPopularFilms());
+                setTopRatedFilms(await getTopRatedFilms());
+                setUpcomingFilms(await getUpcomingFilms());
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                // setLoading(false);
+            }
+        };
 
-    const getPopular = () => {
-        setPopularFilms(getPopularFilms())
-    }
+        fetchData(); // Call the fetch data function on component mount
 
-    const getTopRated = () => {
-        setTopRatedFilms(getTopRatedFilms())
-    }
-
-    const getUpcoming = () => {
-        setUpcomingFilms(getUpcomingFilms())
-    }
+        return () => {
+            // Cleanup function if necessary
+        };
+    }, []);
 
     return (
         <TmdbContext.Provider value={{
             nowPlaying,
-            getNowPlaying,
             popularFilms,
-            getPopular,
             topRatedFilms,
-            getTopRated,
             upcomingFilms,
-            getUpcoming
         }}>
             {children}
         </TmdbContext.Provider>

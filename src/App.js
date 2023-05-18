@@ -22,22 +22,18 @@ import { TmdbContext } from './contexts/TmdbProvider';
 
 const App = () => {
   const {
-    nowPlaying,
-    getNowPlaying,
-    popularFilms,
-    getPopular,
-    topRatedFilms,
-    getTopRated,
-    upcomingFilms,
-    getUpcoming
+    // getNowPlaying,
+    // getPopular,
+    // getTopRated,
+    // getUpcoming
   } = useContext(TmdbContext)
 
 
   useEffect(() => {
-    getNowPlaying();
-    getPopular();
-    getTopRated();
-    getUpcoming();
+    // getNowPlaying();
+    // getPopular();
+    // getTopRated();
+    // getUpcoming();
   }, [])
 
   return (

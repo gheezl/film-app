@@ -7,46 +7,41 @@ const GETOPTIONS = {
 };
 
 // Calls made for the home page display
-export const getNowPlayingFilms = () => {
-    fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', GETOPTIONS)
-        .then(response => response.json())
-        .then(response => console.log("playing", response))
-        .catch(err => console.error(err));
+export const getNowPlayingFilms = async () => {
+    const response = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', GETOPTIONS);
+    const jsonData = await response.json();
+    return jsonData;
 }
 
-export const getPopularFilms = () => {
-    fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', GETOPTIONS)
-        .then(response => response.json())
-        .then(response => console.log("Popular", response))
-        .catch(err => console.error(err));
+export const getPopularFilms = async () => {
+    const response = await fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', GETOPTIONS);
+    const jsonData = await response.json();
+    return jsonData;
 }
 
-export const getTopRatedFilms = () => {
-    fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', GETOPTIONS)
-        .then(response => response.json())
-        .then(response => console.log("Top Rated", response))
-        .catch(err => console.error(err));
+export const getTopRatedFilms = async () => {
+    const response = await fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', GETOPTIONS);
+    const jsonData = await response.json();
+    return jsonData;
 }
 
-export const getUpcomingFilms = () => {
-    fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', GETOPTIONS)
-        .then(response => response.json())
-        .then(response => console.log("Upcoming films", response))
-        .catch(err => console.error(err));
+export const getUpcomingFilms = async () => {
+    const response = await fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', GETOPTIONS);
+    const jsonData = await response.json();
+    return jsonData;
+
 }
 
 // Calls made for the trending page
-export const getTrendingFilms = () => {
-    fetch('https://api.themoviedb.org/3/trending/all/day?language=en-US', GETOPTIONS)
-        .then(response => response.json())
-        .then(response => console.log("trending", response))
-        .catch(err => console.error(err));
+export const getTrendingFilms = async () => {
+    const response = await fetch('https://api.themoviedb.org/3/trending/all/day?language=en-US', GETOPTIONS);
+    const jsonData = await response.json();
+    return jsonData;
 }
 
 // Calls made for the search page
-export const getIndividualFilm = (filmNameQuery) => {
-    fetch(`https://api.themoviedb.org/3/search/movie?query=${filmNameQuery}&include_adult=false&language=en-US&page=1`, GETOPTIONS)
-        .then(response => response.json())
-        .then(response => console.log("individual film", response))
-        .catch(err => console.error(err));
+export const getIndividualFilm = async (filmNameQuery) => {
+    const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${filmNameQuery}&include_adult=false&language=en-US&page=1`, GETOPTIONS);
+    const jsonData = await response.json();
+    return jsonData;
 }
