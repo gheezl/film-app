@@ -1,5 +1,3 @@
-import { useContext, useEffect } from 'react';
-
 import './App.css';
 
 import { Box, CssBaseline, ThemeProvider } from '@mui/material';
@@ -16,25 +14,7 @@ import Home from './pages/home';
 import Film from './pages/individual-film';
 import Search from './pages/search';
 
-import { getTrendingFilms, getNowPlayingFilms, getIndividualFilm, getPopularFilms, getTopRatedFilms, getUpcomingFilms } from './services/tmdbServices';
-import { TmdbContext } from './contexts/TmdbProvider';
-
-
 const App = () => {
-  const {
-    // getNowPlaying,
-    // getPopular,
-    // getTopRated,
-    // getUpcoming
-  } = useContext(TmdbContext)
-
-
-  useEffect(() => {
-    // getNowPlaying();
-    // getPopular();
-    // getTopRated();
-    // getUpcoming();
-  }, [])
 
   return (
     <ThemeProvider theme={theme} >
