@@ -1,3 +1,4 @@
+import { DarkMode } from "@mui/icons-material";
 import { createTheme } from "@mui/material"
 
 const darkMode = {
@@ -86,6 +87,7 @@ const themeSettings = {
             fontSize: 14,
         },
     },
+    shadows: ['none', `0 4px 8px ${darkMode.primary[300]}`],
 }
 
 const theme = createTheme(themeSettings);

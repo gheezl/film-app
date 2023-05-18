@@ -38,7 +38,7 @@ const FilmCard = ({ film }) => {
 
     return (
         <Paper
-            elevation={10}
+            elevation={1}
             sx={{
                 margin: "20px 20px 20px 0px",
                 width: "500px",
@@ -48,7 +48,7 @@ const FilmCard = ({ film }) => {
             }}
         >
             <img style={{ width: "200px", borderRadius: "25px" }} src={`https://image.tmdb.org/t/p/w1280${film.poster_path}`} />
-            <Typography variant="h3">{film.title}</Typography>
+            {/* <Typography variant="h3">{film.title}</Typography> */}
         </Paper>
     )
 }
