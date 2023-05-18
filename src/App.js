@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 
 import './App.css';
 
@@ -17,37 +17,45 @@ import Film from './pages/individual-film';
 import Search from './pages/search';
 
 import { getTrendingFilms, getNowPlayingFilms, getIndividualFilm, getPopularFilms, getTopRatedFilms, getUpcomingFilms } from './services/tmdbServices';
+import { TmdbContext } from './contexts/TmdbProvider';
 
-import { TmdbProvider } from './contexts/TmdbProvider';
 
 const App = () => {
+  const {
+    nowPlaying,
+    getNowPlaying,
+    popularFilms,
+    getPopular,
+    topRatedFilms,
+    getTopRated,
+    upcomingFilms,
+    getUpcoming
+  } = useContext(TmdbContext)
+
+
   useEffect(() => {
-    getTrendingFilms();
-    getNowPlayingFilms();
-    getIndividualFilm("Avengers");
-    getPopularFilms();
-    getTopRatedFilms();
-    getUpcomingFilms();
+    getNowPlaying();
+    getPopular();
+    getTopRated();
+    getUpcoming();
   }, [])
 
   return (
     <ThemeProvider theme={theme} >
-      <TmdbProvider>
-        <CssBaseline />
-        <Box display="flex" justifyContent="row" height="100vh" >
-          <SideNav />
-          <Box width="100%">
-            <Header />
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/search' element={<Search />} />
-              <Route path='/film' element={<Film />} />
-              <Route path='/trending' element={<Trending />} />
-              <Route path='/genres' element={<Genres />} />
-            </Routes>
-          </Box>
+      <CssBaseline />
+      <Box display="flex" justifyContent="row" height="100vh" >
+        <SideNav />
+        <Box width="100%">
+          <Header />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/search' element={<Search />} />
+            <Route path='/film' element={<Film />} />
+            <Route path='/trending' element={<Trending />} />
+            <Route path='/genres' element={<Genres />} />
+          </Routes>
         </Box>
-      </TmdbProvider>
+      </Box>
     </ThemeProvider>
   );
 }
