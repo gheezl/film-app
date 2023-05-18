@@ -57,7 +57,7 @@ const themeSettings = {
     },
     typography: {
         allVariants: {
-            color: darkMode.primary[400]
+            color: "#FFFFFF"
         },
         // fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
         fontSize: 12,

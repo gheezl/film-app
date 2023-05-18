@@ -43,11 +43,11 @@ const FilmCard = ({ film }) => {
                 margin: "20px 20px 20px 0px",
                 width: "500px",
                 backgroundColor: theme.palette.background.secondary,
-                padding: "20px",
+                padding: "15px",
                 borderRadius: "25px"
             }}
         >
-            <img src={film.background_path} />
+            <img style={{ width: "200px", borderRadius: "25px" }} src={`https://image.tmdb.org/t/p/w1280${film.poster_path}`} />
             <Typography variant="h3">{film.title}</Typography>
         </Paper>
     )
