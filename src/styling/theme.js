@@ -52,6 +52,7 @@ const themeSettings = {
         },
         background: {
             default: darkMode.surface[100],
+            secondary: darkMode.surface[200]
         }
     },
     typography: {

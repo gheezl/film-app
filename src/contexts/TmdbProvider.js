@@ -12,12 +12,16 @@ export const TmdbProvider = ({ children }) => {
     const [upcomingFilms, setUpcomingFilms] = useState({});
 
     useEffect(() => {
+        let mounted = true;
+
         const fetchData = async () => {
             try {
-                setNowPlaying(await getNowPlayingFilms());
-                setPopularFilms(await getPopularFilms());
-                setTopRatedFilms(await getTopRatedFilms());
-                setUpcomingFilms(await getUpcomingFilms());
+                if (mounted) {
+                    setNowPlaying(await getNowPlayingFilms());
+                    setPopularFilms(await getPopularFilms());
+                    setTopRatedFilms(await getTopRatedFilms());
+                    setUpcomingFilms(await getUpcomingFilms());
+                }
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -26,7 +30,7 @@ export const TmdbProvider = ({ children }) => {
         fetchData();
 
         return () => {
-            // will add clean up here later
+            mounted = false
         };
     }, []);
 

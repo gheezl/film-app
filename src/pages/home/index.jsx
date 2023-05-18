@@ -1,29 +1,38 @@
 import { useContext, useEffect } from "react";
 import { TmdbContext } from "../../contexts/TmdbProvider";
+import { Box, Typography } from "@mui/material";
+
+import FilmCard from "../../components/film-card";
+
+const FilmDisplay = ({ headLine, films }) => {
+    return (
+        <Box sx={{ padding: "20px" }}>
+            <Typography variant="h4">{headLine}</Typography>
+            <Box sx={{ display: "flex", flexDirection: "row", width: "5000px" }}>
+                {
+                    films?.results
+                        ? (
+                            films?.results.map(film => (
+                                <FilmCard film={film} />
+                            ))
+                        )
+                        : null
+                }
+            </Box>
+        </Box>
+    )
+}
 
 const Home = () => {
     const { nowPlaying, popularFilms, topRatedFilms, upcomingFilms } = useContext(TmdbContext)
 
-    useEffect(() => {
-        console.log("this is now playing", nowPlaying)
-    }, [nowPlaying])
-
-    useEffect(() => {
-        console.log("this is popular", popularFilms)
-    }, [popularFilms])
-
-    useEffect(() => {
-        console.log("this is topRated", topRatedFilms)
-    }, [topRatedFilms])
-
-    useEffect(() => {
-        console.log("this is upcoming", upcomingFilms)
-    }, [upcomingFilms])
-
     return (
-        <div>
-            <h1>This is the home page</h1>
-        </div>
+        <Box sx={{ padding: "20px" }}>
+            <FilmDisplay headLine={"Films Now Playing"} films={nowPlaying} />
+            <FilmDisplay headLine={"Popular Films"} films={popularFilms} />
+            <FilmDisplay headLine={"Highest Rated Films"} films={topRatedFilms} />
+            <FilmDisplay headLine={"Upcoming Films"} films={upcomingFilms} />
+        </Box>
     )
 }
 
