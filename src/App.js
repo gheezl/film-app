@@ -21,7 +21,12 @@ const App = () => {
       <CssBaseline />
       <Box display="flex" justifyContent="row" height="100vh" >
         <SideNav />
-        <Box width="100%">
+        <Box
+          sx={{
+            width: "100%",
+            overflow: "scroll"
+          }}
+        >
           <Header />
           <Routes>
             <Route path='/' element={<Home />} />
