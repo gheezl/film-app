@@ -40,15 +40,13 @@ const FilmCard = ({ film }) => {
         <Paper
             elevation={1}
             sx={{
-                margin: "20px 20px 20px 0px",
-                width: "500px",
+                margin: "20px 10px 20px 10px",
                 backgroundColor: theme.palette.background.secondary,
                 padding: "15px",
                 borderRadius: "25px"
             }}
         >
             <img style={{ width: "200px", borderRadius: "25px" }} src={`https://image.tmdb.org/t/p/w1280${film.poster_path}`} />
-            {/* <Typography variant="h3">{film.title}</Typography> */}
         </Paper>
     )
 }

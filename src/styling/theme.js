@@ -1,4 +1,3 @@
-import { DarkMode } from "@mui/icons-material";
 import { createTheme } from "@mui/material"
 
 const darkMode = {

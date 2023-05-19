@@ -1,12 +1,23 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 
 import FilmCard from "../../components/film-card";
 
+import HorizontalScroll from "react-scroll-horizontal";
+
 const FilmSetDisplay = ({ headLine, films }) => {
+    const theme = useTheme()
+
     return (
-        <Box sx={{ padding: "20px" }}>
+        <Box sx={{ padding: "20px", height: "417px" }}>
             <Typography variant="h4">{headLine}</Typography>
-            <Box sx={{ display: "flex", flexDirection: "row", width: "5000px" }}>
+            <HorizontalScroll
+                style={{
+                    borderLeft: `1px solid ${theme.palette.primary.secondary}`,
+                    borderRight: `1px solid ${theme.palette.primary.secondary}`,
+                    borderRadius: "20px",
+                    marginTop: "10px",
+                }}
+            >
                 {
                     films?.results
                         ? (
@@ -16,7 +27,7 @@ const FilmSetDisplay = ({ headLine, films }) => {
                         )
                         : null
                 }
-            </Box>
+            </HorizontalScroll>
         </Box>
     )
 }
