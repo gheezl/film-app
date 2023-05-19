@@ -1,9 +1,25 @@
-import { Box, Typography } from "@mui/material"
+import { Box, Typography, useTheme } from "@mui/material"
 
 const Header = () => {
+    const theme = useTheme();
+
     return (
-        <Box sx={{ border: "1px solid black" }}>
-            <Typography variant="h1">Film App</Typography>
+        <Box
+            sx={{
+                borderBottom: `1px solid ${theme.palette.background.secondary}`,
+                margin: "10px"
+            }}
+        >
+            <Typography
+                variant="h1"
+                sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    margin: "15px"
+                }}
+            >
+                Film App
+            </Typography>
         </Box>
     )
 }

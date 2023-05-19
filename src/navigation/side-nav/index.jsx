@@ -8,16 +8,27 @@ const SideNav = () => {
     const { collapseSidebar } = useProSidebar();
 
     return (
-        <Sidebar backgroundColor={theme.palette.background.default} >
+        <Sidebar
+            backgroundColor={theme.palette.background.secondary}
+            style={{
+                border: "none"
+            }}
+        >
             <Menu iconShape="square">
                 <MenuItem
                     icon={<MenuOutlined />}
                     onClick={() => collapseSidebar()}
+                    style={{
+                        color: theme.palette.primary.secondary
+                    }}
                 >
                     <Typography variant="h4" >Navigation Menu</Typography>
                 </MenuItem>
                 <MenuItem
                     icon={<Home />}
+                    style={{
+                        color: theme.palette.primary.secondary
+                    }}
                 >
                     <Link to="/">
                         <Typography variant="h6" >Home</Typography>
@@ -25,25 +36,35 @@ const SideNav = () => {
                 </MenuItem>
                 <MenuItem
                     icon={<TrendingUp />}
+                    style={{
+                        color: theme.palette.primary.secondary
+                    }}
                 >
                     <Link to="/trending">
                         <Typography variant="h6" >Trending</Typography>
                     </Link>
                 </MenuItem>
-                <Link to="/genres">
-                    <MenuItem
-                        icon={<ContactsRounded />}
-                    >
+                <MenuItem
+                    icon={<ContactsRounded />}
+                    style={{
+                        color: theme.palette.primary.secondary
+                    }}
+                >
+                    <Link to="/genres">
                         <Typography variant="h6" >Genres</Typography>
-                    </MenuItem>
-                </Link>
-                <Link to="/search">
-                    <MenuItem
-                        icon={<Search />}
-                    >
+                    </Link>
+                </MenuItem>
+                <MenuItem
+                    icon={<Search />}
+                    style={{
+                        color: theme.palette.primary.secondary
+                    }}
+                >
+                    <Link to="/search">
+
                         <Typography variant="h6" >Search</Typography>
-                    </MenuItem>
-                </Link>
+                    </Link>
+                </MenuItem>
             </Menu>
         </Sidebar>
     )
