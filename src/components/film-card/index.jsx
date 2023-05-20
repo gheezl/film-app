@@ -31,7 +31,9 @@ const FilmCard = ({ film }) => {
                         backgroundColor: theme.palette.background.secondary,
                         padding: "15px",
                         borderRadius: "25px",
-                        cursor: isHovered ? "pointer" : null
+                        cursor: isHovered ? "pointer" : null,
+                        width: "fit-content",
+                        height: "fit-content"
                     }}
                 >
                     <img alt="alt" style={{ width: "200px", borderRadius: "25px" }} src={`https://image.tmdb.org/t/p/w1280${film.poster_path}`} />
