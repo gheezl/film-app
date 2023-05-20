@@ -13,8 +13,16 @@ import Trending from './pages/trending';
 import Home from './pages/home';
 import Film from './pages/individual-film';
 import Search from './pages/search';
+import { useContext, useEffect } from 'react';
+import { TmdbContext } from './contexts/TmdbProvider';
 
 const App = () => {
+  const { selectedFilm } = useContext(TmdbContext);
+
+  useEffect(() => {
+    console.log("THIS IS IT", selectedFilm);
+  }, [selectedFilm])
+
 
   return (
     <ThemeProvider theme={theme} >

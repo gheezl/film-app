@@ -10,6 +10,7 @@ export const TmdbProvider = ({ children }) => {
     const [popularFilms, setPopularFilms] = useState({});
     const [topRatedFilms, setTopRatedFilms] = useState({});
     const [upcomingFilms, setUpcomingFilms] = useState({});
+    const [selectedFilm, setSelectedFilm] = useState({});
 
     useEffect(() => {
         let mounted = true;
@@ -40,6 +41,8 @@ export const TmdbProvider = ({ children }) => {
             popularFilms,
             topRatedFilms,
             upcomingFilms,
+            selectedFilm,
+            setSelectedFilm
         }}>
             {children}
         </TmdbContext.Provider>
