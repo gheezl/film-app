@@ -1,13 +1,20 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TmdbContext } from "../../contexts/TmdbProvider";
 import { Box, Paper, Typography, useTheme } from "@mui/material";
 
 const Film = () => {
+    const [releaseDate, setReleaseDate] = useState("");
     const { selectedFilm } = useContext(TmdbContext);
     const theme = useTheme();
 
     useEffect(() => {
         console.log(selectedFilm)
+        const formatedDate = new Date(selectedFilm.release_date).toLocaleDateString("en-US", {
+            month: "2-digit",
+            day: "2-digit",
+            year: "numeric"
+        })
+        setReleaseDate(formatedDate)
     }, [selectedFilm])
 
     return (
@@ -55,7 +62,7 @@ const Film = () => {
                 <Typography
                     variant="h2"
                 >
-                    Release Date: {selectedFilm.release_date}
+                    Release Date: {releaseDate}
                 </Typography>
             </Box>
         </Box>
