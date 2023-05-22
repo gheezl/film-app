@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-import { getNowPlayingFilms, getPopularFilms, getTopRatedFilms, getUpcomingFilms } from '../services/tmdbServices';
+import { getNowPlayingFilms, getPopularFilms, getTopRatedFilms, getTrendingFilms, getUpcomingFilms } from '../services/TmdbServices';
 
 export const TmdbContext = createContext();
 
@@ -10,6 +10,7 @@ export const TmdbProvider = ({ children }) => {
     const [popularFilms, setPopularFilms] = useState({});
     const [topRatedFilms, setTopRatedFilms] = useState({});
     const [upcomingFilms, setUpcomingFilms] = useState({});
+    const [trendingFilms, setTrendingFilms] = useState({});
     const [selectedFilm, setSelectedFilm] = useState({});
     const [recentlyViewed, setRecentlyViewed] = useState([]);
 
@@ -23,6 +24,7 @@ export const TmdbProvider = ({ children }) => {
                     setPopularFilms(await getPopularFilms());
                     setTopRatedFilms(await getTopRatedFilms());
                     setUpcomingFilms(await getUpcomingFilms());
+                    setTrendingFilms(await getTrendingFilms());
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -38,9 +40,7 @@ export const TmdbProvider = ({ children }) => {
 
     const selectFilm = (film) => {
         setSelectedFilm(film);
-        setRecentlyViewed([...recentlyViewed, film])
-        console.log(recentlyViewed)
-
+        setRecentlyViewed([...recentlyViewed, film]);
     }
 
     return (
