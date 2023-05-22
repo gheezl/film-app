@@ -64,6 +64,31 @@ const Film = () => {
                 >
                     Release Date: {releaseDate}
                 </Typography>
+                <Typography
+                    variant="h2"
+                >
+                    Audience Score: {selectedFilm.vote_average}/10
+                </Typography>
+                <Typography
+                    variant="h2"
+                >
+                    Vote Count: {selectedFilm.vote_count}
+                </Typography>
+                <Typography
+                    variant="h2"
+                >
+                    {selectedFilm.overview}
+                </Typography>
+                <Typography
+                    variant="h2"
+                >
+                    Film Popularity: {selectedFilm.popularity}
+                </Typography>
+                <Typography
+                    variant="h2"
+                >
+                    {selectedFilm.adult ? "Is an Adult Film" : "Not an Adult Film"}
+                </Typography>
             </Box>
         </Box>
     )
