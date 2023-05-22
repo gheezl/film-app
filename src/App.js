@@ -8,7 +8,7 @@ import { Routes, Route } from "react-router-dom"
 import Header from './navigation/top-nav';
 import SideNav from './navigation/side-nav';
 
-import Genres from './pages/genres';
+import RecentlyViewed from './pages/recently-viewed';
 import Trending from './pages/trending';
 import Home from './pages/home';
 import Film from './pages/individual-film';
@@ -34,7 +34,7 @@ const App = () => {
             <Route path='/search' element={<Search />} />
             <Route path='/film' element={<Film />} />
             <Route path='/trending' element={<Trending />} />
-            <Route path='/genres' element={<Genres />} />
+            <Route path='/recently-viewed' element={<RecentlyViewed />} />
           </Routes>
         </Box>
       </Box>

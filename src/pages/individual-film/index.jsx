@@ -86,13 +86,12 @@ const Film = () => {
                     }}
                 >
                     <Paper
-                        // elevation={0}
                         sx={{
                             backgroundColor: theme.palette.background.secondary,
                             padding: "15px",
                             borderRadius: "25px",
                             width: "fit-content",
-                            height: "fit-content",
+                            height: "100%",
                             marginRight: "25px"
                         }}
                     >
@@ -102,19 +101,37 @@ const Film = () => {
                             {selectedFilm.overview}
                         </Typography>
                     </Paper>
-                    <ProgressCircle progress={selectedFilm.vote_average} votes={selectedFilm.vote_count} size="250" />
+                    {
+                        selectedFilm.vote_average
+                            ? < ProgressCircle progress={selectedFilm.vote_average} votes={selectedFilm.vote_count} size="250" />
+                            : null
+                    }
                 </Box>
 
-                <Typography
-                    variant="h2"
+                <Paper
+                    sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        backgroundColor: theme.palette.background.secondary,
+                        padding: "15px",
+                        borderRadius: "25px",
+                        width: "100%",
+                        marginRight: "25px",
+                        marginBottom: "50px"
+                    }}
                 >
-                    Film Popularity: {selectedFilm.popularity}
-                </Typography>
-                <Typography
-                    variant="h2"
-                >
-                    {selectedFilm.adult ? "Is an Adult Film" : "Not an Adult Film"}
-                </Typography>
+                    <Typography
+                        variant="h2"
+                    >
+                        Film Popularity: {selectedFilm.popularity}
+                    </Typography>
+                    <Typography
+                        variant="h2"
+                    >
+                        {selectedFilm.adult ? "Is an Adult Film" : "Not an Adult Film"}
+                    </Typography>
+                </Paper>
+
             </Box>
         </Box>
     )

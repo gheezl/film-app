@@ -11,6 +11,7 @@ export const TmdbProvider = ({ children }) => {
     const [topRatedFilms, setTopRatedFilms] = useState({});
     const [upcomingFilms, setUpcomingFilms] = useState({});
     const [selectedFilm, setSelectedFilm] = useState({});
+    const [recentlyViewed, setRecentlyViewed] = useState([]);
 
     useEffect(() => {
         let mounted = true;
@@ -35,6 +36,13 @@ export const TmdbProvider = ({ children }) => {
         };
     }, []);
 
+    const selectFilm = (film) => {
+        setSelectedFilm(film);
+        setRecentlyViewed([...recentlyViewed, film])
+        console.log(recentlyViewed)
+
+    }
+
     return (
         <TmdbContext.Provider value={{
             nowPlaying,
@@ -42,7 +50,8 @@ export const TmdbProvider = ({ children }) => {
             topRatedFilms,
             upcomingFilms,
             selectedFilm,
-            setSelectedFilm
+            selectFilm,
+            recentlyViewed
         }}>
             {children}
         </TmdbContext.Provider>

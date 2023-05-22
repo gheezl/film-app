@@ -50,8 +50,8 @@ const SideNav = () => {
                         color: theme.palette.primary.secondary
                     }}
                 >
-                    <Link to="/genres">
-                        <Typography variant="h6" >Genres</Typography>
+                    <Link to="/recently-viewed">
+                        <Typography variant="h6" >Recently Viewed</Typography>
                     </Link>
                 </MenuItem>
                 <MenuItem
