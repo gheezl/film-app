@@ -57,6 +57,7 @@ const themeSettings = {
     },
     typography: {
         allVariants: {
+            fontFamily: "'Nunito', sans-serif",
             color: "#FFFFFF"
         },
         // fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
