@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { TmdbContext } from "../../contexts/TmdbProvider";
 import { Box, Paper, Typography, useTheme } from "@mui/material";
+import ProgressCircle from "../../components/progress-circle";
 
 const Film = () => {
     const [releaseDate, setReleaseDate] = useState("");
@@ -89,6 +90,7 @@ const Film = () => {
                 >
                     {selectedFilm.adult ? "Is an Adult Film" : "Not an Adult Film"}
                 </Typography>
+                <ProgressCircle progress={selectedFilm.vote_average * 0.1} size="250" />
             </Box>
         </Box>
     )
