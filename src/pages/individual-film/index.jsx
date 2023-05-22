@@ -27,9 +27,7 @@ const Film = () => {
                 justifyContent: "space-between"
             }}
         >
-            {/* this will show the image */}
-            <Box
-            >
+            <Box>
                 <Paper
                     elevation={1}
                     sx={{
@@ -47,7 +45,7 @@ const Film = () => {
 
             <Box
                 sx={{
-                    border: "1px solid white",
+                    // border: "1px solid white",
                     width: "100%",
                     display: "flex",
                     flexDirection: "column",
@@ -55,31 +53,58 @@ const Film = () => {
                     padding: "25px"
                 }}
             >
-                <Typography
-                    variant="h1"
+                <Paper
+                    sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        backgroundColor: theme.palette.background.secondary,
+                        padding: "15px",
+                        borderRadius: "25px",
+                        width: "100%",
+                        marginRight: "25px",
+                        marginBottom: "50px"
+                    }}
                 >
-                    {selectedFilm.title}
-                </Typography>
-                <Typography
-                    variant="h2"
+                    <Typography
+                        variant="h1"
+                    >
+                        {selectedFilm.title}
+                    </Typography>
+                    <Typography
+                        variant="h2"
+                    >
+                        {releaseDate}
+                    </Typography>
+                </Paper>
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        width: "100%",
+                        marginBottom: "50px"
+                    }}
                 >
-                    Release Date: {releaseDate}
-                </Typography>
-                <Typography
-                    variant="h2"
-                >
-                    Audience Score: {selectedFilm.vote_average}/10
-                </Typography>
-                <Typography
-                    variant="h2"
-                >
-                    Vote Count: {selectedFilm.vote_count}
-                </Typography>
-                <Typography
-                    variant="h2"
-                >
-                    {selectedFilm.overview}
-                </Typography>
+                    <Paper
+                        // elevation={0}
+                        sx={{
+                            backgroundColor: theme.palette.background.secondary,
+                            padding: "15px",
+                            borderRadius: "25px",
+                            width: "fit-content",
+                            height: "fit-content",
+                            marginRight: "25px"
+                        }}
+                    >
+                        <Typography
+                            variant="h2"
+                        >
+                            {selectedFilm.overview}
+                        </Typography>
+                    </Paper>
+                    <ProgressCircle progress={selectedFilm.vote_average} votes={selectedFilm.vote_count} size="250" />
+                </Box>
+
                 <Typography
                     variant="h2"
                 >
@@ -90,7 +115,6 @@ const Film = () => {
                 >
                     {selectedFilm.adult ? "Is an Adult Film" : "Not an Adult Film"}
                 </Typography>
-                <ProgressCircle progress={selectedFilm.vote_average * 0.1} size="250" />
             </Box>
         </Box>
     )
