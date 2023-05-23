@@ -40,7 +40,12 @@ export const TmdbProvider = ({ children }) => {
 
     const selectFilm = (film) => {
         setSelectedFilm(film);
-        setRecentlyViewed([...recentlyViewed, film]);
+        if (recentlyViewed.includes(film)) {
+            return;
+        }
+        else {
+            setRecentlyViewed([...recentlyViewed, film]);
+        }
     }
 
     return (
