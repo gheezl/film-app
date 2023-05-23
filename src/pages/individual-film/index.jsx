@@ -58,7 +58,7 @@ const Film = () => {
                         display: "flex",
                         justifyContent: "space-between",
                         backgroundColor: theme.palette.background.secondary,
-                        padding: "15px",
+                        padding: "30px 15px 30px 15px",
                         borderRadius: "25px",
                         width: "100%",
                         marginRight: "25px",
@@ -116,8 +116,9 @@ const Film = () => {
                         padding: "15px",
                         borderRadius: "25px",
                         width: "100%",
+                        height: "100%",
                         marginRight: "25px",
-                        marginBottom: "50px"
+                        // marginBottom: "50px"
                     }}
                 >
                     <Typography
