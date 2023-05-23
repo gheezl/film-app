@@ -15,31 +15,37 @@ const FilmCard = ({ film }) => {
     }, [film])
 
     return (
-        <Tooltip
-            title={film.title}
-            arrow
-
+        <Box
+            sx={{
+                display: "flex",
+                justifyContent: "center"
+            }}
         >
-            <Link to="/film" >
-                <Paper
-                    elevation={isHovered ? 0 : 1}
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                    onClick={() => selectFilm(film)}
-                    sx={{
-                        margin: "20px 10px 20px 10px",
-                        backgroundColor: theme.palette.background.secondary,
-                        padding: "15px",
-                        borderRadius: "25px",
-                        cursor: isHovered ? "pointer" : null,
-                        width: "fit-content",
-                        height: "fit-content"
-                    }}
-                >
-                    <img alt="alt" style={{ width: "200px", borderRadius: "25px" }} src={`https://image.tmdb.org/t/p/w1280${film.poster_path}`} />
-                </Paper>
-            </Link>
-        </Tooltip>
+            <Tooltip
+                title={film.title}
+                arrow
+            >
+                <Link to="/film" >
+                    <Paper
+                        elevation={isHovered ? 0 : 1}
+                        onMouseEnter={() => setIsHovered(true)}
+                        onMouseLeave={() => setIsHovered(false)}
+                        onClick={() => selectFilm(film)}
+                        sx={{
+                            margin: "20px 10px 20px 10px",
+                            backgroundColor: theme.palette.background.secondary,
+                            padding: "15px",
+                            borderRadius: "25px",
+                            cursor: isHovered ? "pointer" : null,
+                            width: "fit-content",
+                            height: "fit-content"
+                        }}
+                    >
+                        <img alt="alt" style={{ width: "200px", borderRadius: "25px" }} src={`https://image.tmdb.org/t/p/w1280${film.poster_path}`} />
+                    </Paper>
+                </Link>
+            </Tooltip>
+        </Box>
     )
 }
 

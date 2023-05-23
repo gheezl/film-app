@@ -23,7 +23,7 @@ const FullPageDisplay = ({ headLine, films }) => {
                     // borderRadius: "20px",
                     display: "grid",
                     gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-                    // gap: "50px",
+                    gap: "50px",
                     marginTop: "10px",
                     paddingLeft: "10px",
                     paddingRight: "10px"
