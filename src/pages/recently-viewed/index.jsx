@@ -1,18 +1,13 @@
 import { useContext } from "react";
 import { TmdbContext } from "../../contexts/TmdbProvider";
 import { Typography, Box } from "@mui/material";
+import FullPageDisplay from "../../components/film-set-display-full-page";
 
 const RecentlyViewed = () => {
     const { recentlyViewed } = useContext(TmdbContext)
 
     return (
-        <Box>
-            {
-                recentlyViewed.map(film => (
-                    <Typography>{film.title}</Typography>
-                ))
-            }
-        </Box>
+        <FullPageDisplay headLine="Recently Viewed" films={recentlyViewed} />
     )
 }
 
