@@ -13,6 +13,7 @@ export const TmdbProvider = ({ children }) => {
     const [trendingFilms, setTrendingFilms] = useState({});
     const [selectedFilm, setSelectedFilm] = useState({});
     const [recentlyViewed, setRecentlyViewed] = useState([]);
+    const [searchedFilms, setSearchedFilms] = useState({ headLine: "", films: [] })
 
     useEffect(() => {
         let mounted = true;
@@ -39,6 +40,7 @@ export const TmdbProvider = ({ children }) => {
     }, []);
 
     const selectFilm = (film) => {
+        console.log("HERE", film)
         setSelectedFilm(film);
         if (recentlyViewed.includes(film)) {
             return;
@@ -56,7 +58,9 @@ export const TmdbProvider = ({ children }) => {
             upcomingFilms,
             selectedFilm,
             selectFilm,
-            recentlyViewed
+            recentlyViewed,
+            searchedFilms,
+            setSearchedFilms
         }}>
             {children}
         </TmdbContext.Provider>
