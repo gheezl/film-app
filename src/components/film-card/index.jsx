@@ -15,17 +15,18 @@ const FilmCard = ({ film }) => {
     // }, [film])
 
     return (
-        <Box
-            sx={{
-                display: "flex",
-                justifyContent: "center"
-            }}
-        >
-            <Tooltip
-                title={film.title}
-                arrow
+        <Link to="/film" >
+            <Box
+                sx={{
+                    display: "flex",
+                    justifyContent: "center"
+                }}
             >
-                <Link to="/film" >
+                <Tooltip
+                    title={film.title}
+                    arrow
+                >
+
                     <Paper
                         elevation={isHovered ? 0 : 1}
                         onMouseEnter={() => setIsHovered(true)}
@@ -43,9 +44,10 @@ const FilmCard = ({ film }) => {
                     >
                         <img alt="alt" style={{ width: "200px", borderRadius: "25px" }} src={`https://image.tmdb.org/t/p/w1280${film.poster_path}`} />
                     </Paper>
-                </Link>
-            </Tooltip>
-        </Box>
+                </Tooltip>
+            </Box>
+        </Link >
+
     )
 }
 

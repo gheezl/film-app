@@ -9,7 +9,6 @@ const Film = () => {
     const theme = useTheme();
 
     useEffect(() => {
-        console.log(selectedFilm)
         const formatedDate = new Date(selectedFilm.release_date).toLocaleDateString("en-US", {
             month: "2-digit",
             day: "2-digit",
@@ -92,6 +91,7 @@ const Film = () => {
                             borderRadius: "25px",
                             width: "fit-content",
                             height: "100%",
+                            width: "100%",
                             marginRight: "25px"
                         }}
                     >
