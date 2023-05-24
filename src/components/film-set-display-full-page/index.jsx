@@ -33,7 +33,9 @@ const FullPageDisplay = ({ headLine, films }) => {
                     films
                         ? (
                             films?.map(film => (
-                                <FilmCard film={film} />
+                                film.poster_path
+                                    ? <FilmCard film={film} />
+                                    : null
                             ))
                         )
                         : null
