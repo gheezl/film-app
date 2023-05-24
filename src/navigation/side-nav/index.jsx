@@ -2,7 +2,7 @@ import { MenuOutlined, Home, TrendingUp, ContactsRounded, Search, } from "@mui/i
 import { Button, Box, Input, Typography, useTheme } from "@mui/material";
 import { useContext, useState } from "react";
 import { Sidebar, Menu, MenuItem, useProSidebar, SubMenu } from "react-pro-sidebar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TmdbContext, TmdbProvider } from "../../contexts/TmdbProvider";
 import { getIndividualFilm } from "../../services/TmdbServices";
 
@@ -11,10 +11,12 @@ const SideNav = () => {
     const { setSearchedFilms } = useContext(TmdbContext);
     const theme = useTheme();
     const { collapseSidebar } = useProSidebar();
+    const navigate = useNavigate();
 
     const onSearch = async () => {
         const searchResults = await getIndividualFilm(searchInput)
         setSearchedFilms({ headLine: searchInput, films: searchResults.results });
+        navigate("/search");
     }
 
     return (
