@@ -18,7 +18,7 @@ export const TmdbProvider = ({ children }) => {
     useEffect(() => {
         let mounted = true;
 
-        const fetchData = async () => {
+        const fetchDataFromApi = async () => {
             try {
                 if (mounted) {
                     setNowPlaying(await getNowPlayingFilms());
@@ -32,8 +32,16 @@ export const TmdbProvider = ({ children }) => {
             }
         };
 
-        fetchData();
+        const getLocalStorageData = () => {
+            const previousViews = localStorage.getItem("viewedFilms");
+            console.log(previousViews)
+            if (previousViews) {
+                setRecentlyViewed(JSON.parse(previousViews));
+            }
+        }
 
+        fetchDataFromApi();
+        getLocalStorageData();
         return () => {
             mounted = false
         };
@@ -47,6 +55,7 @@ export const TmdbProvider = ({ children }) => {
         }
         else {
             setRecentlyViewed([...recentlyViewed, film]);
+            localStorage.setItem('viewedFilms', JSON.stringify(recentlyViewed));
         }
     }
 

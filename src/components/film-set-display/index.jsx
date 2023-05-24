@@ -33,7 +33,9 @@ const FilmSetDisplay = ({ headLine, films }) => {
                     films?.results
                         ? (
                             films?.results.map(film => (
-                                <FilmCard film={film} />
+                                film.poster_path
+                                    ? <FilmCard film={film} />
+                                    : null
                             ))
                         )
                         : null

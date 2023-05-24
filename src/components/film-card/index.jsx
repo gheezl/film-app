@@ -10,9 +10,9 @@ const FilmCard = ({ film }) => {
     const theme = useTheme();
     const { selectFilm } = useContext(TmdbContext);
 
-    useEffect(() => {
-        console.log(film)
-    }, [film])
+    // useEffect(() => {
+    //     console.log(film)
+    // }, [film])
 
     return (
         <Box
