@@ -14,9 +14,11 @@ const SideNav = () => {
     const navigate = useNavigate();
 
     const onSearch = async () => {
-        const searchResults = await getIndividualFilm(searchInput)
-        setSearchedFilms({ headLine: searchInput, films: searchResults.results });
-        navigate("/search");
+        if (searchInput) {
+            const searchResults = await getIndividualFilm(searchInput)
+            setSearchedFilms({ headLine: searchInput, films: searchResults.results });
+            navigate("/search");
+        }
     }
 
     return (
