@@ -59,6 +59,13 @@ export const TmdbProvider = ({ children }) => {
         }
     }
 
+    const removeRecentlyViewed = () => {
+        if (recentlyViewed) {
+            localStorage.removeItem("viewedFilms")
+            setRecentlyViewed([])
+        }
+    }
+
     return (
         <TmdbContext.Provider value={{
             nowPlaying,
@@ -68,6 +75,7 @@ export const TmdbProvider = ({ children }) => {
             selectedFilm,
             selectFilm,
             recentlyViewed,
+            removeRecentlyViewed,
             searchedFilms,
             setSearchedFilms
         }}>
