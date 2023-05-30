@@ -3,7 +3,7 @@ import { Button, Box, Input, Typography, useTheme, Tooltip } from "@mui/material
 import { useContext, useState } from "react";
 import { Sidebar, Menu, MenuItem, useProSidebar, SubMenu } from "react-pro-sidebar";
 import { Link, useNavigate } from "react-router-dom";
-import { TmdbContext, TmdbProvider } from "../../contexts/TmdbProvider";
+import { TmdbContext } from "../../contexts/TmdbProvider";
 import { getIndividualFilm } from "../../services/TmdbServices";
 
 const SideNav = () => {

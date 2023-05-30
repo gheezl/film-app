@@ -53,8 +53,9 @@ export const TmdbProvider = ({ children }) => {
             return;
         }
         else {
-            setRecentlyViewed([...recentlyViewed, film].reverse());
-            localStorage.setItem('viewedFilms', JSON.stringify(recentlyViewed));
+            const viewed = [...recentlyViewed, film].reverse();
+            setRecentlyViewed(viewed);
+            localStorage.setItem('viewedFilms', JSON.stringify(viewed));
         }
     }
 
