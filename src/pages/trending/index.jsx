@@ -1,7 +1,7 @@
-const Trending = () => {
+const Recommendations = () => {
     return (
-        <div>trending page</div>
+        <div>Recommendations page</div>
     )
 }
 
-export default Trending;
+export default Recommendations;

@@ -4,6 +4,7 @@ import { Box, Paper, Typography, useTheme } from "@mui/material";
 import ProgressCircle from "../../components/progress-circle";
 import FullPageDisplay from "../../components/film-set-display-full-page";
 import { getFilmsByGenre } from "../../services/TmdbServices";
+import { getRandomItems, removeDuplicates } from "../../utilities/utilities";
 
 const Film = () => {
     const [releaseDate, setReleaseDate] = useState("");
@@ -21,15 +22,15 @@ const Film = () => {
 
         const getSimilarFilms = async () => {
             const promises = selectedFilm.genre_ids.map(async (genreId) => {
-                console.log(genreId);
                 const films = await getFilmsByGenre(genreId);
-                console.log("Here", films.results);
-                return films.results;
+                return getRandomItems(films.results, 5);
             });
 
             const results = await Promise.all(promises);
             const mergedResults = [].concat(...results);
-            setSimilarFilms((prevSimilarFilms) => prevSimilarFilms.concat(mergedResults));
+            const filteredResults = removeDuplicates(mergedResults);
+            console.log(mergedResults);
+            setSimilarFilms((prevSimilarFilms) => prevSimilarFilms.concat(filteredResults));
         }
 
         getSimilarFilms();

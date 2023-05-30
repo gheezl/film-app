@@ -9,7 +9,7 @@ import Header from './navigation/top-nav';
 import SideNav from './navigation/side-nav';
 
 import RecentlyViewed from './pages/recently-viewed';
-import Trending from './pages/trending';
+import Recommendations from './pages/trending';
 import Home from './pages/home';
 import Film from './pages/individual-film';
 import Search from './pages/search';
@@ -33,7 +33,7 @@ const App = () => {
             <Route path='/' element={<Home />} />
             <Route path='/search' element={<Search />} />
             <Route path='/film' element={<Film />} />
-            <Route path='/trending' element={<Trending />} />
+            <Route path='/recommendations' element={<Recommendations />} />
             <Route path='/recently-viewed' element={<RecentlyViewed />} />
           </Routes>
         </Box>

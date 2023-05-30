@@ -46,8 +46,8 @@ export const getIndividualFilm = async (filmNameQuery) => {
     return jsonData;
 }
 
-export const getGenre = async (genreId) => {
-    // const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${filmNameQuery}&include_adult=false&language=en-US&page=1`, GETOPTIONS);
-    // const jsonData = await response.json();
-    // return jsonData;
+export const getFilmsByGenre = async (genreId) => {
+    const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}`, GETOPTIONS);
+    const jsonData = await response.json();
+    return jsonData;
 }

@@ -5,9 +5,9 @@ import { useEffect } from "react";
 const FullPageDisplay = ({ headLine, films }) => {
     const theme = useTheme()
 
-    useEffect(() => {
-        console.log("outcome", films);
-    }, [films])
+    // useEffect(() => {
+    //     console.log("outcome", films);
+    // }, [films])
 
     return (
         <Box sx={{ padding: "20px", height: "417px" }}>

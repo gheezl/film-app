@@ -53,21 +53,21 @@ const SideNav = () => {
                         </MenuItem>
                     </Link>
                 </Tooltip>
-                {/* <Tooltip
-                    title={"Trending"}
+                <Tooltip
+                    title={"Recommendations"}
                     arrow
                 >
-                    <Link to="/trending">
+                    <Link to="/recommendations">
                         <MenuItem
                             icon={<TrendingUp />}
                             style={{
                                 color: theme.palette.primary.secondary
                             }}
                         >
-                            <Typography variant="h6" >Trending</Typography>
+                            <Typography variant="h6" >Recommendations</Typography>
                         </MenuItem>
                     </Link>
-                </Tooltip> */}
+                </Tooltip>
                 <Tooltip
                     title="Recently Viewed"
                     arrow
