@@ -20,9 +20,11 @@ const Film = () => {
         setReleaseDate(formatedDate)
 
         const getSimilarFilms = async (genreId) => {
+            console.log(genreId)
             const films = await getFilmsByGenre(genreId)
-            setSimilarFilms([...similarFilms, ...films.results])
-            console.log(similarFilms)
+            console.log(films.results)
+            setSimilarFilms(similarFilms.concat(films.results))
+            console.log(similarFilms);
         }
 
         selectedFilm.genre_ids.map(genreId => {
@@ -30,7 +32,7 @@ const Film = () => {
         });
 
         getSimilarFilms();
-    }, [selectedFilm])
+    }, [])
 
     return (
         <Box
