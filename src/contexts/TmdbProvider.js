@@ -33,7 +33,6 @@ export const TmdbProvider = ({ children }) => {
 
         const getLocalStorageData = () => {
             const previousViews = localStorage.getItem("viewedFilms");
-            console.log(previousViews)
             if (previousViews) {
                 setRecentlyViewed(JSON.parse(previousViews));
             }
@@ -48,6 +47,7 @@ export const TmdbProvider = ({ children }) => {
     }, []);
 
     const selectFilm = (film) => {
+        console.log(film);
         setSelectedFilm(film);
         if (recentlyViewed.includes(film)) {
             return;
@@ -65,6 +65,7 @@ export const TmdbProvider = ({ children }) => {
             setRecentlyViewed([])
         }
     }
+
 
     return (
         <TmdbContext.Provider value={{

@@ -53,7 +53,7 @@ const SideNav = () => {
                         </MenuItem>
                     </Link>
                 </Tooltip>
-                <Tooltip
+                {/* <Tooltip
                     title={"Trending"}
                     arrow
                 >
@@ -67,7 +67,7 @@ const SideNav = () => {
                             <Typography variant="h6" >Trending</Typography>
                         </MenuItem>
                     </Link>
-                </Tooltip>
+                </Tooltip> */}
                 <Tooltip
                     title="Recently Viewed"
                     arrow
