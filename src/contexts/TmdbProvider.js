@@ -5,7 +5,6 @@ import { getNowPlayingFilms, getPopularFilms, getTopRatedFilms, getTrendingFilms
 export const TmdbContext = createContext();
 
 export const TmdbProvider = ({ children }) => {
-    // this is the data to display on the home page
     const [nowPlaying, setNowPlaying] = useState({});
     const [popularFilms, setPopularFilms] = useState({});
     const [topRatedFilms, setTopRatedFilms] = useState({});
@@ -42,13 +41,13 @@ export const TmdbProvider = ({ children }) => {
 
         fetchDataFromApi();
         getLocalStorageData();
+
         return () => {
             mounted = false
         };
     }, []);
 
     const selectFilm = (film) => {
-        console.log("HERE", film)
         setSelectedFilm(film);
         if (recentlyViewed.includes(film)) {
             return;
@@ -72,6 +71,7 @@ export const TmdbProvider = ({ children }) => {
             popularFilms,
             topRatedFilms,
             upcomingFilms,
+            trendingFilms,
             selectedFilm,
             selectFilm,
             recentlyViewed,
