@@ -1,8 +1,13 @@
 import { Typography, Box, useTheme } from "@mui/material";
 import FilmCard from "../film-card";
+import { useEffect } from "react";
 
 const FullPageDisplay = ({ headLine, films }) => {
     const theme = useTheme()
+
+    useEffect(() => {
+        console.log("outcome", films);
+    }, [films])
 
     return (
         <Box sx={{ padding: "20px", height: "417px" }}>

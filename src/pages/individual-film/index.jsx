@@ -19,17 +19,18 @@ const Film = () => {
         })
         setReleaseDate(formatedDate)
 
-        const getSimilarFilms = async (genreId) => {
-            console.log(genreId)
-            const films = await getFilmsByGenre(genreId)
-            console.log(films.results)
-            setSimilarFilms(similarFilms.concat(films.results))
-            console.log(similarFilms);
-        }
+        const getSimilarFilms = async () => {
+            const promises = selectedFilm.genre_ids.map(async (genreId) => {
+                console.log(genreId);
+                const films = await getFilmsByGenre(genreId);
+                console.log("Here", films.results);
+                return films.results;
+            });
 
-        selectedFilm.genre_ids.map(genreId => {
-            getSimilarFilms(genreId)
-        });
+            const results = await Promise.all(promises);
+            const mergedResults = [].concat(...results);
+            setSimilarFilms((prevSimilarFilms) => prevSimilarFilms.concat(mergedResults));
+        }
 
         getSimilarFilms();
     }, [])
@@ -146,7 +147,7 @@ const Film = () => {
                         <Typography
                             variant="h2"
                         >
-                            Film Popularity: {selectedFilm.popularity.toFixed(1)}
+                            Film Popularity: {selectedFilm.popularity}
                         </Typography>
                         <Typography
                             variant="h2"
