@@ -103,7 +103,7 @@ const Film = () => {
                     </Paper>
                     {
                         selectedFilm.vote_average
-                            ? < ProgressCircle progress={selectedFilm.vote_average} votes={selectedFilm.vote_count} size="250" />
+                            ? <ProgressCircle progress={selectedFilm.vote_average.toFixed(1)} votes={selectedFilm.vote_count} size="250" />
                             : null
                     }
                 </Box>
@@ -124,7 +124,7 @@ const Film = () => {
                     <Typography
                         variant="h2"
                     >
-                        Film Popularity: {selectedFilm.popularity}
+                        Film Popularity: {selectedFilm.popularity.toFixed(1)}
                     </Typography>
                     <Typography
                         variant="h2"

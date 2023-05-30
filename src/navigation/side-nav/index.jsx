@@ -1,5 +1,5 @@
 import { MenuOutlined, Home, TrendingUp, ContactsRounded, Search, } from "@mui/icons-material";
-import { Button, Box, Input, Typography, useTheme } from "@mui/material";
+import { Button, Box, Input, Typography, useTheme, Tooltip } from "@mui/material";
 import { useContext, useState } from "react";
 import { Sidebar, Menu, MenuItem, useProSidebar, SubMenu } from "react-pro-sidebar";
 import { Link, useNavigate } from "react-router-dom";
@@ -38,56 +38,79 @@ const SideNav = () => {
                 >
                     <Typography variant="h4" >Navigation Menu</Typography>
                 </MenuItem>
-                <MenuItem
-                    icon={<Home />}
-                    style={{
-                        color: theme.palette.primary.secondary
-                    }}
+                <Tooltip
+                    title={"Home"}
+                    arrow
                 >
                     <Link to="/">
-                        <Typography variant="h6" >Home</Typography>
+                        <MenuItem
+                            icon={<Home />}
+                            style={{
+                                color: theme.palette.primary.secondary
+                            }}
+                        >
+                            <Typography variant="h6" >Home</Typography>
+                        </MenuItem>
                     </Link>
-                </MenuItem>
-                <MenuItem
-                    icon={<TrendingUp />}
-                    style={{
-                        color: theme.palette.primary.secondary
-                    }}
+                </Tooltip>
+                <Tooltip
+                    title={"Trending"}
+                    arrow
                 >
                     <Link to="/trending">
-                        <Typography variant="h6" >Trending</Typography>
+                        <MenuItem
+                            icon={<TrendingUp />}
+                            style={{
+                                color: theme.palette.primary.secondary
+                            }}
+                        >
+                            <Typography variant="h6" >Trending</Typography>
+                        </MenuItem>
                     </Link>
-                </MenuItem>
-                <MenuItem
-                    icon={<ContactsRounded />}
-                    style={{
-                        color: theme.palette.primary.secondary
-                    }}
+                </Tooltip>
+                <Tooltip
+                    title="Recently Viewed"
+                    arrow
                 >
                     <Link to="/recently-viewed">
-                        <Typography variant="h6" >Recently Viewed</Typography>
+                        <MenuItem
+                            icon={<ContactsRounded />}
+                            style={{
+                                color: theme.palette.primary.secondary
+                            }}
+                        >
+                            <Typography variant="h6" >Recently Viewed</Typography>
+                        </MenuItem>
                     </Link>
-                </MenuItem>
-                <SubMenu
-                    icon={<Search />}
-                    label="Search"
-                    style={{
-                        color: theme.palette.primary.secondary
-                    }}
+                </Tooltip>
+
+                <Tooltip
+                    title="Search"
+                    arrow
                 >
-                    <MenuItem>
-                        <Box sx={{ display: "flex", flexDirection: "row" }}>
-                            <Input
-                                value={searchInput}
-                                onChange={e => setSearchInput(e.target.value)}
-                                placeholder="Search for a film"
-                            />
-                            <Button
-                                onClick={() => onSearch()}
-                            >Search</Button>
-                        </Box>
-                    </MenuItem>
-                </SubMenu>
+                    <SubMenu
+                        icon={<Search />}
+                        label="Search"
+                        style={{
+                            color: theme.palette.primary.secondary
+                        }}
+                    >
+                        <MenuItem>
+                            <Box sx={{ display: "flex", flexDirection: "row" }}>
+                                <Input
+                                    value={searchInput}
+                                    onChange={e => setSearchInput(e.target.value)}
+                                    placeholder="Search for a film"
+                                />
+                                <Button
+                                    onClick={() => onSearch()}
+                                >
+                                    Search
+                                </Button>
+                            </Box>
+                        </MenuItem>
+                    </SubMenu>
+                </Tooltip>
             </Menu>
         </Sidebar>
     )
