@@ -11,7 +11,7 @@ const FilmCard = ({ film }) => {
     const { selectFilm } = useContext(TmdbContext);
 
     return (
-        <Link to="/film" >
+        <Link to={`/film/${film.id}`} >
             <Box
                 sx={{
                     display: "flex",

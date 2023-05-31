@@ -3,14 +3,18 @@ import { TmdbContext } from "../../contexts/TmdbProvider";
 import { Box, Paper, Typography, useTheme } from "@mui/material";
 import ProgressCircle from "../../components/progress-circle";
 import FullPageDisplay from "../../components/film-set-display-full-page";
-import { getFilmsByGenre } from "../../services/TmdbServices";
+import { getFilmById, getFilmsByGenre } from "../../services/TmdbServices";
 import { getRandomItems, removeDuplicates } from "../../utilities/utilities";
+import { useParams } from "react-router-dom";
+import { getIndividualFilm } from "../../services/TmdbServices";
 
-const Film = () => {
+const Film = ({ match }) => {
     const [releaseDate, setReleaseDate] = useState("");
     const [similarFilms, setSimilarFilms] = useState([]);
+    const [selectedFilm2, setSelectedFilm2] = useState({});
     const { selectedFilm } = useContext(TmdbContext);
     const theme = useTheme();
+    const { id } = useParams();
 
     useEffect(() => {
         const formatedDate = new Date(selectedFilm.release_date).toLocaleDateString("en-US", {
@@ -32,8 +36,20 @@ const Film = () => {
             setSimilarFilms((prevSimilarFilms) => prevSimilarFilms.concat(filteredResults));
         }
 
+        const getFilm = async () => {
+            const film = await getFilmById(id);
+            setSelectedFilm2(film);
+        }
+
         getSimilarFilms();
-    }, [])
+        getFilm();
+
+        console.log("HERE", id, typeof id)
+    }, [id])
+
+    useEffect(() => {
+        console.log(selectedFilm2);
+    }, [selectedFilm2])
 
     return (
         <Box
