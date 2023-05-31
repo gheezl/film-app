@@ -12,27 +12,27 @@ const BarChart = ({ data }) => {
                 axis: {
                     domain: {
                         line: {
-                            stroke: colors.grey[100],
+                            stroke: theme.palette.background.secondary,
                         },
                     },
                     legend: {
                         text: {
-                            fill: colors.grey[100],
+                            fill: theme.palette.background.secondary,
                         },
                     },
                     ticks: {
                         line: {
-                            stroke: colors.grey[100],
+                            stroke: theme.palette.background.secondary,
                             strokeWidth: 1,
                         },
                         text: {
-                            fill: colors.grey[100],
+                            fill: theme.palette.background.secondary,
                         },
                     },
                 },
                 legends: {
                     text: {
-                        fill: colors.grey[100],
+                        fill: theme.palette.background.secondary,
                     },
                 },
             }}
@@ -73,7 +73,7 @@ const BarChart = ({ data }) => {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: isDashboard ? null : "country", // changed
+                legend: "country", // changed
                 legendPosition: "middle",
                 legendOffset: 32,
             }}
@@ -81,7 +81,7 @@ const BarChart = ({ data }) => {
                 tickSize: 5,
                 tickPadding: 5,
                 tickRotation: 0,
-                legend: isDashboard ? null : "food", // changed
+                legend: "food", // changed
                 legendPosition: "middle",
                 legendOffset: -40,
             }}
@@ -117,9 +117,9 @@ const BarChart = ({ data }) => {
                 },
             ]}
             role="application"
-            barAriaLabel={function (e) {
-                return e.id + ": " + e.formattedValue + " in country: " + e.indexValue;
-            }}
+        // barAriaLabel={function (e) {
+        //     return e.id + ": " + e.formattedValue + " in country: " + e.indexValue;
+        // }}
         />
     )
 }

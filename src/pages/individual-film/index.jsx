@@ -214,7 +214,7 @@ const Film = ({ match }) => {
                                 }}
                                 onClick={() => scrollToTopOfPage()}
                             >
-                                <BarChart />
+                                <BarChart data={{}} />
                                 <Typography variant="h2">Financials</Typography>
                                 <Typography variant="h3">Budget: ${selectedFilm.budget?.toLocaleString()}</Typography>
                                 <Typography variant="h3">Revenue: ${selectedFilm.revenue?.toLocaleString()}</Typography>
