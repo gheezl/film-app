@@ -145,30 +145,67 @@ const Film = ({ match }) => {
                         }
                     </Box>
 
-                    <Paper
+                    <Box
                         sx={{
                             display: "flex",
-                            justifyContent: "space-between",
-                            backgroundColor: theme.palette.background.secondary,
-                            padding: "15px",
-                            borderRadius: "25px",
-                            width: "100%",
+                            flexDirection: "row",
                             height: "100%",
-                            marginRight: "25px",
-                            // marginBottom: "50px"
+                            width: "100%"
                         }}
                     >
-                        <Typography
-                            variant="h2"
+                        <Paper
+                            sx={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                backgroundColor: theme.palette.background.secondary,
+                                padding: "15px",
+                                borderRadius: "25px",
+                                width: "50%",
+                                height: "100%",
+                                marginRight: "25px",
+                            }}
                         >
-                            Film Popularity: {selectedFilm.popularity}
-                        </Typography>
-                        <Typography
-                            variant="h2"
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    flexDirection: "column"
+                                }}
+                            >
+                                <Typography variant="h2">Genres</Typography>
+                                {
+                                    selectedFilm.genres
+                                        ? selectedFilm.genres.map(genre => (
+                                            <Typography variant="h3">{genre.name}</Typography>
+                                        ))
+                                        : null
+                                }
+                            </Box>
+                        </Paper>
+                        <Paper
+                            sx={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                backgroundColor: theme.palette.background.secondary,
+                                padding: "15px",
+                                borderRadius: "25px",
+                                width: "50%",
+                                height: "100%",
+                                marginRight: "25px",
+                            }}
                         >
-                            {selectedFilm.adult ? "Is an Adult Film" : "Not an Adult Film"}
-                        </Typography>
-                    </Paper>
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    flexDirection: "column"
+                                }}
+                            >
+                                <Typography variant="h2">Financials</Typography>
+                                <Typography variant="h3">Budget: {selectedFilm.budget?.toLocaleString()}</Typography>
+                                <Typography variant="h3">Revenue: {selectedFilm.revenue?.toLocaleString()}</Typography>
+                                <Typography variant="h3">Profit: {(selectedFilm.revenue - (selectedFilm.budget * 2.5)).toLocaleString()}</Typography>
+                            </Box>
+                        </Paper>
+                    </Box>
 
                 </Box>
             </Box>

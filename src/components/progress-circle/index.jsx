@@ -32,7 +32,7 @@ const ProgressCircle = ({ progress = "0.75", votes, size = "40" }) => {
                 <Typography
                     variant="h5"
                 >
-                    {votes} votes
+                    {votes.toLocaleString()} votes
                 </Typography>
 
             </Box>
