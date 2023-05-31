@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { TmdbContext } from "../../contexts/TmdbProvider";
 import { Box, Paper, Typography, useTheme } from "@mui/material";
 import ProgressCircle from "../../components/progress-circle";
@@ -15,11 +15,23 @@ const Film = ({ match }) => {
     const theme = useTheme();
     const { id } = useParams();
 
+    // const pageRef = useRef();
+
+    const scrollToTopOfPage = () => {
+        setTimeout(() => {
+            window.scrollTo(0, 0);
+            console.log("End")
+        }, 1000);
+    }
+
     useEffect(() => {
         const getFilm = async () => {
             const film = await getFilmById(id);
             setSelectedFilm(film);
         }
+
+        console.log("Start")
+        scrollToTopOfPage();
 
         getFilm();
     }, [id])
@@ -53,8 +65,9 @@ const Film = ({ match }) => {
         <Box
             sx={{
                 display: "flex",
-                flexDirection: "column"
+                flexDirection: "column",
             }}
+        // ref={pageRef}
         >
             <Box
                 sx={{
@@ -198,6 +211,7 @@ const Film = ({ match }) => {
                                     display: "flex",
                                     flexDirection: "column"
                                 }}
+                                onClick={() => scrollToTopOfPage()}
                             >
                                 <Typography variant="h2">Financials</Typography>
                                 <Typography variant="h3">Budget: {selectedFilm.budget?.toLocaleString()}</Typography>
