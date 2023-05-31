@@ -7,6 +7,7 @@ import { getFilmById, getFilmsByGenre } from "../../services/TmdbServices";
 import { getRandomItems, removeDuplicates } from "../../utilities/utilities";
 import { useParams } from "react-router-dom";
 import { getIndividualFilm } from "../../services/TmdbServices";
+import BarChart from "../../components/bar-chart";
 
 const Film = ({ match }) => {
     const [releaseDate, setReleaseDate] = useState("");
@@ -213,6 +214,7 @@ const Film = ({ match }) => {
                                 }}
                                 onClick={() => scrollToTopOfPage()}
                             >
+                                <BarChart />
                                 <Typography variant="h2">Financials</Typography>
                                 <Typography variant="h3">Budget: ${selectedFilm.budget?.toLocaleString()}</Typography>
                                 <Typography variant="h3">Revenue: ${selectedFilm.revenue?.toLocaleString()}</Typography>
