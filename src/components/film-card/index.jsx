@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 const FilmCard = ({ film }) => {
     const [isHovered, setIsHovered] = useState(false);
     const theme = useTheme();
-    const { selectFilm } = useContext(TmdbContext);
 
     return (
         <Link to={`/film/${film.id}`} >
@@ -27,7 +26,7 @@ const FilmCard = ({ film }) => {
                         elevation={isHovered ? 0 : 1}
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
-                        onClick={() => selectFilm(film)}
+                        // onClick={() => selectFilm(film)}
                         sx={{
                             margin: "20px 10px 20px 10px",
                             backgroundColor: theme.palette.background.secondary,

@@ -11,45 +11,43 @@ import { getIndividualFilm } from "../../services/TmdbServices";
 const Film = ({ match }) => {
     const [releaseDate, setReleaseDate] = useState("");
     const [similarFilms, setSimilarFilms] = useState([]);
-    const [selectedFilm2, setSelectedFilm2] = useState({});
-    const { selectedFilm } = useContext(TmdbContext);
+    const [selectedFilm, setSelectedFilm] = useState({});
     const theme = useTheme();
     const { id } = useParams();
 
     useEffect(() => {
-        const formatedDate = new Date(selectedFilm.release_date).toLocaleDateString("en-US", {
-            month: "2-digit",
-            day: "2-digit",
-            year: "numeric"
-        })
-        setReleaseDate(formatedDate)
-
-        const getSimilarFilms = async () => {
-            const promises = selectedFilm.genre_ids.map(async (genreId) => {
-                const films = await getFilmsByGenre(genreId);
-                return getRandomItems(films.results, 5);
-            });
-
-            const results = await Promise.all(promises);
-            const mergedResults = [].concat(...results);
-            const filteredResults = removeDuplicates(mergedResults);
-            setSimilarFilms((prevSimilarFilms) => prevSimilarFilms.concat(filteredResults));
-        }
-
         const getFilm = async () => {
             const film = await getFilmById(id);
-            setSelectedFilm2(film);
+            setSelectedFilm(film);
         }
 
-        getSimilarFilms();
         getFilm();
-
-        console.log("HERE", id, typeof id)
     }, [id])
 
     useEffect(() => {
-        console.log(selectedFilm2);
-    }, [selectedFilm2])
+        setReleaseDate(new Date(selectedFilm.release_date).toLocaleDateString("en-US", {
+            month: "2-digit",
+            day: "2-digit",
+            year: "numeric"
+        }))
+
+        const getSimilarFilms = async () => {
+            setSimilarFilms([]);
+            if (selectedFilm.genres) {
+                const promises = selectedFilm.genres.map(async (genre) => {
+                    const films = await getFilmsByGenre(genre.id);
+                    return getRandomItems(films.results, 5);
+                });
+
+                const results = await Promise.all(promises);
+                const mergedResults = [].concat(...results);
+                const filteredResults = removeDuplicates(mergedResults);
+                setSimilarFilms((prevSimilarFilms) => prevSimilarFilms.concat(filteredResults));
+            }
+        }
+
+        getSimilarFilms();
+    }, [selectedFilm])
 
     return (
         <Box

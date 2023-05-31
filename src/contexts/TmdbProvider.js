@@ -10,7 +10,6 @@ export const TmdbProvider = ({ children }) => {
     const [topRatedFilms, setTopRatedFilms] = useState({});
     const [upcomingFilms, setUpcomingFilms] = useState({});
     const [trendingFilms, setTrendingFilms] = useState({});
-    const [selectedFilm, setSelectedFilm] = useState({});
     const [recentlyViewed, setRecentlyViewed] = useState([]);
     const [searchedFilms, setSearchedFilms] = useState({ headLine: "", films: [] })
 
@@ -46,19 +45,6 @@ export const TmdbProvider = ({ children }) => {
         };
     }, []);
 
-    const selectFilm = (film) => {
-        console.log(film);
-        setSelectedFilm(film);
-        if (recentlyViewed.includes(film)) {
-            return;
-        }
-        else {
-            const viewed = [...recentlyViewed, film].reverse();
-            setRecentlyViewed(viewed);
-            localStorage.setItem('viewedFilms', JSON.stringify(viewed));
-        }
-    }
-
     const removeRecentlyViewed = () => {
         if (recentlyViewed) {
             localStorage.removeItem("viewedFilms")
@@ -74,8 +60,6 @@ export const TmdbProvider = ({ children }) => {
             topRatedFilms,
             upcomingFilms,
             trendingFilms,
-            selectedFilm,
-            selectFilm,
             recentlyViewed,
             removeRecentlyViewed,
             searchedFilms,
