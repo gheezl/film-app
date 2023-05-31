@@ -29,7 +29,6 @@ const Film = () => {
             const results = await Promise.all(promises);
             const mergedResults = [].concat(...results);
             const filteredResults = removeDuplicates(mergedResults);
-            console.log(mergedResults);
             setSimilarFilms((prevSimilarFilms) => prevSimilarFilms.concat(filteredResults));
         }
 
