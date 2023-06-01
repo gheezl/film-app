@@ -8,6 +8,7 @@ import { getRandomItems, removeDuplicates } from "../../utilities/utilities";
 import { useParams } from "react-router-dom";
 import { getIndividualFilm } from "../../services/TmdbServices";
 import BarChart from "../../components/bar-chart";
+import ItemList from "../../components/item-list";
 
 const Film = ({ match }) => {
     const [releaseDate, setReleaseDate] = useState("");
@@ -185,39 +186,7 @@ const Film = ({ match }) => {
                                     flexDirection: "column"
                                 }}
                             >
-                                <Typography variant="h2">Genres</Typography>
-                                <List
-
-                                >
-                                    {
-                                        selectedFilm.genres
-                                            ? selectedFilm.genres.map(genre => (
-                                                <ListItem
-                                                    sx={{
-                                                        padding: "5px 0px 5px 10px"
-                                                    }}
-                                                >
-                                                    <ListItemIcon>
-                                                        <span
-                                                            style={{
-                                                                width: "8px",
-                                                                height: "8px",
-                                                                borderRadius: "50%",
-                                                                backgroundColor: theme.palette.primary.secondary,
-                                                            }}
-                                                        />
-                                                    </ListItemIcon>
-                                                    <ListItemText
-                                                        sx={{
-                                                            margin: "0px 0px 0px -35px",
-                                                        }}
-                                                        primary={genre.name}
-                                                    />
-                                                </ListItem>
-                                            ))
-                                            : null
-                                    }
-                                </List>
+                                <ItemList items={selectedFilm.genres} />
                             </Box>
                         </Paper>
                         <Paper
