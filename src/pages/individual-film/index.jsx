@@ -19,8 +19,6 @@ const Film = ({ match }) => {
     const theme = useTheme();
     const { id } = useParams();
 
-    // const pageRef = useRef();
-
     const scrollToTopOfPage = () => {
         setTimeout(() => {
             window.scrollTo(0, 0);
@@ -63,13 +61,49 @@ const Film = ({ match }) => {
         getSimilarFilms();
     }, [selectedFilm])
 
+    //! WILL REMOVE LATER
+    const mockBarData = [
+        {
+            country: "Budget",
+            "hot dog": 137,
+            "hot dogColor": "hsl(229, 70%, 50%)",
+            burger: 96,
+            burgerColor: "hsl(296, 70%, 50%)",
+            kebab: 72,
+            kebabColor: "hsl(97, 70%, 50%)",
+            donut: 140,
+            donutColor: "hsl(340, 70%, 50%)",
+        },
+        {
+            country: "Revenue",
+            "hot dog": 55,
+            "hot dogColor": "hsl(307, 70%, 50%)",
+            burger: 28,
+            burgerColor: "hsl(111, 70%, 50%)",
+            kebab: 58,
+            kebabColor: "hsl(273, 70%, 50%)",
+            donut: 29,
+            donutColor: "hsl(275, 70%, 50%)",
+        },
+        {
+            country: "Profit",
+            "hot dog": 109,
+            "hot dogColor": "hsl(72, 70%, 50%)",
+            burger: 23,
+            burgerColor: "hsl(96, 70%, 50%)",
+            kebab: 34,
+            kebabColor: "hsl(106, 70%, 50%)",
+            donut: 152,
+            donutColor: "hsl(256, 70%, 50%)",
+        },
+    ];
+
     return (
         <Box
             sx={{
                 display: "flex",
                 flexDirection: "column",
             }}
-        // ref={pageRef}
         >
             <Box
                 sx={{
@@ -148,7 +182,7 @@ const Film = ({ match }) => {
                             {releaseDate}
                         </Typography>
                     </Paper>
-                    {/* //! This is the description */}
+                    {/* //! This is the description and the rating */}
                     <Box
                         sx={{
                             display: "flex",
@@ -162,12 +196,9 @@ const Film = ({ match }) => {
                                 backgroundColor: theme.palette.background.secondary,
                                 padding: "15px",
                                 borderRadius: "25px",
-                                // width: "fit-content",
                                 height: "250px",
                                 // width: "100%",
-                                // marginRight: "25px",
                                 overflowY: "scroll",
-                                // gridColumn: "span 6"
 
                             }}
                         >
@@ -177,12 +208,7 @@ const Film = ({ match }) => {
                                 {selectedFilm.overview}
                             </Typography>
                         </Paper>
-                        {/* //! This is the rating */}
-                        <Box
-                            sx={{
-                                // gridColumn: "7 / 9"
-                            }}
-                        >
+                        <Box>
                             {
                                 selectedFilm.vote_average
                                     ? <ProgressCircle progress={selectedFilm.vote_average.toFixed(1)} votes={selectedFilm.vote_count} size="250" />
@@ -190,7 +216,6 @@ const Film = ({ match }) => {
                             }
                         </Box>
                     </Box>
-
                     {/* //! This is the play button */}
                     <Paper
                         sx={{
@@ -256,15 +281,17 @@ const Film = ({ match }) => {
                         <Box
                             sx={{
                                 display: "flex",
-                                flexDirection: "column"
+                                flexDirection: "column",
+                                height: "250px",
+                                width: "100%"
                             }}
                             onClick={() => scrollToTopOfPage()}
                         >
-                            {/* <BarChart data={{}} /> */}
                             <Typography variant="h2">Financials</Typography>
-                            <Typography variant="h3">Budget: ${selectedFilm.budget?.toLocaleString()}</Typography>
+                            <BarChart data={mockBarData} />
+                            {/* <Typography variant="h3">Budget: ${selectedFilm.budget?.toLocaleString()}</Typography>
                             <Typography variant="h3">Revenue: ${selectedFilm.revenue?.toLocaleString()}</Typography>
-                            <Typography variant="h3">Profit: ${(selectedFilm.revenue - (selectedFilm.budget * 2.5)).toLocaleString()}</Typography>
+                            <Typography variant="h3">Profit: ${(selectedFilm.revenue - (selectedFilm.budget * 2.5)).toLocaleString()}</Typography> */}
                         </Box>
                     </Paper>
                 </Box>
