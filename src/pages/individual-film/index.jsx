@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState, useRef } from "react";
 import { TmdbContext } from "../../contexts/TmdbProvider";
-import { Box, Paper, Typography, useTheme } from "@mui/material";
+import { Box, List, ListItem, ListItemIcon, ListItemText, Paper, Typography, useTheme } from "@mui/material";
 import ProgressCircle from "../../components/progress-circle";
 import FullPageDisplay from "../../components/film-set-display-full-page";
 import { getFilmById, getFilmsByGenre } from "../../services/TmdbServices";
@@ -186,13 +186,38 @@ const Film = ({ match }) => {
                                 }}
                             >
                                 <Typography variant="h2">Genres</Typography>
-                                {
-                                    selectedFilm.genres
-                                        ? selectedFilm.genres.map(genre => (
-                                            <Typography variant="h3">{genre.name}</Typography>
-                                        ))
-                                        : null
-                                }
+                                <List
+
+                                >
+                                    {
+                                        selectedFilm.genres
+                                            ? selectedFilm.genres.map(genre => (
+                                                <ListItem
+                                                    sx={{
+                                                        padding: "5px 0px 5px 10px"
+                                                    }}
+                                                >
+                                                    <ListItemIcon>
+                                                        <span
+                                                            style={{
+                                                                width: "8px",
+                                                                height: "8px",
+                                                                borderRadius: "50%",
+                                                                backgroundColor: theme.palette.primary.secondary,
+                                                            }}
+                                                        />
+                                                    </ListItemIcon>
+                                                    <ListItemText
+                                                        sx={{
+                                                            margin: "0px 0px 0px -35px",
+                                                        }}
+                                                        primary={genre.name}
+                                                    />
+                                                </ListItem>
+                                            ))
+                                            : null
+                                    }
+                                </List>
                             </Box>
                         </Paper>
                         <Paper
@@ -214,7 +239,7 @@ const Film = ({ match }) => {
                                 }}
                                 onClick={() => scrollToTopOfPage()}
                             >
-                                <BarChart data={{}} />
+                                {/* <BarChart data={{}} /> */}
                                 <Typography variant="h2">Financials</Typography>
                                 <Typography variant="h3">Budget: ${selectedFilm.budget?.toLocaleString()}</Typography>
                                 <Typography variant="h3">Revenue: ${selectedFilm.revenue?.toLocaleString()}</Typography>
