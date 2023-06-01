@@ -17,16 +17,16 @@ const BarChart = ({ data }) => {
                     },
                     legend: {
                         text: {
-                            fill: theme.palette.background.secondary,
+                            fill: theme.palette.primary.secondary,
                         },
                     },
                     ticks: {
                         line: {
-                            stroke: theme.palette.background.secondary,
+                            stroke: theme.palette.primary.secondary,
                             strokeWidth: 1,
                         },
                         text: {
-                            fill: theme.palette.background.secondary,
+                            fill: theme.palette.primary.secondary,
                         },
                     },
                 },
@@ -36,14 +36,13 @@ const BarChart = ({ data }) => {
                     },
                 },
             }}
-            keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
-            indexBy="country"
-            // margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+            keys={["type", "hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
+            indexBy="category"
             margin={{ bottom: 50, top: 50 }}
             padding={0.3}
             valueScale={{ type: "linear" }}
             indexScale={{ type: "band", round: true }}
-            colors={{ scheme: "nivo" }}
+            colors={(bar) => bar.data.typeColor}
             defs={[
                 {
                     id: "dots",
@@ -70,14 +69,14 @@ const BarChart = ({ data }) => {
             }}
             axisTop={null}
             axisRight={null}
-            axisBottom={{
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: "country", // changed
-                legendPosition: "middle",
-                legendOffset: 32,
-            }}
+            // axisBottom={{
+            //     tickSize: 5,
+            //     tickPadding: 5,
+            //     tickRotation: 0,
+            //     legend: "country", // changed
+            //     legendPosition: "middle",
+            //     legendOffset: 32,
+            // }}
             axisLeft={{
                 tickSize: 5,
                 tickPadding: 5,
@@ -118,9 +117,9 @@ const BarChart = ({ data }) => {
                 },
             ]}
             role="application"
-        // barAriaLabel={function (e) {
-        //     return e.id + ": " + e.formattedValue + " in country: " + e.indexValue;
-        // }}
+            barAriaLabel={function (e) {
+                return e.category
+            }}
         />
     )
 }

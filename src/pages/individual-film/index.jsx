@@ -64,7 +64,9 @@ const Film = ({ match }) => {
     //! WILL REMOVE LATER
     const mockBarData = [
         {
-            country: "Budget",
+            category: "Budget",
+            type: selectedFilm.budget,
+            typeColor: theme.palette.primary.secondary,
             "hot dog": 137,
             "hot dogColor": "hsl(229, 70%, 50%)",
             burger: 96,
@@ -75,7 +77,9 @@ const Film = ({ match }) => {
             donutColor: "hsl(340, 70%, 50%)",
         },
         {
-            country: "Revenue",
+            category: "Revenue",
+            type: selectedFilm.revenue,
+            typeColor: theme.palette.primary.secondary,
             "hot dog": 55,
             "hot dogColor": "hsl(307, 70%, 50%)",
             burger: 28,
@@ -86,7 +90,9 @@ const Film = ({ match }) => {
             donutColor: "hsl(275, 70%, 50%)",
         },
         {
-            country: "Profit",
+            category: "Profit",
+            type: selectedFilm.revenue - (selectedFilm.budget * 2.5),
+            typeColor: theme.palette.primary.secondary,
             "hot dog": 109,
             "hot dogColor": "hsl(72, 70%, 50%)",
             burger: 23,
@@ -135,7 +141,7 @@ const Film = ({ match }) => {
                         width: "100%",
                         display: "grid",
                         gridTemplateColumns: "repeat(8, 1fr)",
-                        gridTemplateRows: "repeat(3, auto)",
+                        gridTemplateRows: "repeat(2, auto)",
                         griAutoRows: "100px",
                         gap: "25px",
                         padding: "25px",
@@ -197,7 +203,7 @@ const Film = ({ match }) => {
                                 padding: "15px",
                                 borderRadius: "25px",
                                 height: "250px",
-                                // width: "100%",
+                                width: "100%",
                                 overflowY: "scroll",
 
                             }}
@@ -282,7 +288,7 @@ const Film = ({ match }) => {
                             sx={{
                                 display: "flex",
                                 flexDirection: "column",
-                                height: "250px",
+                                height: "224px",
                                 width: "100%"
                             }}
                             onClick={() => scrollToTopOfPage()}
