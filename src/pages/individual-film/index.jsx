@@ -15,6 +15,7 @@ const Film = ({ match }) => {
     const [releaseDate, setReleaseDate] = useState("");
     const [similarFilms, setSimilarFilms] = useState([]);
     const [selectedFilm, setSelectedFilm] = useState({});
+    const [runTime, setRunTime] = useState("");
     const theme = useTheme();
     const { id } = useParams();
 
@@ -23,7 +24,6 @@ const Film = ({ match }) => {
     const scrollToTopOfPage = () => {
         setTimeout(() => {
             window.scrollTo(0, 0);
-            console.log("End")
         }, 1000);
     }
 
@@ -33,9 +33,7 @@ const Film = ({ match }) => {
             setSelectedFilm(film);
         }
 
-        console.log("Start")
         scrollToTopOfPage();
-
         getFilm();
     }, [id])
 
@@ -45,6 +43,7 @@ const Film = ({ match }) => {
             day: "2-digit",
             year: "numeric"
         }))
+        setRunTime(`${Math.floor(selectedFilm.runtime / 60)} hours and ${selectedFilm.runtime % 60} minutes`);
 
         const getSimilarFilms = async () => {
             setSimilarFilms([]);
@@ -114,14 +113,31 @@ const Film = ({ match }) => {
                             borderRadius: "25px",
                             width: "100%",
                             marginRight: "25px",
-                            marginBottom: "50px"
+                            marginBottom: "35px"
                         }}
                     >
-                        <Typography
-                            variant="h1"
+                        <Box
+                            sx={{
+                                display: "flex",
+                                flexDirection: "column",
+                            }}
                         >
-                            {selectedFilm.title}
-                        </Typography>
+                            <Typography
+                                variant="h1"
+                            >
+                                {selectedFilm.title}
+                            </Typography>
+                            <Typography
+                                variant="h4"
+                                sx={{
+                                    marginTop: "10px",
+                                    color: theme.palette.primary.third
+                                }}
+                            >
+                                {runTime}
+                            </Typography>
+                        </Box>
+
                         <Typography
                             variant="h2"
                         >

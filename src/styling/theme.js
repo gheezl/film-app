@@ -44,7 +44,8 @@ const themeSettings = {
     palette: {
         primary: {
             main: darkMode.primary[100],
-            secondary: darkMode.primary[200]
+            secondary: darkMode.primary[200],
+            third: darkMode.primary[300]
         },
         secondary: {
             main: darkMode.mixed[100],
