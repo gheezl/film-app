@@ -1,11 +1,15 @@
 import { useTheme, Box, Typography, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items, headLine }) => {
     const theme = useTheme();
 
     return (
-        <Box>
-            <Typography variant="h2">Genres</Typography>
+        <Box
+        // sx={{
+        //     width: "100%"
+        // }}
+        >
+            <Typography variant="h2">{headLine}</Typography>
             <List>
                 {
                     items

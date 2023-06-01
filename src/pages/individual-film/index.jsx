@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState, useRef } from "react";
 import { TmdbContext } from "../../contexts/TmdbProvider";
-import { Box, List, ListItem, ListItemIcon, ListItemText, Paper, Typography, useTheme } from "@mui/material";
+import { Box, Button, List, ListItem, ListItemIcon, ListItemText, Paper, Typography, useTheme } from "@mui/material";
 import ProgressCircle from "../../components/progress-circle";
 import FullPageDisplay from "../../components/film-set-display-full-page";
 import { getFilmById, getFilmsByGenre } from "../../services/TmdbServices";
@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { getIndividualFilm } from "../../services/TmdbServices";
 import BarChart from "../../components/bar-chart";
 import ItemList from "../../components/item-list";
+import { PlayCircle } from "@mui/icons-material";
 
 const Film = ({ match }) => {
     const [releaseDate, setReleaseDate] = useState("");
@@ -180,14 +181,19 @@ const Film = ({ match }) => {
                                 marginRight: "25px",
                             }}
                         >
-                            <Box
+                            <ItemList items={selectedFilm.genres} headLine="Genres" />
+                            <Button
                                 sx={{
                                     display: "flex",
-                                    flexDirection: "column"
+                                    flexDirection: "column",
+                                    // width: "100%"
                                 }}
                             >
-                                <ItemList items={selectedFilm.genres} />
-                            </Box>
+                                <PlayCircle sx={{
+                                    fontSize: "150px"
+                                }} />
+                                <Typography variant="h2" >Play Film</Typography>
+                            </Button>
                         </Paper>
                         <Paper
                             sx={{
