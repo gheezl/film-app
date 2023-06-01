@@ -149,37 +149,48 @@ const Film = ({ match }) => {
                         </Typography>
                     </Paper>
                     {/* //! This is the description */}
-                    <Paper
-                        sx={{
-                            backgroundColor: theme.palette.background.secondary,
-                            padding: "15px",
-                            borderRadius: "25px",
-                            // width: "fit-content",
-                            height: "250px",
-                            // width: "100%",
-                            // marginRight: "25px",
-                            overflowY: "scroll",
-                            gridColumn: "span 6"
-                        }}
-                    >
-                        <Typography
-                            variant="h2"
-                        >
-                            {selectedFilm.overview}
-                        </Typography>
-                    </Paper>
-                    {/* //! This is the rating */}
                     <Box
                         sx={{
-                            gridColumn: "7 / 9"
+                            display: "flex",
+                            flexDirection: "row",
+                            gap: "20px",
+                            gridColumn: "span 8"
                         }}
                     >
-                        {
-                            selectedFilm.vote_average
-                                ? <ProgressCircle progress={selectedFilm.vote_average.toFixed(1)} votes={selectedFilm.vote_count} size="250" />
-                                : null
-                        }
+                        <Paper
+                            sx={{
+                                backgroundColor: theme.palette.background.secondary,
+                                padding: "15px",
+                                borderRadius: "25px",
+                                // width: "fit-content",
+                                height: "250px",
+                                // width: "100%",
+                                // marginRight: "25px",
+                                overflowY: "scroll",
+                                // gridColumn: "span 6"
+
+                            }}
+                        >
+                            <Typography
+                                variant="h2"
+                            >
+                                {selectedFilm.overview}
+                            </Typography>
+                        </Paper>
+                        {/* //! This is the rating */}
+                        <Box
+                            sx={{
+                                // gridColumn: "7 / 9"
+                            }}
+                        >
+                            {
+                                selectedFilm.vote_average
+                                    ? <ProgressCircle progress={selectedFilm.vote_average.toFixed(1)} votes={selectedFilm.vote_count} size="250" />
+                                    : null
+                            }
+                        </Box>
                     </Box>
+
                     {/* //! This is the play button */}
                     <Paper
                         sx={{
@@ -208,7 +219,7 @@ const Film = ({ match }) => {
                             <Typography variant="h2" >Play Film</Typography>
                         </Button>
                     </Paper>
-                    {/* //! This is the play detail display */}
+                    {/* //! These are the film details */}
                     <Paper
                         sx={{
                             display: "flex",

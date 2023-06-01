@@ -8,25 +8,26 @@ const FilmSetDisplay = ({ headLine, films }) => {
     const theme = useTheme()
 
     return (
-        <Box sx={{ padding: "20px", height: "417px" }}>
+        <Box sx={{ padding: "20px", }}>
             <Typography
-                variant="h3"
+                variant="h2"
                 sx={{
                     display: "flex",
                     justifyContent: "center",
-                    margin: "2px 0px 10px 0px",
+                    margin: "-15px 0px 10px 0px",
+                    // padding: "10px 0px 10px 0px",
                 }}
             >
                 {headLine}
             </Typography>
+
             <HorizontalScroll
                 style={{
+                    height: "380px",
                     borderLeft: `1px solid ${theme.palette.primary.secondary}`,
                     borderRight: `1px solid ${theme.palette.primary.secondary}`,
                     borderRadius: "20px",
-                    marginTop: "10px",
-                    paddingLeft: "10px",
-                    paddingRight: "10px"
+                    padding: "0px 10px 0px 10px"
                 }}
             >
                 {
