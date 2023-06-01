@@ -163,8 +163,8 @@ const Film = ({ match }) => {
 
                     <Box
                         sx={{
-                            display: "flex",
-                            flexDirection: "row",
+                            display: "grid",
+                            gridTemplateColumns: "repeat(4, 1fr)",
                             height: "100%",
                             width: "100%"
                         }}
@@ -176,17 +176,17 @@ const Film = ({ match }) => {
                                 backgroundColor: theme.palette.background.secondary,
                                 padding: "15px",
                                 borderRadius: "25px",
-                                width: "50%",
+                                width: "min",
                                 height: "100%",
                                 marginRight: "25px",
                             }}
                         >
-                            <ItemList items={selectedFilm.genres} headLine="Genres" />
                             <Button
                                 sx={{
                                     display: "flex",
                                     flexDirection: "column",
-                                    // width: "100%"
+                                    width: "100%",
+                                    borderRadius: "25px"
                                 }}
                             >
                                 <PlayCircle sx={{
@@ -202,7 +202,22 @@ const Film = ({ match }) => {
                                 backgroundColor: theme.palette.background.secondary,
                                 padding: "15px",
                                 borderRadius: "25px",
-                                width: "50%",
+                                width: "min",
+                                height: "100%",
+                                marginRight: "25px",
+                            }}
+                        >
+                            <ItemList items={selectedFilm.genres} headLine="Genres" />
+                        </Paper>
+                        <Paper
+                            sx={{
+                                gridColumn: "span 2",
+                                display: "flex",
+                                justifyContent: "space-between",
+                                backgroundColor: theme.palette.background.secondary,
+                                padding: "15px",
+                                borderRadius: "25px",
+                                width: "max",
                                 height: "100%",
                                 marginRight: "25px",
                             }}
