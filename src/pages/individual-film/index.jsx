@@ -76,7 +76,8 @@ const Film = ({ match }) => {
                     padding: "20px",
                     marginBottom: "20px",
                     display: "flex",
-                    justifyContent: "space-between"
+                    justifyContent: "space-between",
+
                 }}
             >
                 <Box>
@@ -98,12 +99,15 @@ const Film = ({ match }) => {
                 <Box
                     sx={{
                         width: "100%",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "flex-start",
-                        padding: "25px"
+                        display: "grid",
+                        gridTemplateColumns: "repeat(8, 1fr)",
+                        gridTemplateRows: "repeat(3, auto)",
+                        griAutoRows: "100px",
+                        gap: "25px",
+                        padding: "25px",
                     }}
                 >
+                    {/* //! This is the header */}
                     <Paper
                         sx={{
                             display: "flex",
@@ -113,7 +117,8 @@ const Film = ({ match }) => {
                             borderRadius: "25px",
                             width: "100%",
                             marginRight: "25px",
-                            marginBottom: "35px"
+                            gridColumn: "span 8",
+                            gridRow: "span 1",
                         }}
                     >
                         <Box
@@ -137,123 +142,120 @@ const Film = ({ match }) => {
                                 {runTime}
                             </Typography>
                         </Box>
-
                         <Typography
                             variant="h2"
                         >
                             {releaseDate}
                         </Typography>
                     </Paper>
-                    <Box
+                    {/* //! This is the description */}
+                    <Paper
                         sx={{
-                            display: "flex",
-                            flexDirection: "row",
-                            justifyContent: "space-between",
-                            width: "100%",
-                            marginBottom: "50px"
+                            backgroundColor: theme.palette.background.secondary,
+                            padding: "15px",
+                            borderRadius: "25px",
+                            // width: "fit-content",
+                            height: "250px",
+                            // width: "100%",
+                            // marginRight: "25px",
+                            overflowY: "scroll",
+                            gridColumn: "span 6"
                         }}
                     >
-                        <Paper
-                            sx={{
-                                backgroundColor: theme.palette.background.secondary,
-                                padding: "15px",
-                                borderRadius: "25px",
-                                width: "fit-content",
-                                height: "100%",
-                                width: "100%",
-                                marginRight: "25px"
-                            }}
+                        <Typography
+                            variant="h2"
                         >
-                            <Typography
-                                variant="h2"
-                            >
-                                {selectedFilm.overview}
-                            </Typography>
-                        </Paper>
+                            {selectedFilm.overview}
+                        </Typography>
+                    </Paper>
+                    {/* //! This is the rating */}
+                    <Box
+                        sx={{
+                            gridColumn: "7 / 9"
+                        }}
+                    >
                         {
                             selectedFilm.vote_average
                                 ? <ProgressCircle progress={selectedFilm.vote_average.toFixed(1)} votes={selectedFilm.vote_count} size="250" />
                                 : null
                         }
                     </Box>
-
-                    <Box
+                    {/* //! This is the play button */}
+                    <Paper
                         sx={{
-                            display: "grid",
-                            gridTemplateColumns: "repeat(4, 1fr)",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            backgroundColor: theme.palette.background.secondary,
+                            padding: "15px",
+                            borderRadius: "25px",
+                            width: "min",
                             height: "100%",
-                            width: "100%"
+                            // marginRight: "25px",
+                            gridColumn: "1 / 2"
                         }}
                     >
-                        <Paper
+                        <Button
                             sx={{
                                 display: "flex",
-                                justifyContent: "space-between",
-                                backgroundColor: theme.palette.background.secondary,
-                                padding: "15px",
-                                borderRadius: "25px",
-                                width: "min",
-                                height: "100%",
-                                marginRight: "25px",
+                                flexDirection: "column",
+                                width: "100%",
+                                borderRadius: "25px"
                             }}
                         >
-                            <Button
-                                sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    width: "100%",
-                                    borderRadius: "25px"
-                                }}
-                            >
-                                <PlayCircle sx={{
-                                    fontSize: "150px"
-                                }} />
-                                <Typography variant="h2" >Play Film</Typography>
-                            </Button>
-                        </Paper>
-                        <Paper
+                            <PlayCircle sx={{
+                                fontSize: "150px"
+                            }} />
+                            <Typography variant="h2" >Play Film</Typography>
+                        </Button>
+                    </Paper>
+                    {/* //! This is the play detail display */}
+                    <Paper
+                        sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "15px",
+                            backgroundColor: theme.palette.background.secondary,
+                            padding: "15px",
+                            borderRadius: "25px",
+                            width: "100%",
+                            height: "250px",
+                            overflowY: "scroll",
+                            // marginRight: "25px",
+                            gridColumn: "2 / 4"
+                        }}
+                    >
+                        <ItemList items={selectedFilm.genres} headLine="Genres" />
+                        <ItemList items={selectedFilm.spoken_languages} headLine="Spoken Languages" />
+                        <ItemList items={selectedFilm.production_companies} headLine="Production Companies" />
+                    </Paper>
+                    <Paper
+                        sx={{
+                            gridColumn: "span 2",
+                            display: "flex",
+                            justifyContent: "space-between",
+                            backgroundColor: theme.palette.background.secondary,
+                            padding: "15px",
+                            borderRadius: "25px",
+                            width: "100%",
+                            height: "100%",
+                            marginRight: "25px",
+                            gridColumn: "4 / 9"
+                        }}
+                    >
+                        <Box
                             sx={{
                                 display: "flex",
-                                justifyContent: "space-between",
-                                backgroundColor: theme.palette.background.secondary,
-                                padding: "15px",
-                                borderRadius: "25px",
-                                width: "min",
-                                height: "100%",
-                                marginRight: "25px",
+                                flexDirection: "column"
                             }}
+                            onClick={() => scrollToTopOfPage()}
                         >
-                            <ItemList items={selectedFilm.genres} headLine="Genres" />
-                        </Paper>
-                        <Paper
-                            sx={{
-                                gridColumn: "span 2",
-                                display: "flex",
-                                justifyContent: "space-between",
-                                backgroundColor: theme.palette.background.secondary,
-                                padding: "15px",
-                                borderRadius: "25px",
-                                width: "max",
-                                height: "100%",
-                                marginRight: "25px",
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    flexDirection: "column"
-                                }}
-                                onClick={() => scrollToTopOfPage()}
-                            >
-                                {/* <BarChart data={{}} /> */}
-                                <Typography variant="h2">Financials</Typography>
-                                <Typography variant="h3">Budget: ${selectedFilm.budget?.toLocaleString()}</Typography>
-                                <Typography variant="h3">Revenue: ${selectedFilm.revenue?.toLocaleString()}</Typography>
-                                <Typography variant="h3">Profit: ${(selectedFilm.revenue - (selectedFilm.budget * 2.5)).toLocaleString()}</Typography>
-                            </Box>
-                        </Paper>
-                    </Box>
-
+                            {/* <BarChart data={{}} /> */}
+                            <Typography variant="h2">Financials</Typography>
+                            <Typography variant="h3">Budget: ${selectedFilm.budget?.toLocaleString()}</Typography>
+                            <Typography variant="h3">Revenue: ${selectedFilm.revenue?.toLocaleString()}</Typography>
+                            <Typography variant="h3">Profit: ${(selectedFilm.revenue - (selectedFilm.budget * 2.5)).toLocaleString()}</Typography>
+                        </Box>
+                    </Paper>
                 </Box>
             </Box>
             <FullPageDisplay headLine="Similar Films" films={similarFilms} />
