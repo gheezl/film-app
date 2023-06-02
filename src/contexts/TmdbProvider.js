@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 
 import { getNowPlayingFilms, getPopularFilms, getTopRatedFilms, getTrendingFilms, getUpcomingFilms } from '../services/TmdbServices';
-import { removeDuplicateObjects } from '../utilities/utilities';
+import { removeDuplicateObjects, removeSpecificObject } from '../utilities/utilities';
 
 export const TmdbContext = createContext();
 
@@ -32,9 +32,9 @@ export const TmdbProvider = ({ children }) => {
         };
 
         const getLocalStorageData = () => {
-            const previousViews = localStorage.getItem("viewedFilms");
-            if (previousViews) {
-                setRecentlyViewed(removeDuplicateObjects(JSON.parse(previousViews), "title"));
+            const films = localStorage.getItem("viewedFilms");
+            if (films) {
+                setRecentlyViewed(removeDuplicateObjects(JSON.parse(films), "title"));
             }
         }
 
@@ -53,6 +53,18 @@ export const TmdbProvider = ({ children }) => {
         }
     }
 
+    const addFilmToRecentlyViewed = (film) => {
+        if (recentlyViewed.some(viewed => viewed.id === film.id)) {
+            const filtered = removeSpecificObject(recentlyViewed, film.title);
+            setRecentlyViewed([film, ...filtered]);
+            localStorage.setItem("viewedFilms", JSON.stringify(recentlyViewed))
+        }
+        else {
+            setRecentlyViewed([film, ...recentlyViewed]);
+            localStorage.setItem("viewedFilms", JSON.stringify(recentlyViewed))
+        }
+    }
+
 
     return (
         <TmdbContext.Provider value={{
@@ -63,6 +75,7 @@ export const TmdbProvider = ({ children }) => {
             trendingFilms,
             recentlyViewed,
             removeRecentlyViewed,
+            addFilmToRecentlyViewed,
             searchedFilms,
             setSearchedFilms
         }}>

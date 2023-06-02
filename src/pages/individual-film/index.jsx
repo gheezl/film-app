@@ -19,6 +19,7 @@ const Film = ({ match }) => {
     const [mockBarData, setMockBarData] = useState([]);
     const theme = useTheme();
     const { id } = useParams();
+    const { addFilmToRecentlyViewed } = useContext(TmdbContext);
 
     const scrollToTopOfPage = () => {
         setTimeout(() => {
@@ -41,6 +42,7 @@ const Film = ({ match }) => {
             setReleaseDate(formatDate(selectedFilm.release_date))
         }
         setRunTime(`${Math.floor(selectedFilm.runtime / 60)} hours and ${selectedFilm.runtime % 60} minutes`);
+        addFilmToRecentlyViewed(selectedFilm)
 
         const determineFinancialPerformance = () => {
             if (selectedFilm.budget && selectedFilm.revenue && selectedFilm.revenue - (selectedFilm.budget * 2.5)) {
@@ -167,7 +169,7 @@ const Film = ({ match }) => {
                             </Typography>
                         </Box>
                         <Typography
-                            variant="h2"
+                            variant="h1"
                         >
                             {releaseDate}
                         </Typography>
