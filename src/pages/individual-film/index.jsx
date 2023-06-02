@@ -67,40 +67,40 @@ const Film = ({ match }) => {
             category: "Budget",
             type: selectedFilm.budget,
             typeColor: theme.palette.primary.secondary,
-            "hot dog": 137,
-            "hot dogColor": "hsl(229, 70%, 50%)",
-            burger: 96,
-            burgerColor: "hsl(296, 70%, 50%)",
-            kebab: 72,
-            kebabColor: "hsl(97, 70%, 50%)",
-            donut: 140,
-            donutColor: "hsl(340, 70%, 50%)",
+            // "hot dog": 137,
+            // "hot dogColor": "hsl(229, 70%, 50%)",
+            // burger: 96,
+            // burgerColor: "hsl(296, 70%, 50%)",
+            // kebab: 72,
+            // kebabColor: "hsl(97, 70%, 50%)",
+            // donut: 140,
+            // donutColor: "hsl(340, 70%, 50%)",
         },
         {
             category: "Revenue",
             type: selectedFilm.revenue,
             typeColor: theme.palette.primary.secondary,
-            "hot dog": 55,
-            "hot dogColor": "hsl(307, 70%, 50%)",
-            burger: 28,
-            burgerColor: "hsl(111, 70%, 50%)",
-            kebab: 58,
-            kebabColor: "hsl(273, 70%, 50%)",
-            donut: 29,
-            donutColor: "hsl(275, 70%, 50%)",
+            // "hot dog": 55,
+            // "hot dogColor": "hsl(307, 70%, 50%)",
+            // burger: 28,
+            // burgerColor: "hsl(111, 70%, 50%)",
+            // kebab: 58,
+            // kebabColor: "hsl(273, 70%, 50%)",
+            // donut: 29,
+            // donutColor: "hsl(275, 70%, 50%)",
         },
         {
             category: "Profit",
             type: selectedFilm.revenue - (selectedFilm.budget * 2.5),
-            typeColor: theme.palette.primary.secondary,
-            "hot dog": 109,
-            "hot dogColor": "hsl(72, 70%, 50%)",
-            burger: 23,
-            burgerColor: "hsl(96, 70%, 50%)",
-            kebab: 34,
-            kebabColor: "hsl(106, 70%, 50%)",
-            donut: 152,
-            donutColor: "hsl(256, 70%, 50%)",
+            typeColor: selectedFilm.revenue - (selectedFilm.budget * 2.5) < 0 ? theme.palette.error.third : theme.palette.primary.secondary,
+            // "hot dog": 109,
+            // "hot dogColor": "hsl(72, 70%, 50%)",
+            // burger: 23,
+            // burgerColor: "hsl(96, 70%, 50%)",
+            // kebab: 34,
+            // kebabColor: "hsl(106, 70%, 50%)",
+            // donut: 152,
+            // donutColor: "hsl(256, 70%, 50%)",
         },
     ];
 
@@ -122,7 +122,7 @@ const Film = ({ match }) => {
             >
                 <Box>
                     <Paper
-                        elevation={1}
+                        // elevation={1}
                         sx={{
                             margin: "20px 10px 20px 10px",
                             backgroundColor: theme.palette.background.secondary,
@@ -293,7 +293,7 @@ const Film = ({ match }) => {
                             }}
                             onClick={() => scrollToTopOfPage()}
                         >
-                            <Typography variant="h2">Financials</Typography>
+                            <Typography variant="h2">Financial Performance</Typography>
                             <BarChart data={mockBarData} />
                             {/* <Typography variant="h3">Budget: ${selectedFilm.budget?.toLocaleString()}</Typography>
                             <Typography variant="h3">Revenue: ${selectedFilm.revenue?.toLocaleString()}</Typography>

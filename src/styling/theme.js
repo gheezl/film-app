@@ -24,6 +24,14 @@ const darkMode = {
         400: "#5d6363",
         500: "#767b7b",
         600: "#8f9494"
+    },
+    error: {
+        100: "#401818",
+        200: "#632626",
+        300: "#854343",
+        400: "#a76868",
+        500: "#c78f8f",
+        600: "#eab6b6"
     }
 }
 
@@ -54,6 +62,14 @@ const themeSettings = {
         background: {
             default: darkMode.surface[100],
             secondary: darkMode.surface[200]
+        },
+        error: {
+            main: darkMode.error[100],
+            secondary: darkMode.error[200],
+            third: darkMode.error[300],
+            fourth: darkMode.error[400],
+            fifth: darkMode.error[500],
+            final: darkMode.error[600]
         }
     },
     typography: {

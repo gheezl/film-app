@@ -1,9 +1,8 @@
-import { useTheme } from "@mui/material";
+import { Typography, useTheme, Box, Paper } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 
 const BarChart = ({ data }) => {
     const theme = useTheme();
-    // const colors = tokens(theme.palette.mode)
 
     return (
         <ResponsiveBar
@@ -36,10 +35,10 @@ const BarChart = ({ data }) => {
                     },
                 },
             }}
-            keys={["type", "hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
+            keys={["type"]}
             indexBy="category"
             margin={{ bottom: 50, top: 50 }}
-            padding={0.3}
+            // padding={0.3}
             valueScale={{ type: "linear" }}
             indexScale={{ type: "band", round: true }}
             colors={(bar) => bar.data.typeColor}
@@ -63,29 +62,25 @@ const BarChart = ({ data }) => {
                     spacing: 10,
                 },
             ]}
+            tooltip={bar => (
+                <Paper
+                    sx={{
+                        backgroundColor: theme.palette.background.secondary,
+                        padding: "8px",
+                        borderRadius: "5px",
+                    }}
+                >
+                    <Typography>{`${bar.data.category}: $${bar.value.toLocaleString()}`}</Typography>
+                </Paper>
+            )}
             borderColor={{
                 from: "color",
                 modifiers: [["darker", "1.6"]],
             }}
             axisTop={null}
             axisRight={null}
-            // axisBottom={{
-            //     tickSize: 5,
-            //     tickPadding: 5,
-            //     tickRotation: 0,
-            //     legend: "country", // changed
-            //     legendPosition: "middle",
-            //     legendOffset: 32,
-            // }}
-            axisLeft={{
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: "food", // changed
-                legendPosition: "middle",
-                legendOffset: -40,
-            }}
-            enableLabel={false}
+            enableLabel={true}
+            label={bar => `$${bar.value.toLocaleString()}`}
             labelSkipWidth={12}
             labelSkipHeight={12}
             labelTextColor={{
