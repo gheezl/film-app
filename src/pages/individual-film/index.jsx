@@ -16,6 +16,7 @@ const Film = ({ match }) => {
     const [similarFilms, setSimilarFilms] = useState([]);
     const [selectedFilm, setSelectedFilm] = useState({});
     const [runTime, setRunTime] = useState("");
+    const [mockBarData, setMockBarData] = useState([]);
     const theme = useTheme();
     const { id } = useParams();
 
@@ -41,6 +42,33 @@ const Film = ({ match }) => {
         }
         setRunTime(`${Math.floor(selectedFilm.runtime / 60)} hours and ${selectedFilm.runtime % 60} minutes`);
 
+        const determineFinancialPerformance = () => {
+            if (selectedFilm.budget && selectedFilm.revenue && selectedFilm.revenue - (selectedFilm.budget * 2.5)) {
+                setMockBarData(
+                    [
+                        {
+                            category: "Budget",
+                            type: selectedFilm.budget,
+                            typeColor: theme.palette.primary.secondary,
+                        },
+                        {
+                            category: "Revenue",
+                            type: selectedFilm.revenue,
+                            typeColor: theme.palette.primary.secondary,
+                        },
+                        {
+                            category: "Profit",
+                            type: selectedFilm.revenue - (selectedFilm.budget * 2.5),
+                            typeColor: selectedFilm.revenue - (selectedFilm.budget * 2.5) < 0 ? theme.palette.error.third : theme.palette.primary.secondary,
+                        },
+                    ]
+                )
+            }
+            else {
+                setMockBarData([])
+            }
+        }
+
         const getSimilarFilms = async () => {
             setSimilarFilms([]);
             if (selectedFilm.genres) {
@@ -57,26 +85,9 @@ const Film = ({ match }) => {
             }
         }
 
+        determineFinancialPerformance();
         getSimilarFilms();
     }, [selectedFilm])
-
-    const mockBarData = [
-        {
-            category: "Budget",
-            type: selectedFilm.budget,
-            typeColor: theme.palette.primary.secondary,
-        },
-        {
-            category: "Revenue",
-            type: selectedFilm.revenue,
-            typeColor: theme.palette.primary.secondary,
-        },
-        {
-            category: "Profit",
-            type: selectedFilm.revenue - (selectedFilm.budget * 2.5),
-            typeColor: selectedFilm.revenue - (selectedFilm.budget * 2.5) < 0 ? theme.palette.error.third : theme.palette.primary.secondary,
-        },
-    ];
 
     return (
         <Box
@@ -264,7 +275,11 @@ const Film = ({ match }) => {
                             onClick={() => scrollToTopOfPage()}
                         >
                             <Typography variant="h2">Financial Performance</Typography>
-                            <BarChart data={mockBarData} />
+                            {
+                                mockBarData[0]
+                                    ? <BarChart data={mockBarData} />
+                                    : <Typography sx={{ color: theme.palette.primary.third }} variant="h4" >Not enough data.</Typography>
+                            }
                         </Box>
                     </Paper>
                 </Box>
