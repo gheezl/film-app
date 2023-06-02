@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 
 import { getNowPlayingFilms, getPopularFilms, getTopRatedFilms, getTrendingFilms, getUpcomingFilms } from '../services/TmdbServices';
+import { removeDuplicateObjects } from '../utilities/utilities';
 
 export const TmdbContext = createContext();
 
@@ -33,7 +34,7 @@ export const TmdbProvider = ({ children }) => {
         const getLocalStorageData = () => {
             const previousViews = localStorage.getItem("viewedFilms");
             if (previousViews) {
-                setRecentlyViewed(JSON.parse(previousViews));
+                setRecentlyViewed(removeDuplicateObjects(JSON.parse(previousViews), "title"));
             }
         }
 

@@ -4,7 +4,7 @@ import { Box, Button, List, ListItem, ListItemIcon, ListItemText, Paper, Typogra
 import ProgressCircle from "../../components/progress-circle";
 import FullPageDisplay from "../../components/film-set-display-full-page";
 import { getFilmById, getFilmsByGenre } from "../../services/TmdbServices";
-import { getRandomItems, removeDuplicates } from "../../utilities/utilities";
+import { getRandomItems, removeDuplicateObjects, formatDate, removeSpecificObject } from "../../utilities/utilities";
 import { useParams } from "react-router-dom";
 import { getIndividualFilm } from "../../services/TmdbServices";
 import BarChart from "../../components/bar-chart";
@@ -36,11 +36,9 @@ const Film = ({ match }) => {
     }, [id])
 
     useEffect(() => {
-        setReleaseDate(new Date(selectedFilm.release_date).toLocaleDateString("en-US", {
-            month: "2-digit",
-            day: "2-digit",
-            year: "numeric"
-        }))
+        if (selectedFilm.release_date) {
+            setReleaseDate(formatDate(selectedFilm.release_date))
+        }
         setRunTime(`${Math.floor(selectedFilm.runtime / 60)} hours and ${selectedFilm.runtime % 60} minutes`);
 
         const getSimilarFilms = async () => {
@@ -53,8 +51,9 @@ const Film = ({ match }) => {
 
                 const results = await Promise.all(promises);
                 const mergedResults = [].concat(...results);
-                const filteredResults = removeDuplicates(mergedResults);
-                setSimilarFilms((prevSimilarFilms) => prevSimilarFilms.concat(filteredResults));
+                const withoutDuplicateObjects = removeDuplicateObjects(mergedResults, "title");
+                const withoutSelectedFilm = removeSpecificObject(withoutDuplicateObjects, selectedFilm.title);
+                setSimilarFilms((prevSimilarFilms) => prevSimilarFilms.concat(withoutSelectedFilm));
             }
         }
 
@@ -206,7 +205,6 @@ const Film = ({ match }) => {
                             borderRadius: "25px",
                             width: "min",
                             height: "100%",
-                            // marginRight: "25px",
                             gridColumn: "1 / 2"
                         }}
                     >
@@ -233,12 +231,9 @@ const Film = ({ match }) => {
                             backgroundColor: theme.palette.background.secondary,
                             padding: "15px",
                             borderRadius: "25px",
-                            width: "min",
-                            // minWidth: "250px",
                             height: "250px",
                             overflowY: "scroll",
-                            // marginRight: "25px",
-                            gridColumn: "2 / 4"
+                            gridColumn: "2 / 5"
                         }}
                     >
                         <ItemList items={selectedFilm.genres} headLine="Genres" />
@@ -256,7 +251,7 @@ const Film = ({ match }) => {
                             width: "100%",
                             height: "100%",
                             marginRight: "25px",
-                            gridColumn: "4 / 9"
+                            gridColumn: "5 / 9"
                         }}
                     >
                         <Box
