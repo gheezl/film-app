@@ -280,7 +280,7 @@ const Film = ({ match }) => {
                             {
                                 mockBarData[0]
                                     ? <BarChart data={mockBarData} />
-                                    : <Typography sx={{ color: theme.palette.primary.third }} variant="h4" >Not enough data.</Typography>
+                                    : <Typography sx={{ color: theme.palette.primary.third }} variant="h4">Insufficient data.</Typography>
                             }
                         </Box>
                     </Paper>

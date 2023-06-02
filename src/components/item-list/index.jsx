@@ -12,7 +12,7 @@ const ItemList = ({ items, headLine }) => {
             <Typography variant="h2">{headLine}</Typography>
             <List>
                 {
-                    items
+                    items && items[0]
                         ? items.map(item => (
                             <ListItem
                                 sx={{
@@ -37,11 +37,14 @@ const ItemList = ({ items, headLine }) => {
                                 />
                             </ListItem>
                         ))
-                        : null
+                        : <Typography sx={{ color: theme.palette.primary.third }} variant="h4">No data.</Typography>
                 }
+                {/* {
+                    items[0]
+
+                } */}
             </List>
         </Box>
-
     )
 }
 
