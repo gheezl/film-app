@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme } from "@mui/material";
 
-const ProgressCircle = ({ progress = "0.75", votes, size = "40" }) => {
+const ProgressCircle = ({ progress, votes, size }) => {
     const theme = useTheme();
     const angle = (progress * 0.1) * 360;
 

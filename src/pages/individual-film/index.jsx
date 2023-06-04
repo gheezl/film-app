@@ -44,6 +44,8 @@ const Film = ({ match }) => {
         setRuntime(formatRuntime(selectedFilm.runtime));
         addFilmToRecentlyViewed(selectedFilm);
 
+        console.log(selectedFilm);
+
         const determineFinancialPerformance = () => {
             if (selectedFilm.budget && selectedFilm.revenue && selectedFilm.revenue - (selectedFilm.budget * 2.5)) {
                 setMockBarData(
@@ -233,6 +235,7 @@ const Film = ({ match }) => {
                                 width: "100%",
                                 borderRadius: "25px"
                             }}
+                            onClick={() => window.open(selectedFilm.homepage, "_blank")}
                         >
                             <PlayCircle sx={{
                                 fontSize: "150px"

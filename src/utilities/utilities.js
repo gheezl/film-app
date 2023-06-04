@@ -82,6 +82,5 @@ export const formatRuntime = (runtime) => {
         formattedRuntime += `${minutes} minute${minutes > 1 ? "s" : ""}`;
     }
 
-    console.log("HERE", formattedRuntime)
     return formattedRuntime;
 }
