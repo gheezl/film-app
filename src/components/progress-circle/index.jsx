@@ -27,25 +27,18 @@ const ProgressCircle = ({ progress = "0.75", votes, size = "40" }) => {
                 {
                     votes
                         ?
-                        <Box
-                            sx={{
-                                display: "flex",
-                                flexDirection: "column",
-                                justifyContent: "center",
-                                alignItems: "center"
-                            }}
-                        >
+                        <>
                             <Typography
                                 variant="h2"
                             >
-                                {progress} / 10
+                                {progress.toFixed(1)} / 10
                             </Typography>
                             <Typography
                                 variant="h5"
                             >
                                 {votes.toLocaleString()} reviews
                             </Typography>
-                        </Box>
+                        </>
                         :
                         <Typography
                             variant="h2"
