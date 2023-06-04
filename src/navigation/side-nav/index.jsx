@@ -1,4 +1,4 @@
-import { MenuOutlined, Home, TrendingUp, ContactsRounded, Search, } from "@mui/icons-material";
+import { MenuOutlined, Home, Star, Search, Category, Bookmark, Visibility } from "@mui/icons-material";
 import { Button, Box, Input, Typography, useTheme, Tooltip } from "@mui/material";
 import { useContext, useState } from "react";
 import { Sidebar, Menu, MenuItem, useProSidebar, SubMenu } from "react-pro-sidebar";
@@ -54,17 +54,32 @@ const SideNav = () => {
                     </Link>
                 </Tooltip>
                 <Tooltip
-                    title={"Recommendations"}
+                    title={"Genres"}
                     arrow
                 >
-                    <Link to="/recommendations">
+                    <Link to="/genres">
                         <MenuItem
-                            icon={<TrendingUp />}
+                            icon={<Category />}
                             style={{
                                 color: theme.palette.primary.secondary
                             }}
                         >
-                            <Typography variant="h6" >Recommendations</Typography>
+                            <Typography variant="h6" >Genres</Typography>
+                        </MenuItem>
+                    </Link>
+                </Tooltip>
+                <Tooltip
+                    title={"Saved"}
+                    arrow
+                >
+                    <Link to="/saved-films">
+                        <MenuItem
+                            icon={<Bookmark />}
+                            style={{
+                                color: theme.palette.primary.secondary
+                            }}
+                        >
+                            <Typography variant="h6" >Saved</Typography>
                         </MenuItem>
                     </Link>
                 </Tooltip>
@@ -74,7 +89,7 @@ const SideNav = () => {
                 >
                     <Link to="/recently-viewed">
                         <MenuItem
-                            icon={<ContactsRounded />}
+                            icon={<Visibility />}
                             style={{
                                 color: theme.palette.primary.secondary
                             }}
@@ -83,7 +98,21 @@ const SideNav = () => {
                         </MenuItem>
                     </Link>
                 </Tooltip>
-
+                <Tooltip
+                    title={"Recommendations"}
+                    arrow
+                >
+                    <Link to="/recommendations">
+                        <MenuItem
+                            icon={<Star />}
+                            style={{
+                                color: theme.palette.primary.secondary
+                            }}
+                        >
+                            <Typography variant="h6" >Recommendations</Typography>
+                        </MenuItem>
+                    </Link>
+                </Tooltip>
                 <Tooltip
                     title="Search"
                     arrow
