@@ -4,7 +4,7 @@ import { Box, Button, List, ListItem, ListItemIcon, ListItemText, Paper, Typogra
 import ProgressCircle from "../../components/progress-circle";
 import FullPageDisplay from "../../components/film-set-display-full-page";
 import { getFilmById, getFilmsByGenre } from "../../services/TmdbServices";
-import { getRandomItems, removeDuplicateObjects, formatDate, removeSpecificObject } from "../../utilities/utilities";
+import { getRandomItems, removeDuplicateObjects, formatDate, removeSpecificObject, formatRuntime } from "../../utilities/utilities";
 import { useParams } from "react-router-dom";
 import { getIndividualFilm } from "../../services/TmdbServices";
 import BarChart from "../../components/bar-chart";
@@ -15,7 +15,7 @@ const Film = ({ match }) => {
     const [releaseDate, setReleaseDate] = useState("");
     const [similarFilms, setSimilarFilms] = useState([]);
     const [selectedFilm, setSelectedFilm] = useState({});
-    const [runTime, setRunTime] = useState("");
+    const [runtime, setRuntime] = useState("");
     const [mockBarData, setMockBarData] = useState([]);
     const theme = useTheme();
     const { id } = useParams();
@@ -39,10 +39,10 @@ const Film = ({ match }) => {
 
     useEffect(() => {
         if (selectedFilm.release_date) {
-            setReleaseDate(formatDate(selectedFilm.release_date))
+            setReleaseDate(formatDate(selectedFilm.release_date));
         }
-        setRunTime(`${Math.floor(selectedFilm.runtime / 60)} hours and ${selectedFilm.runtime % 60} minutes`);
-        addFilmToRecentlyViewed(selectedFilm)
+        setRuntime(formatRuntime(selectedFilm.runtime));
+        addFilmToRecentlyViewed(selectedFilm);
 
         const determineFinancialPerformance = () => {
             if (selectedFilm.budget && selectedFilm.revenue && selectedFilm.revenue - (selectedFilm.budget * 2.5)) {
@@ -165,7 +165,7 @@ const Film = ({ match }) => {
                                     color: theme.palette.primary.third
                                 }}
                             >
-                                {runTime}
+                                {runtime}
                             </Typography>
                         </Box>
                         <Typography

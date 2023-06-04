@@ -65,3 +65,23 @@ export const formatDate = (dateString) => {
 
     return formattedDate;
 };
+
+export const formatRuntime = (runtime) => {
+    let formattedRuntime = "";
+    const hours = Math.floor(runtime / 60);
+    const minutes = runtime % 60;
+
+    if (hours > 0) {
+        formattedRuntime += `${hours} hour${hours > 1 ? "s" : ""}`;
+    }
+
+    if (minutes > 0) {
+        if (hours > 0) {
+            formattedRuntime += " and ";
+        }
+        formattedRuntime += `${minutes} minute${minutes > 1 ? "s" : ""}`;
+    }
+
+    console.log("HERE", formattedRuntime)
+    return formattedRuntime;
+}
