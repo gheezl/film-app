@@ -201,11 +201,16 @@ const Film = ({ match }) => {
                             </Typography>
                         </Paper>
                         <Box>
-                            {
+                            {/* {
                                 selectedFilm.vote_average
                                     ? <ProgressCircle progress={selectedFilm.vote_average.toFixed(1)} votes={selectedFilm.vote_count} size="250" />
                                     : null
-                            }
+                            } */}
+                            <ProgressCircle
+                                progress={selectedFilm.vote_average}
+                                votes={selectedFilm.vote_count ? selectedFilm.vote_count : 0}
+                                size="250"
+                            />
                         </Box>
                     </Box>
                     {/* //! This is the play button */}

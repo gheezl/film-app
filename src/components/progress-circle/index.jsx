@@ -24,20 +24,36 @@ const ProgressCircle = ({ progress = "0.75", votes, size = "40" }) => {
                     alignItems: "center"
                 }}
             >
-                <Typography
-                    variant="h2"
-                >
-                    {progress} / 10
-                </Typography>
-                <Typography
-                    variant="h5"
-                >
-                    {votes.toLocaleString()} votes
-                </Typography>
-
+                {
+                    votes
+                        ?
+                        <Box
+                            sx={{
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "center",
+                                alignItems: "center"
+                            }}
+                        >
+                            <Typography
+                                variant="h2"
+                            >
+                                {progress} / 10
+                            </Typography>
+                            <Typography
+                                variant="h5"
+                            >
+                                {votes.toLocaleString()} reviews
+                            </Typography>
+                        </Box>
+                        :
+                        <Typography
+                            variant="h2"
+                        >
+                            No reviews
+                        </Typography>
+                }
             </Box>
-
-
         </Box>
     )
 }
