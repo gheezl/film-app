@@ -90,5 +90,18 @@ export const formatRuntime = (runtime) => {
 export const getRecommendedFilms = async (films) => {
     // we will use the films array argument to determine the other films to recommend.
     // getFilmsByGenre
-    console.log(films)
+    const genres = {
+        Adventure: 0,
+        Animation: 0,
+        Western: 0,
+    }
+
+    for (let i = 0; i < (films.length < 10 ? films.length : 10); i++) {
+        films[i].genres.map(genre => {
+            if (genres.genre) {
+                genres.genre += 1;
+            }
+        })
+    }
+    console.log(films, genres)
 }
