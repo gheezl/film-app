@@ -1,3 +1,5 @@
+import { getFilmsByGenre } from "../services/TmdbServices";
+
 export const getRandomItems = (array, count) => {
     const shuffled = array.slice();
     let currentIndex = array.length;
@@ -85,6 +87,8 @@ export const formatRuntime = (runtime) => {
     return formattedRuntime;
 }
 
-export const getRecommendedFilms = (films) => {
+export const getRecommendedFilms = async (films) => {
     // we will use the films array argument to determine the other films to recommend.
+    // getFilmsByGenre
+    console.log(films)
 }

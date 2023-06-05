@@ -35,8 +35,10 @@ export const TmdbProvider = ({ children }) => {
 
         const getLocalStorageData = () => {
             const films = localStorage.getItem("viewedFilms");
+            console.log("GETTING", JSON.parse(films));
             if (films) {
-                setRecentlyViewed(removeDuplicateObjects(JSON.parse(films), "title"));
+                setRecentlyViewed(JSON.parse(films));
+                console.log("GETTTING AGAIN", recentlyViewed)
             }
         }
 
@@ -57,12 +59,19 @@ export const TmdbProvider = ({ children }) => {
 
     const addFilmToRecentlyViewed = (film) => {
         if (recentlyViewed.some(viewed => viewed.id === film.id)) {
+            console.log("FIRST CASE")
             const filtered = removeSpecificObject(recentlyViewed, film.title);
             setRecentlyViewed([film, ...filtered]);
             localStorage.setItem("viewedFilms", JSON.stringify(recentlyViewed))
         }
-        else {
+        else if (recentlyViewed[0]) {
+            console.log("SECOND CASE", recentlyViewed)
             setRecentlyViewed([film, ...recentlyViewed]);
+            localStorage.setItem("viewedFilms", JSON.stringify(recentlyViewed))
+        }
+        else {
+            console.log("THIRD CASE")
+            setRecentlyViewed([film])
             localStorage.setItem("viewedFilms", JSON.stringify(recentlyViewed))
         }
     }
