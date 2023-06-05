@@ -8,8 +8,16 @@ const Recommendations = () => {
     const { recentlyViewed } = useContext(TmdbContext);
 
     useEffect(() => {
-        setRecommended(getRecommendedFilms(recentlyViewed))
+        const findRecommended = async () => {
+            setRecommended(await getRecommendedFilms(recentlyViewed))
+        }
+
+        findRecommended();
     }, [recentlyViewed])
+
+    useEffect(() => {
+        console.log("Here", recommended);
+    }, [recommended])
 
     return (
         <>

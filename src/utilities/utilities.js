@@ -87,21 +87,42 @@ export const formatRuntime = (runtime) => {
     return formattedRuntime;
 }
 
-export const getRecommendedFilms = async (films) => {
+
+export const determineMostViewedGenres = (films) => {
     // we will use the films array argument to determine the other films to recommend.
     // getFilmsByGenre
-    const genres = {
-        Adventure: 0,
-        Animation: 0,
-        Western: 0,
-    }
+    const genres = {}
 
     for (let i = 0; i < (films.length < 10 ? films.length : 10); i++) {
         films[i].genres.map(genre => {
-            if (genres.genre) {
-                genres.genre += 1;
+            if (genres.hasOwnProperty(genre.name)) {
+                genres[genre.name] += 1;
+            }
+            else {
+                genres[genre.name] = 1;
             }
         })
     }
-    console.log(films, genres)
+
+    const sortedGenres = Object.entries(genres).sort((a, b) => b[1] - a[1]);
+    const topGenres = sortedGenres.slice(0, 3).map(([genre]) => genre);
+
+    console.log(topGenres);
+
+    return topGenres;
+}
+
+
+export const getRecommendedFilms = async (films) => {
+    const mostViewedGenres = determineMostViewedGenres(films);
+    let recommendedFilms = [];
+
+    console.log("HERERERERERE");
+    for (let i = 0; i < mostViewedGenres.length; i++) {
+        const films = await getFilmsByGenre(mostViewedGenres[i]);
+        recommendedFilms = [...recommendedFilms, ...films.results];
+    }
+
+    console.log(recommendedFilms);
+    return removeDuplicateObjects(recommendedFilms, "title");
 }
