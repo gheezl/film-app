@@ -23,7 +23,7 @@ const Recommendations = () => {
         <>
             {
                 recommended
-                    ? <FullPageDisplay headLine="Recommended Films" films={recommended} />
+                    ? <FullPageDisplay headLine="Recommended Films" alternateHeadline="No Recommended Films" films={recommended} />
                     : null
             }
         </>

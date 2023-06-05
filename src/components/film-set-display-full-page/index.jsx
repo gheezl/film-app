@@ -2,7 +2,7 @@ import { Typography, Box, useTheme } from "@mui/material";
 import FilmCard from "../film-card";
 import { useEffect } from "react";
 
-const FullPageDisplay = ({ headLine, films }) => {
+const FullPageDisplay = ({ headLine, alternateHeadline, films }) => {
     const theme = useTheme()
 
     return (
@@ -15,7 +15,7 @@ const FullPageDisplay = ({ headLine, films }) => {
                     margin: "2px 0px 10px 0px",
                 }}
             >
-                {films[0] ? headLine : "No Similar Films"}
+                {films[0] ? headLine : alternateHeadline}
             </Typography>
             <Box
                 style={{

@@ -21,7 +21,8 @@ const RecentlyViewed = () => {
                     : null
             }
             <FullPageDisplay
-                headLine={recentlyViewed[0] ? "Recently Viewed" : "There are no films to display"}
+                headLine={"Recently Viewed"}
+                alternateHeadline={"You haven't viewed any films"}
                 films={recentlyViewed}
             />
         </Box>
