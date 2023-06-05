@@ -199,15 +199,10 @@ const Film = ({ match }) => {
                             <Typography
                                 variant="h2"
                             >
-                                {selectedFilm.overview}
+                                {selectedFilm.overview ? selectedFilm.overview : "No description to display."}
                             </Typography>
                         </Paper>
                         <Box>
-                            {/* {
-                                selectedFilm.vote_average
-                                    ? <ProgressCircle progress={selectedFilm.vote_average.toFixed(1)} votes={selectedFilm.vote_count} size="250" />
-                                    : null
-                            } */}
                             <ProgressCircle
                                 progress={selectedFilm.vote_average}
                                 votes={selectedFilm.vote_count ? selectedFilm.vote_count : 0}
