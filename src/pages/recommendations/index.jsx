@@ -15,15 +15,11 @@ const Recommendations = () => {
         findRecommended();
     }, [recentlyViewed])
 
-    useEffect(() => {
-        console.log("Here", recommended);
-    }, [recommended])
-
     return (
         <>
             {
                 recommended
-                    ? <FullPageDisplay headLine="Recommended Films" alternateHeadline="No Recommended Films" films={recommended} />
+                    ? <FullPageDisplay headLine="Recommended Films" alternateHeadline="No Recommended Films" films={recommended} showInfo={true} />
                     : null
             }
         </>

@@ -117,11 +117,9 @@ export const getRecommendedFilms = async (films) => {
         recommendedFilms = [...recommendedFilms, ...films.results];
     }
 
-    const filteredArray = recommendedFilms.filter(film => {
-        return !films.some(i => i.id === film.id)
+    const filteredArray = recommendedFilms.filter(recommendedFilm => {
+        return !films.some(film => film.id === recommendedFilm.id)
     });
-
-    console.log("HERE", films, recommendedFilms, filteredArray);
 
     return removeDuplicateObjects(filteredArray, "title");
 }

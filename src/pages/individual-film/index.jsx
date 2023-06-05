@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState, useRef } from "react";
 import { TmdbContext } from "../../contexts/TmdbProvider";
-import { Box, Button, List, ListItem, ListItemIcon, ListItemText, Paper, Typography, useTheme } from "@mui/material";
+import { Box, Button, Tooltip, List, ListItem, ListItemIcon, ListItemText, Paper, Typography, useTheme } from "@mui/material";
 import ProgressCircle from "../../components/progress-circle";
 import FullPageDisplay from "../../components/film-set-display-full-page";
 import { getFilmById, getFilmsByGenre } from "../../services/TmdbServices";
@@ -8,7 +8,8 @@ import { getRandomItems, removeDuplicateObjects, formatDate, removeSpecificObjec
 import { useParams } from "react-router-dom";
 import BarChart from "../../components/bar-chart";
 import ItemList from "../../components/item-list";
-import { PlayCircle } from "@mui/icons-material";
+import { PlayCircle, InfoOutlined } from "@mui/icons-material";
+import InfoTooltip from "../../components/info-tooltip";
 
 const Film = ({ match }) => {
     const [releaseDate, setReleaseDate] = useState("");
@@ -276,7 +277,13 @@ const Film = ({ match }) => {
                             }}
                             onClick={() => scrollToTopOfPage()}
                         >
-                            <Typography variant="h2">Financial Performance</Typography>
+                            <Box
+                                sx={{ display: "flex", gap: "10px", alignItems: "center" }}
+                            >
+                                <Typography variant="h2" >Financial Performance</Typography>
+                                <InfoTooltip text="We use the standard method of calculating a film's profitablity threshold by multiplying it's budget by 2.5 as a way of factoring in uncounted expenses such as marketing. Usually, in other words, in order for a film to break even, it's revenue must exceed it's budget by 2.5 times." />
+                            </Box>
+
                             {
                                 mockBarData[0]
                                     ? <BarChart data={mockBarData} />
