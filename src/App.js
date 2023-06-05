@@ -13,6 +13,7 @@ import Recommendations from './pages/trending';
 import Home from './pages/home';
 import Film from './pages/individual-film';
 import Search from './pages/search';
+import Genre from './pages/genre';
 import { useContext, useEffect } from 'react';
 import { TmdbContext } from './contexts/TmdbProvider';
 
@@ -33,6 +34,7 @@ const App = () => {
             <Route path='/' element={<Home />} />
             <Route path='/search' element={<Search />} />
             <Route path='/film/:id' element={<Film />} />
+            <Route path='/genre/:name' element={<Genre />} />
             <Route path='/recommendations' element={<Recommendations />} />
             <Route path='/recently-viewed' element={<RecentlyViewed />} />
           </Routes>

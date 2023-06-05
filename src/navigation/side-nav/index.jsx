@@ -1,6 +1,6 @@
 import { MenuOutlined, Home, Star, Search, Category, Bookmark, Visibility } from "@mui/icons-material";
 import { Button, Box, Input, Typography, useTheme, Tooltip } from "@mui/material";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Sidebar, Menu, MenuItem, useProSidebar, SubMenu } from "react-pro-sidebar";
 import { Link, useNavigate } from "react-router-dom";
 import { TmdbContext } from "../../contexts/TmdbProvider";
@@ -8,7 +8,7 @@ import { getIndividualFilm } from "../../services/TmdbServices";
 
 const SideNav = () => {
     const [searchInput, setSearchInput] = useState("");
-    const { setSearchedFilms } = useContext(TmdbContext);
+    const { setSearchedFilms, genres } = useContext(TmdbContext);
     const theme = useTheme();
     const { collapseSidebar } = useProSidebar();
     const navigate = useNavigate();
@@ -64,27 +64,20 @@ const SideNav = () => {
                             color: theme.palette.primary.secondary
                         }}
                     >
-                        <MenuItem
-                            style={{
-                                color: theme.palette.primary.secondary
-                            }}
-                        >
-                            <Typography variant="h6" sx={{ color: theme.palette.primary.main }} >Genres</Typography>
-                        </MenuItem>
-                        <MenuItem
-                            style={{
-                                color: theme.palette.primary.secondary
-                            }}
-                        >
-                            <Typography variant="h6" sx={{ color: theme.palette.primary.main }} >Genres</Typography>
-                        </MenuItem>
-                        <MenuItem
-                            style={{
-                                color: theme.palette.primary.secondary
-                            }}
-                        >
-                            <Typography variant="h6" sx={{ color: theme.palette.primary.main }} >Genres</Typography>
-                        </MenuItem>
+                        {
+                            genres && genres.map(genre => (
+                                <Link to={`/genre/${genre.name}`}>
+                                    <MenuItem
+                                        style={{
+                                            color: theme.palette.primary.secondary
+                                        }}
+                                    >
+                                        <Typography variant="h6" sx={{ color: theme.palette.primary.main }} >{genre.name}</Typography>
+                                    </MenuItem>
+                                </Link>
+                            ))
+                        }
+
                     </SubMenu>
                 </Tooltip>
                 <Tooltip

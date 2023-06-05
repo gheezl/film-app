@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 
-import { getNowPlayingFilms, getPopularFilms, getTopRatedFilms, getTrendingFilms, getUpcomingFilms } from '../services/TmdbServices';
+import { getGenres, getNowPlayingFilms, getPopularFilms, getTopRatedFilms, getTrendingFilms, getUpcomingFilms } from '../services/TmdbServices';
 import { removeDuplicateObjects, removeSpecificObject } from '../utilities/utilities';
 
 export const TmdbContext = createContext();
@@ -13,6 +13,7 @@ export const TmdbProvider = ({ children }) => {
     const [trendingFilms, setTrendingFilms] = useState({});
     const [recentlyViewed, setRecentlyViewed] = useState([]);
     const [searchedFilms, setSearchedFilms] = useState({ headLine: "", films: [] })
+    const [genres, setGenres] = useState();
 
     useEffect(() => {
         let mounted = true;
@@ -25,6 +26,7 @@ export const TmdbProvider = ({ children }) => {
                     setTopRatedFilms(await getTopRatedFilms());
                     setUpcomingFilms(await getUpcomingFilms());
                     setTrendingFilms(await getTrendingFilms());
+                    setGenres(await getGenres());
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -77,7 +79,8 @@ export const TmdbProvider = ({ children }) => {
             removeRecentlyViewed,
             addFilmToRecentlyViewed,
             searchedFilms,
-            setSearchedFilms
+            setSearchedFilms,
+            genres
         }}>
             {children}
         </TmdbContext.Provider>
