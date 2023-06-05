@@ -12,9 +12,7 @@ const Genre = () => {
         let mounted = true;
 
         const getFilms = async () => {
-            console.log(name, id);
             const films = await getFilmsByGenre(id);
-            console.log(films);
             if (mounted) {
                 setFilms(films.results);
             }
@@ -22,10 +20,6 @@ const Genre = () => {
 
         getFilms();
     }, [id])
-
-    useEffect(() => {
-        console.log(films);
-    }, [films])
 
     return (
         <>

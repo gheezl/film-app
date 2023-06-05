@@ -84,3 +84,7 @@ export const formatRuntime = (runtime) => {
 
     return formattedRuntime;
 }
+
+export const getRecommendedFilms = (films) => {
+    // we will use the films array argument to determine the other films to recommend.
+}

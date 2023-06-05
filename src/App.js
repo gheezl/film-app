@@ -9,7 +9,7 @@ import Header from './navigation/top-nav';
 import SideNav from './navigation/side-nav';
 
 import RecentlyViewed from './pages/recently-viewed';
-import Recommendations from './pages/trending';
+import Recommendations from './pages/recommendations';
 import Home from './pages/home';
 import Film from './pages/individual-film';
 import Search from './pages/search';
@@ -35,8 +35,8 @@ const App = () => {
             <Route path='/search' element={<Search />} />
             <Route path='/film/:id' element={<Film />} />
             <Route path='/genre/:name/:id' element={<Genre />} />
-            <Route path='/recommendations' element={<Recommendations />} />
             <Route path='/recently-viewed' element={<RecentlyViewed />} />
+            <Route path='/recommendations' element={<Recommendations />} />
           </Routes>
         </Box>
       </Box>
