@@ -6,7 +6,6 @@ import FullPageDisplay from "../../components/film-set-display-full-page";
 import { getFilmById, getFilmsByGenre } from "../../services/TmdbServices";
 import { getRandomItems, removeDuplicateObjects, formatDate, removeSpecificObject, formatRuntime } from "../../utilities/utilities";
 import { useParams } from "react-router-dom";
-import { getIndividualFilm } from "../../services/TmdbServices";
 import BarChart from "../../components/bar-chart";
 import ItemList from "../../components/item-list";
 import { PlayCircle } from "@mui/icons-material";
@@ -40,11 +39,9 @@ const Film = ({ match }) => {
     useEffect(() => {
         if (selectedFilm.release_date) {
             setReleaseDate(formatDate(selectedFilm.release_date));
+            addFilmToRecentlyViewed(selectedFilm);
         }
         setRuntime(formatRuntime(selectedFilm.runtime));
-        addFilmToRecentlyViewed(selectedFilm);
-
-        console.log(selectedFilm);
 
         const determineFinancialPerformance = () => {
             if (selectedFilm.budget && selectedFilm.revenue && selectedFilm.revenue - (selectedFilm.budget * 2.5)) {
