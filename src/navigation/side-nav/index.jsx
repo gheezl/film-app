@@ -57,16 +57,35 @@ const SideNav = () => {
                     title={"Genres"}
                     arrow
                 >
-                    <Link to="/genres">
+                    <SubMenu
+                        icon={<Category />}
+                        label="Genres"
+                        style={{
+                            color: theme.palette.primary.secondary
+                        }}
+                    >
                         <MenuItem
-                            icon={<Category />}
                             style={{
                                 color: theme.palette.primary.secondary
                             }}
                         >
-                            <Typography variant="h6" >Genres</Typography>
+                            <Typography variant="h6" sx={{ color: theme.palette.primary.main }} >Genres</Typography>
                         </MenuItem>
-                    </Link>
+                        <MenuItem
+                            style={{
+                                color: theme.palette.primary.secondary
+                            }}
+                        >
+                            <Typography variant="h6" sx={{ color: theme.palette.primary.main }} >Genres</Typography>
+                        </MenuItem>
+                        <MenuItem
+                            style={{
+                                color: theme.palette.primary.secondary
+                            }}
+                        >
+                            <Typography variant="h6" sx={{ color: theme.palette.primary.main }} >Genres</Typography>
+                        </MenuItem>
+                    </SubMenu>
                 </Tooltip>
                 <Tooltip
                     title={"Saved"}
