@@ -66,7 +66,7 @@ const SideNav = () => {
                     >
                         {
                             genres && genres.map(genre => (
-                                <Link to={`/genre/${genre.name}`}>
+                                <Link to={`/genre/${genre.name}/${genre.id}`}>
                                     <MenuItem
                                         style={{
                                             color: theme.palette.primary.secondary
