@@ -14,16 +14,20 @@ import Home from './pages/home';
 import Film from './pages/individual-film';
 import Search from './pages/search';
 import Genre from './pages/genre';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { TmdbContext } from './contexts/TmdbProvider';
 
 const App = () => {
+  const [currentTheme, setCurrentTheme] = useState();
+
   useEffect(() => {
-    toggleMode("dark")
-  }, [toggleMode])
+    toggleMode("light")
+    // console.log("HERE AGAIN", theme)
+    setCurrentTheme(theme);
+  }, [theme])
 
   return (
-    <ThemeProvider theme={theme} >
+    <ThemeProvider theme={currentTheme ? currentTheme : theme} >
       <CssBaseline />
       <Box display="flex" justifyContent="row" height="100vh" >
         <SideNav />

@@ -5,9 +5,11 @@ import { Sidebar, Menu, MenuItem, useProSidebar, SubMenu } from "react-pro-sideb
 import { Link, useNavigate } from "react-router-dom";
 import { TmdbContext } from "../../contexts/TmdbProvider";
 import { getIndividualFilm } from "../../services/TmdbServices";
+import { toggleMode } from "../../styling/theme";
 
 const SideNav = () => {
     const [searchInput, setSearchInput] = useState("");
+    const [currentTheme, setCurrentTheme] = useState("light");
     const { setSearchedFilms, genres } = useContext(TmdbContext);
     const theme = useTheme();
     const { collapseSidebar } = useProSidebar();
@@ -146,7 +148,9 @@ const SideNav = () => {
                         style={{
                             color: theme.palette.primary.secondary
                         }}
+                        onClick={() => toggleMode(currentTheme)}
                     >
+                        <Typography variant="h6" >Toggle Theme</Typography>
                     </MenuItem>
                 </Tooltip>
             </Menu>
