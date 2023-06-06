@@ -1,5 +1,3 @@
-import { createTheme } from "@mui/material"
-
 const darkMode = {
     surface: {
         100: "#121212",
@@ -70,11 +68,7 @@ const lightMode = {
     }
 };
 
-let selectedMode = "dark";
-let theme = null;
-
 const setThemeSettings = (mode) => {
-    console.log(mode);
     let themeSettings;
 
     if (mode === "dark") {
@@ -191,15 +185,5 @@ const setThemeSettings = (mode) => {
 
 export const toggleMode = (selectedMode) => {
     const updatedThemeSettings = setThemeSettings(selectedMode);
-    theme = createTheme(updatedThemeSettings);
-    console.log("HERE", theme);
+    return updatedThemeSettings;
 }
-
-
-const setUpInitialTheme = () => {
-    const initialTheme = setThemeSettings(selectedMode);
-    theme = createTheme(initialTheme)
-}
-setUpInitialTheme();
-
-export default theme;

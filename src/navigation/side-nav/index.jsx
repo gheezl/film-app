@@ -7,9 +7,8 @@ import { TmdbContext } from "../../contexts/TmdbProvider";
 import { getIndividualFilm } from "../../services/TmdbServices";
 import { toggleMode } from "../../styling/theme";
 
-const SideNav = () => {
+const SideNav = ({ currentTheme, setCurrentTheme, selectedMode, setSelectedMode }) => {
     const [searchInput, setSearchInput] = useState("");
-    const [currentTheme, setCurrentTheme] = useState("light");
     const { setSearchedFilms, genres } = useContext(TmdbContext);
     const theme = useTheme();
     const { collapseSidebar } = useProSidebar();
@@ -21,6 +20,13 @@ const SideNav = () => {
             setSearchedFilms({ headLine: searchInput, films: searchResults.results });
             navigate("/search");
         }
+    }
+
+    const onToggle = () => {
+        console.log("first time", selectedMode);
+        setSelectedMode(selectedMode === "dark" ? "light" : "dark");
+        console.log("second time", selectedMode);
+        setCurrentTheme(toggleMode(selectedMode));
     }
 
     return (
@@ -148,7 +154,7 @@ const SideNav = () => {
                         style={{
                             color: theme.palette.primary.secondary
                         }}
-                        onClick={() => toggleMode(currentTheme)}
+                        onClick={() => onToggle()}
                     >
                         <Typography variant="h6" >Toggle Theme</Typography>
                     </MenuItem>

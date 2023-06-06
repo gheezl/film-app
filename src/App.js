@@ -1,7 +1,7 @@
 import './App.css';
 
-import { Box, CssBaseline, ThemeProvider } from '@mui/material';
-import theme, { toggleMode } from './styling/theme';
+import { Box, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { toggleMode } from './styling/theme';
 
 import { Routes, Route } from "react-router-dom"
 
@@ -19,18 +19,22 @@ import { TmdbContext } from './contexts/TmdbProvider';
 
 const App = () => {
   const [currentTheme, setCurrentTheme] = useState();
+  const [selectedMode, setSelectedMode] = useState("dark");
 
   useEffect(() => {
-    toggleMode("light")
-    // console.log("HERE AGAIN", theme)
-    setCurrentTheme(theme);
-  }, [theme])
+    setCurrentTheme(toggleMode(selectedMode));
+  }, [])
 
   return (
-    <ThemeProvider theme={currentTheme ? currentTheme : theme} >
+    <ThemeProvider theme={createTheme(currentTheme)} >
       <CssBaseline />
       <Box display="flex" justifyContent="row" height="100vh" >
-        <SideNav />
+        <SideNav
+          currentTheme={currentTheme}
+          setCurrentTheme={setCurrentTheme}
+          selectedMode={selectedMode}
+          setSelectedMode={setSelectedMode}
+        />
         <Box
           sx={{
             width: "100%",
