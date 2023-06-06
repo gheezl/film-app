@@ -3,7 +3,7 @@ import FilmCard from "../film-card";
 import { useEffect } from "react";
 import InfoTooltip from "../info-tooltip";
 
-const FullPageDisplay = ({ headLine, alternateHeadline, films, showInfo }) => {
+const FullPageDisplay = ({ headLine, alternateHeadline, films, showInfo, }) => {
     const theme = useTheme();
 
     return (
@@ -12,7 +12,11 @@ const FullPageDisplay = ({ headLine, alternateHeadline, films, showInfo }) => {
                 sx={{ display: "flex", justifyContent: "center", gap: "10px", alignItems: "center" }}
             >
                 <Typography variant="h2" >{films[0] ? headLine : alternateHeadline}</Typography>
-                <InfoTooltip text="We determine which films to recommend to you by observing your recently viewed films and determining which genres you view the most. We then recommend films that are of those same genres." />
+                {
+                    showInfo
+                        ? < InfoTooltip text="We determine which films to recommend to you by observing your recently viewed films and determining which genres you view the most. We then recommend films that are of those same genres." />
+                        : null
+                }
             </Box>
             <Box
                 style={{

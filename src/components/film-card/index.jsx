@@ -18,10 +18,18 @@ const FilmCard = ({ film }) => {
                 }}
             >
                 <Tooltip
-                    title={film.title}
+                    title={
+                        <Typography
+                            variant="h4"
+                            sx={{
+                                margin: "5px"
+                            }}
+                        >
+                            {film.title}
+                        </Typography>
+                    }
                     arrow
                 >
-
                     <Paper
                         elevation={isHovered ? 0 : 1}
                         onMouseEnter={() => setIsHovered(true)}

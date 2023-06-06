@@ -8,7 +8,7 @@ import { getRandomItems, removeDuplicateObjects, formatDate, removeSpecificObjec
 import { useParams } from "react-router-dom";
 import BarChart from "../../components/bar-chart";
 import ItemList from "../../components/item-list";
-import { PlayCircle, InfoOutlined } from "@mui/icons-material";
+import { PlayCircle, InfoOutlined, Bookmark, BookmarkOutlined, BookmarkBorder } from "@mui/icons-material";
 import InfoTooltip from "../../components/info-tooltip";
 
 const Film = ({ match }) => {
@@ -153,11 +153,7 @@ const Film = ({ match }) => {
                                 flexDirection: "column",
                             }}
                         >
-                            <Typography
-                                variant="h1"
-                            >
-                                {selectedFilm.title}
-                            </Typography>
+                            <Typography variant="h1" >{selectedFilm.title}</Typography>
                             <Typography
                                 variant="h4"
                                 sx={{
@@ -293,7 +289,7 @@ const Film = ({ match }) => {
                     </Paper>
                 </Box>
             </Box>
-            <FullPageDisplay headLine="Similar Films" films={similarFilms} />
+            <FullPageDisplay headLine="Similar Films" alternateHeadline="No Similar Films to Display" films={similarFilms} showInfo={false} />
         </Box>
 
     )
