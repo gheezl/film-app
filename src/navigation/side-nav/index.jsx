@@ -1,6 +1,6 @@
-import { MenuOutlined, Home, Star, Search, Category, Bookmark, Visibility } from "@mui/icons-material";
+import { MenuOutlined, Home, Star, Search, Category, Visibility, Brightness2 } from "@mui/icons-material";
 import { Button, Box, Input, Typography, useTheme, Tooltip } from "@mui/material";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Sidebar, Menu, MenuItem, useProSidebar, SubMenu } from "react-pro-sidebar";
 import { Link, useNavigate } from "react-router-dom";
 import { TmdbContext } from "../../contexts/TmdbProvider";
@@ -136,6 +136,18 @@ const SideNav = () => {
                             </Box>
                         </MenuItem>
                     </SubMenu>
+                </Tooltip>
+                <Tooltip
+                    title="toggle light/dark mode"
+                    arrow
+                >
+                    <MenuItem
+                        icon={<Brightness2 />}
+                        style={{
+                            color: theme.palette.primary.secondary
+                        }}
+                    >
+                    </MenuItem>
                 </Tooltip>
             </Menu>
         </Sidebar>

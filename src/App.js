@@ -1,7 +1,7 @@
 import './App.css';
 
 import { Box, CssBaseline, ThemeProvider } from '@mui/material';
-import theme from './styling/theme';
+import theme, { toggleMode } from './styling/theme';
 
 import { Routes, Route } from "react-router-dom"
 
@@ -18,6 +18,10 @@ import { useContext, useEffect } from 'react';
 import { TmdbContext } from './contexts/TmdbProvider';
 
 const App = () => {
+  useEffect(() => {
+    toggleMode("dark")
+  }, [toggleMode])
+
   return (
     <ThemeProvider theme={theme} >
       <CssBaseline />
