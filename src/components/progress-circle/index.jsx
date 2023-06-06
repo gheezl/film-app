@@ -6,7 +6,7 @@ const ProgressCircle = ({ progress, votes, size }) => {
 
     return (
         <Box sx={{
-            background: `radial-gradient(${theme.palette.background.default} 55%, transparent 56%),
+            background: `radial-gradient(${theme.palette.background.main} 55%, transparent 56%),
                 conic-gradient(transparent 0deg ${angle}deg, ${theme.palette.secondary.main} ${angle}deg 360deg),
                 ${theme.palette.primary.main}`,
             borderRadius: "50%",

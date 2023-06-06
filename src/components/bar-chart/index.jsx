@@ -11,27 +11,27 @@ const BarChart = ({ data }) => {
                 axis: {
                     domain: {
                         line: {
-                            stroke: theme.palette.background.secondary,
+                            stroke: theme.palette.background.second,
                         },
                     },
                     legend: {
                         text: {
-                            fill: theme.palette.primary.secondary,
+                            fill: theme.palette.primary.second,
                         },
                     },
                     ticks: {
                         line: {
-                            stroke: theme.palette.primary.secondary,
+                            stroke: theme.palette.primary.second,
                             strokeWidth: 1,
                         },
                         text: {
-                            fill: theme.palette.primary.secondary,
+                            fill: theme.palette.primary.second,
                         },
                     },
                 },
                 legends: {
                     text: {
-                        fill: theme.palette.background.secondary,
+                        fill: theme.palette.background.second,
                     },
                 },
             }}
@@ -65,7 +65,7 @@ const BarChart = ({ data }) => {
             tooltip={bar => (
                 <Paper
                     sx={{
-                        backgroundColor: theme.palette.background.secondary,
+                        backgroundColor: theme.palette.background.second,
                         padding: "8px",
                         borderRadius: "5px",
                     }}

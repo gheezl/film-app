@@ -51,17 +51,17 @@ const Film = ({ match }) => {
                         {
                             category: "Budget",
                             type: selectedFilm.budget,
-                            typeColor: theme.palette.primary.secondary,
+                            typeColor: theme.palette.primary.second,
                         },
                         {
                             category: "Revenue",
                             type: selectedFilm.revenue,
-                            typeColor: theme.palette.primary.secondary,
+                            typeColor: theme.palette.primary.second,
                         },
                         {
                             category: "Profit",
                             type: selectedFilm.revenue - (selectedFilm.budget * 2.5),
-                            typeColor: selectedFilm.revenue - (selectedFilm.budget * 2.5) < 0 ? theme.palette.error.third : theme.palette.primary.secondary,
+                            typeColor: selectedFilm.revenue - (selectedFilm.budget * 2.5) < 0 ? theme.palette.error.third : theme.palette.primary.second,
                         },
                     ]
                 )
@@ -111,7 +111,7 @@ const Film = ({ match }) => {
                     <Paper
                         sx={{
                             margin: "20px 10px 20px 10px",
-                            backgroundColor: theme.palette.background.secondary,
+                            backgroundColor: theme.palette.background.second,
                             padding: "15px",
                             borderRadius: "25px",
                             width: "fit-content",
@@ -138,7 +138,7 @@ const Film = ({ match }) => {
                         sx={{
                             display: "flex",
                             justifyContent: "space-between",
-                            backgroundColor: theme.palette.background.secondary,
+                            backgroundColor: theme.palette.background.second,
                             padding: "30px 15px 30px 15px",
                             borderRadius: "25px",
                             width: "100%",
@@ -181,7 +181,7 @@ const Film = ({ match }) => {
                     >
                         <Paper
                             sx={{
-                                backgroundColor: theme.palette.background.secondary,
+                                backgroundColor: theme.palette.background.second,
                                 padding: "15px",
                                 borderRadius: "25px",
                                 height: "250px",
@@ -209,7 +209,7 @@ const Film = ({ match }) => {
                         sx={{
                             display: "flex",
                             justifyContent: "space-between",
-                            backgroundColor: theme.palette.background.secondary,
+                            backgroundColor: theme.palette.background.second,
                             padding: "15px",
                             borderRadius: "25px",
                             width: "min",
@@ -238,7 +238,7 @@ const Film = ({ match }) => {
                             display: "flex",
                             flexDirection: "column",
                             gap: "15px",
-                            backgroundColor: theme.palette.background.secondary,
+                            backgroundColor: theme.palette.background.second,
                             padding: "15px",
                             borderRadius: "25px",
                             height: "250px",
@@ -255,7 +255,7 @@ const Film = ({ match }) => {
                             gridColumn: "span 2",
                             display: "flex",
                             justifyContent: "space-between",
-                            backgroundColor: theme.palette.background.secondary,
+                            backgroundColor: theme.palette.background.second,
                             padding: "15px",
                             borderRadius: "25px",
                             width: "100%",

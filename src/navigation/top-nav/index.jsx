@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <Box
             sx={{
-                borderBottom: `1px solid ${theme.palette.background.secondary}`,
+                borderBottom: `1px solid ${theme.palette.background.second}`,
                 margin: "10px"
             }}
         >

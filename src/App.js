@@ -22,13 +22,18 @@ const App = () => {
   const [selectedMode, setSelectedMode] = useState("dark");
 
   useEffect(() => {
-    setCurrentTheme(toggleMode(selectedMode));
+    setCurrentTheme(createTheme(toggleMode(selectedMode)));
   }, [])
 
   return (
-    <ThemeProvider theme={createTheme(currentTheme)} >
+    <ThemeProvider theme={currentTheme} >
       <CssBaseline />
-      <Box display="flex" justifyContent="row" height="100vh" >
+      <Box
+        display="flex"
+        justifyContent="row"
+        height="100vh"
+        backgroundColor={currentTheme.palette.background.main}
+      >
         <SideNav
           currentTheme={currentTheme}
           setCurrentTheme={setCurrentTheme}

@@ -1,5 +1,5 @@
 import { MenuOutlined, Home, Star, Search, Category, Visibility, Brightness2 } from "@mui/icons-material";
-import { Button, Box, Input, Typography, useTheme, Tooltip } from "@mui/material";
+import { Button, Box, Input, Typography, useTheme, Tooltip, createTheme } from "@mui/material";
 import { useContext, useState } from "react";
 import { Sidebar, Menu, MenuItem, useProSidebar, SubMenu } from "react-pro-sidebar";
 import { Link, useNavigate } from "react-router-dom";
@@ -23,15 +23,13 @@ const SideNav = ({ currentTheme, setCurrentTheme, selectedMode, setSelectedMode 
     }
 
     const onToggle = () => {
-        console.log("first time", selectedMode);
         setSelectedMode(selectedMode === "dark" ? "light" : "dark");
-        console.log("second time", selectedMode);
-        setCurrentTheme(toggleMode(selectedMode));
+        setCurrentTheme(createTheme(toggleMode(selectedMode)));
     }
 
     return (
         <Sidebar
-            backgroundColor={theme.palette.background.secondary}
+            backgroundColor={theme.palette.background.second}
             style={{
                 border: "none"
             }}
@@ -41,7 +39,7 @@ const SideNav = ({ currentTheme, setCurrentTheme, selectedMode, setSelectedMode 
                     icon={<MenuOutlined />}
                     onClick={() => collapseSidebar()}
                     style={{
-                        color: theme.palette.primary.secondary
+                        color: theme.palette.primary.second
                     }}
                 >
                     <Typography variant="h4" >Navigation Menu</Typography>
@@ -54,7 +52,7 @@ const SideNav = ({ currentTheme, setCurrentTheme, selectedMode, setSelectedMode 
                         <MenuItem
                             icon={<Home />}
                             style={{
-                                color: theme.palette.primary.secondary
+                                color: theme.palette.primary.second
                             }}
                         >
                             <Typography variant="h6" >Home</Typography>
@@ -69,7 +67,7 @@ const SideNav = ({ currentTheme, setCurrentTheme, selectedMode, setSelectedMode 
                         icon={<Category />}
                         label="Genres"
                         style={{
-                            color: theme.palette.primary.secondary
+                            color: theme.palette.primary.second
                         }}
                     >
                         {
@@ -77,7 +75,7 @@ const SideNav = ({ currentTheme, setCurrentTheme, selectedMode, setSelectedMode 
                                 <Link to={`/genre/${genre.name}/${genre.id}`}>
                                     <MenuItem
                                         style={{
-                                            color: theme.palette.primary.secondary
+                                            color: theme.palette.primary.second
                                         }}
                                     >
                                         <Typography variant="h6" sx={{ color: theme.palette.primary.main }} >{genre.name}</Typography>
@@ -96,7 +94,7 @@ const SideNav = ({ currentTheme, setCurrentTheme, selectedMode, setSelectedMode 
                         <MenuItem
                             icon={<Visibility />}
                             style={{
-                                color: theme.palette.primary.secondary
+                                color: theme.palette.primary.second
                             }}
                         >
                             <Typography variant="h6" >Recently Viewed</Typography>
@@ -111,7 +109,7 @@ const SideNav = ({ currentTheme, setCurrentTheme, selectedMode, setSelectedMode 
                         <MenuItem
                             icon={<Star />}
                             style={{
-                                color: theme.palette.primary.secondary
+                                color: theme.palette.primary.second
                             }}
                         >
                             <Typography variant="h6" >Recommendations</Typography>
@@ -126,7 +124,7 @@ const SideNav = ({ currentTheme, setCurrentTheme, selectedMode, setSelectedMode 
                         icon={<Search />}
                         label="Search"
                         style={{
-                            color: theme.palette.primary.secondary
+                            color: theme.palette.primary.second
                         }}
                     >
                         <MenuItem>
@@ -146,13 +144,13 @@ const SideNav = ({ currentTheme, setCurrentTheme, selectedMode, setSelectedMode 
                     </SubMenu>
                 </Tooltip>
                 <Tooltip
-                    title="toggle light/dark mode"
+                    title={`change theme to ${selectedMode}`}
                     arrow
                 >
                     <MenuItem
                         icon={<Brightness2 />}
                         style={{
-                            color: theme.palette.primary.secondary
+                            color: theme.palette.primary.second
                         }}
                         onClick={() => onToggle()}
                     >

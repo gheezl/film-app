@@ -76,24 +76,35 @@ const setThemeSettings = (mode) => {
             palette: {
                 primary: {
                     main: darkMode.primary[100],
-                    secondary: darkMode.primary[200],
-                    third: darkMode.primary[300]
+                    second: darkMode.primary[200],
+                    third: darkMode.primary[300],
+                    fourth: darkMode.primary[400],
+                    fifth: darkMode.primary[500],
+                    sixth: darkMode.primary[600]
                 },
                 secondary: {
                     main: darkMode.mixed[100],
-                    secondary: darkMode.mixed[200]
+                    second: darkMode.mixed[200],
+                    third: darkMode.mixed[300],
+                    fourth: darkMode.mixed[400],
+                    fifth: darkMode.primary[500],
+                    sixth: darkMode.primary[600]
                 },
                 background: {
-                    default: darkMode.surface[100],
-                    secondary: darkMode.surface[200]
+                    main: darkMode.surface[100],
+                    second: darkMode.surface[200],
+                    third: darkMode.surface[300],
+                    fourth: darkMode.surface[400],
+                    fifth: darkMode.surface[500],
+                    sixth: darkMode.surface[600]
                 },
                 error: {
                     main: darkMode.error[100],
-                    secondary: darkMode.error[200],
+                    second: darkMode.error[200],
                     third: darkMode.error[300],
                     fourth: darkMode.error[400],
                     fifth: darkMode.error[500],
-                    final: darkMode.error[600]
+                    sixth: darkMode.error[600]
                 }
             },
             typography: {
@@ -129,30 +140,41 @@ const setThemeSettings = (mode) => {
             palette: {
                 primary: {
                     main: lightMode.primary[100],
-                    secondary: lightMode.primary[200],
-                    third: lightMode.primary[300]
+                    second: lightMode.primary[200],
+                    third: lightMode.primary[300],
+                    fourth: lightMode.primary[400],
+                    fifth: lightMode.primary[500],
+                    sixth: lightMode.primary[600],
                 },
                 secondary: {
                     main: lightMode.mixed[100],
-                    secondary: lightMode.mixed[200]
+                    second: lightMode.mixed[200],
+                    third: lightMode.mixed[300],
+                    fourth: lightMode.primary[400],
+                    fifth: lightMode.primary[500],
+                    sixth: lightMode.primary[600]
                 },
                 background: {
-                    default: lightMode.surface[100],
-                    secondary: lightMode.surface[200]
+                    main: lightMode.surface[100],
+                    second: lightMode.surface[200],
+                    third: lightMode.surface[300],
+                    fourth: lightMode.surface[400],
+                    fifth: lightMode.surface[500],
+                    sixth: lightMode.surface[600]
                 },
                 error: {
                     main: lightMode.error[100],
-                    secondary: lightMode.error[200],
+                    second: lightMode.error[200],
                     third: lightMode.error[300],
                     fourth: lightMode.error[400],
                     fifth: lightMode.error[500],
-                    final: lightMode.error[600]
+                    sixth: lightMode.error[600]
                 }
             },
             typography: {
                 allVariants: {
                     fontFamily: "'Nunito', sans-serif",
-                    color: "#FFFFFF"
+                    color: "#000000"
                 },
                 fontSize: 12,
                 h1: {
@@ -177,7 +199,6 @@ const setThemeSettings = (mode) => {
             shadows: ['none', `0 4px 8px ${lightMode.primary[300]}`],
         };
     }
-
 
     return themeSettings;
 }

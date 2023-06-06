@@ -36,7 +36,7 @@ const FilmCard = ({ film }) => {
                         onMouseLeave={() => setIsHovered(false)}
                         sx={{
                             margin: "20px 10px 20px 10px",
-                            backgroundColor: theme.palette.background.secondary,
+                            backgroundColor: theme.palette.background.second,
                             padding: "15px",
                             borderRadius: "25px",
                             cursor: isHovered ? "pointer" : null,
