@@ -1,7 +1,6 @@
 import './App.css';
 
 import { Box, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
-import { toggleMode } from './styling/theme';
 
 import { Routes, Route } from "react-router-dom"
 

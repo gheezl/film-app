@@ -6,9 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { TmdbContext } from "../../contexts/TmdbProvider";
 import { StylingContext } from "../../contexts/StylingProvider"
 import { getIndividualFilm } from "../../services/TmdbServices";
-import { toggleMode } from "../../styling/theme";
 
-const SideNav = ({ setCurrentTheme, selectedMode, setSelectedMode }) => {
+const SideNav = () => {
     const [searchInput, setSearchInput] = useState("");
     const { setSearchedFilms, genres } = useContext(TmdbContext);
     const { toggleMode, currentMode } = useContext(StylingContext);
