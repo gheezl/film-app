@@ -4,12 +4,14 @@ import { useContext, useState } from "react";
 import { Sidebar, Menu, MenuItem, useProSidebar, SubMenu } from "react-pro-sidebar";
 import { Link, useNavigate } from "react-router-dom";
 import { TmdbContext } from "../../contexts/TmdbProvider";
+import { StylingContext } from "../../contexts/StylingProvider"
 import { getIndividualFilm } from "../../services/TmdbServices";
 import { toggleMode } from "../../styling/theme";
 
 const SideNav = ({ setCurrentTheme, selectedMode, setSelectedMode }) => {
     const [searchInput, setSearchInput] = useState("");
     const { setSearchedFilms, genres } = useContext(TmdbContext);
+    const { toggleMode } = useContext(StylingContext);
     const theme = useTheme();
     const { collapseSidebar } = useProSidebar();
     const navigate = useNavigate();
@@ -20,11 +22,6 @@ const SideNav = ({ setCurrentTheme, selectedMode, setSelectedMode }) => {
             setSearchedFilms({ headLine: searchInput, films: searchResults.results });
             navigate("/search");
         }
-    }
-
-    const onToggle = () => {
-        setSelectedMode(selectedMode === "dark" ? "light" : "dark");
-        setCurrentTheme(createTheme(toggleMode(selectedMode === "dark" ? "light" : "dark")));
     }
 
     return (
@@ -152,7 +149,7 @@ const SideNav = ({ setCurrentTheme, selectedMode, setSelectedMode }) => {
                         style={{
                             color: theme.palette.primary.second
                         }}
-                        onClick={() => onToggle()}
+                        onClick={() => toggleMode()}
                     >
                         <Typography variant="h6" >Toggle Theme</Typography>
                     </MenuItem>

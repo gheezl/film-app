@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import InfoTooltip from "../info-tooltip";
 
 const FullPageDisplay = ({ headLine, alternateHeadline, films, showInfo, }) => {
-    const theme = useTheme();
-
     return (
         <Box sx={{ padding: "20px", }}>
             <Box

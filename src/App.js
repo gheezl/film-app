@@ -16,29 +16,17 @@ import Search from './pages/search';
 import Genre from './pages/genre';
 import { useContext, useEffect, useState } from 'react';
 import { TmdbContext } from './contexts/TmdbProvider';
+import { StylingContext } from './contexts/StylingProvider';
+import PageBorder from './pages/page-border';
 
 const App = () => {
-  const [currentTheme, setCurrentTheme] = useState();
-  const [selectedMode, setSelectedMode] = useState("dark");
-
-  useEffect(() => {
-    setCurrentTheme(createTheme(toggleMode(selectedMode)));
-  }, [])
+  const { theme } = useContext(StylingContext);
 
   return (
-    <ThemeProvider theme={createTheme(currentTheme)} >
+    <ThemeProvider theme={theme} >
       <CssBaseline />
-      <Box
-        display="flex"
-        justifyContent="row"
-        height="100vh"
-        backgroundColor={currentTheme ? currentTheme.palette.background.main : ""}
-      >
-        <SideNav
-          setCurrentTheme={setCurrentTheme}
-          selectedMode={selectedMode}
-          setSelectedMode={setSelectedMode}
-        />
+      <PageBorder>
+        <SideNav />
         <Box
           sx={{
             width: "100%",
@@ -55,7 +43,7 @@ const App = () => {
             <Route path='/recommendations' element={<Recommendations />} />
           </Routes>
         </Box>
-      </Box>
+      </PageBorder>
     </ThemeProvider>
   );
 }
