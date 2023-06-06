@@ -7,7 +7,7 @@ import { TmdbContext } from "../../contexts/TmdbProvider";
 import { getIndividualFilm } from "../../services/TmdbServices";
 import { toggleMode } from "../../styling/theme";
 
-const SideNav = ({ currentTheme, setCurrentTheme, selectedMode, setSelectedMode }) => {
+const SideNav = ({ setCurrentTheme, selectedMode, setSelectedMode }) => {
     const [searchInput, setSearchInput] = useState("");
     const { setSearchedFilms, genres } = useContext(TmdbContext);
     const theme = useTheme();
@@ -24,7 +24,7 @@ const SideNav = ({ currentTheme, setCurrentTheme, selectedMode, setSelectedMode 
 
     const onToggle = () => {
         setSelectedMode(selectedMode === "dark" ? "light" : "dark");
-        setCurrentTheme(createTheme(toggleMode(selectedMode)));
+        setCurrentTheme(createTheme(toggleMode(selectedMode === "dark" ? "light" : "dark")));
     }
 
     return (

@@ -205,6 +205,5 @@ const setThemeSettings = (mode) => {
 
 
 export const toggleMode = (selectedMode) => {
-    const updatedThemeSettings = setThemeSettings(selectedMode);
-    return updatedThemeSettings;
+    return setThemeSettings(selectedMode);
 }

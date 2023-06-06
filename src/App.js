@@ -26,16 +26,15 @@ const App = () => {
   }, [])
 
   return (
-    <ThemeProvider theme={currentTheme} >
+    <ThemeProvider theme={createTheme(currentTheme)} >
       <CssBaseline />
       <Box
         display="flex"
         justifyContent="row"
         height="100vh"
-        backgroundColor={currentTheme.palette.background.main}
+        backgroundColor={currentTheme ? currentTheme.palette.background.main : ""}
       >
         <SideNav
-          currentTheme={currentTheme}
           setCurrentTheme={setCurrentTheme}
           selectedMode={selectedMode}
           setSelectedMode={setSelectedMode}
