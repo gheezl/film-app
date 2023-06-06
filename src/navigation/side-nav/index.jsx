@@ -81,21 +81,6 @@ const SideNav = () => {
                     </SubMenu>
                 </Tooltip>
                 <Tooltip
-                    title={"Saved"}
-                    arrow
-                >
-                    <Link to="/saved-films">
-                        <MenuItem
-                            icon={<Bookmark />}
-                            style={{
-                                color: theme.palette.primary.secondary
-                            }}
-                        >
-                            <Typography variant="h6" >Saved</Typography>
-                        </MenuItem>
-                    </Link>
-                </Tooltip>
-                <Tooltip
                     title="Recently Viewed"
                     arrow
                 >

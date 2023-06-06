@@ -31,7 +31,7 @@ const ProgressCircle = ({ progress, votes, size }) => {
                             <Typography
                                 variant="h2"
                             >
-                                {progress.toFixed(1)} / 10
+                                {progress % 1 === 0 ? progress : progress.toFixed(1)} / 10
                             </Typography>
                             <Typography
                                 variant="h5"
