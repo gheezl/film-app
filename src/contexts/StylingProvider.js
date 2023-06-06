@@ -224,6 +224,7 @@ export const StylingProvider = ({ children }) => {
         <StylingContext.Provider
             value={{
                 toggleMode,
+                currentMode,
                 theme
             }}
         >

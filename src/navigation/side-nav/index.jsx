@@ -11,7 +11,7 @@ import { toggleMode } from "../../styling/theme";
 const SideNav = ({ setCurrentTheme, selectedMode, setSelectedMode }) => {
     const [searchInput, setSearchInput] = useState("");
     const { setSearchedFilms, genres } = useContext(TmdbContext);
-    const { toggleMode } = useContext(StylingContext);
+    const { toggleMode, currentMode } = useContext(StylingContext);
     const theme = useTheme();
     const { collapseSidebar } = useProSidebar();
     const navigate = useNavigate();
@@ -141,17 +141,17 @@ const SideNav = ({ setCurrentTheme, selectedMode, setSelectedMode }) => {
                     </SubMenu>
                 </Tooltip>
                 <Tooltip
-                    title={`change theme to ${selectedMode}`}
+                    title={`change theme to ${currentMode === "dark" ? "light" : "dark"}`}
                     arrow
                 >
                     <MenuItem
                         icon={<Brightness2 />}
                         style={{
-                            color: theme.palette.primary.second
+                            color: theme.palette.primary.second,
                         }}
                         onClick={() => toggleMode()}
                     >
-                        <Typography variant="h6" >Toggle Theme</Typography>
+                        <Typography variant="h6" >Change theme to {currentMode === "dark" ? "light" : "dark"}</Typography>
                     </MenuItem>
                 </Tooltip>
             </Menu>

@@ -25,7 +25,7 @@ const ItemList = ({ items, headLine }) => {
                                             width: "8px",
                                             height: "8px",
                                             borderRadius: "50%",
-                                            backgroundColor: theme.palette.primary.secondary,
+                                            backgroundColor: theme.palette.primary.second,
                                         }}
                                     />
                                 </ListItemIcon>
