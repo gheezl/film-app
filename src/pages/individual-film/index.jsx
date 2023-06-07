@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState, useRef } from "react";
 import { TmdbContext } from "../../contexts/TmdbProvider";
-import { Box, Button, Tooltip, List, ListItem, ListItemIcon, ListItemText, Paper, Typography, useTheme, Grid } from "@mui/material";
+import { Box, Button, Tooltip, List, ListItem, ListItemIcon, ListItemText, Paper, Typography, useTheme, Grid, useMediaQuery } from "@mui/material";
 import ProgressCircle from "../../components/progress-circle";
 import FullPageDisplay from "../../components/film-set-display-full-page";
 import { getFilmById, getFilmsByGenre } from "../../services/TmdbServices";
@@ -18,6 +18,12 @@ const Film = ({ match }) => {
     const [runtime, setRuntime] = useState("");
     const [mockBarData, setMockBarData] = useState([]);
     const theme = useTheme();
+
+    const isBelowXS = useMediaQuery(theme.breakpoints.down("xs"));
+    const isBelowSm = useMediaQuery(theme.breakpoints.down("sm"));
+    const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
+    const isBelowLg = useMediaQuery(theme.breakpoints.down("lg"));
+
     const { id } = useParams();
     const { addFilmToRecentlyViewed } = useContext(TmdbContext);
 
@@ -292,7 +298,7 @@ const Film = ({ match }) => {
         //     <FullPageDisplay headLine="Similar Films" alternateHeadline="No Similar Films to Display" films={similarFilms} showInfo={false} />
         // </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Box sx={{ display: "flex", flexDirection: "row", padding: '20px', marginBottom: '20px' }}>
+            <Box sx={{ display: "flex", flexDirection: isBelowLg ? "column" : "row", padding: '20px', marginBottom: '20px' }}>
                 <Box sx={{ marginBottom: '20px' }}>
                     <Paper
                         sx={{
@@ -321,6 +327,8 @@ const Film = ({ match }) => {
                                 padding: '30px 15px',
                                 borderRadius: '25px',
                                 display: 'flex',
+                                flexDirection: isBelowLg ? "column" : "row",
+                                gap: "10px",
                                 justifyContent: 'space-between',
                             }}
                         >
@@ -339,7 +347,7 @@ const Film = ({ match }) => {
 
                     {/* Description and Rating */}
                     <Grid item xs={12} md={12} lg={12}>
-                        <Box sx={{ display: 'flex', gap: '20px' }}>
+                        <Box sx={{ display: 'flex', flexDirection: isBelowLg ? "column" : "row", gap: '20px' }}>
                             <Paper
                                 sx={{
                                     backgroundColor: theme.palette.background.second,
@@ -365,7 +373,7 @@ const Film = ({ match }) => {
                     </Grid>
 
                     {/* Play Button */}
-                    <Grid item xs={12} md={4} lg={2}>
+                    <Grid item xs={12} md={12} lg={2}>
                         <Paper
                             sx={{
                                 backgroundColor: theme.palette.background.second,
@@ -392,7 +400,7 @@ const Film = ({ match }) => {
                     </Grid>
 
                     {/* Film Details */}
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={12} lg={3}>
                         <Paper
                             sx={{
                                 backgroundColor: theme.palette.background.second,
@@ -409,7 +417,7 @@ const Film = ({ match }) => {
                     </Grid>
 
                     {/* Financial Performance */}
-                    <Grid item xs={12} md={8} lg={4}>
+                    <Grid item xs={12} md={12} lg={7}>
                         <Paper
                             sx={{
                                 backgroundColor: theme.palette.background.second,

@@ -144,6 +144,14 @@ export const StylingProvider = ({ children }) => {
                     },
                 },
                 shadows: ['none', `0 4px 8px ${darkMode.primary[300]}`],
+                breakpoints: {
+                    values: {
+                        xs: 0,   // Extra small devices (portrait phones)
+                        sm: 600, // Small devices (landscape phones)
+                        md: 960, // Medium devices (tablets)
+                        lg: 1280 // Large devices (desktops)
+                    },
+                },
             }
         }
         else if (mode === "light") {
@@ -208,6 +216,14 @@ export const StylingProvider = ({ children }) => {
                     },
                 },
                 shadows: ['none', `0 4px 8px ${lightMode.primary[300]}`],
+                breakpoints: {
+                    values: {
+                        xs: 0,   // Extra small devices (portrait phones)
+                        sm: 600, // Small devices (landscape phones)
+                        md: 960, // Medium devices (tablets)
+                        lg: 1280 // Large devices (desktops)
+                    },
+                },
             };
         }
 
