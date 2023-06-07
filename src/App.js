@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Box, CssBaseline, ThemeProvider, createTheme, useMediaQuery } from '@mui/material';
+import { BottomNavigation, BottomNavigationAction, Box, CssBaseline, ThemeProvider, createTheme, useMediaQuery } from '@mui/material';
 
 import { Routes, Route } from "react-router-dom"
 
@@ -17,22 +17,23 @@ import { useContext, useEffect, useState } from 'react';
 import { TmdbContext } from './contexts/TmdbProvider';
 import { StylingContext } from './contexts/StylingProvider';
 import PageBorder from './pages/page-border';
+import BottomNav from './navigation/bottom-nav';
 
 const App = () => {
   const { theme } = useContext(StylingContext);
 
-  // const isBelowXS = useMediaQuery(theme.breakpoints.down("xs"));
-  // const isBelowSm = useMediaQuery(theme.breakpoints.down("sm"));
-  // const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
-  // const isBelowLg = useMediaQuery(theme.breakpoints.down("lg"));
+  const isBelowXS = useMediaQuery(theme.breakpoints.down("xs"));
+  const isBelowSm = useMediaQuery(theme.breakpoints.down("sm"));
+  const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
+  const isBelowLg = useMediaQuery(theme.breakpoints.down("lg"));
 
   return (
     <ThemeProvider theme={theme} >
       <CssBaseline />
       <PageBorder>
         {
-          false
-            ? null
+          isBelowMd
+            ? <BottomNav />
             : <SideNav />
         }
         <Box

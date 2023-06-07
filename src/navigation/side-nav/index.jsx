@@ -60,11 +60,9 @@ const SideNav = () => {
                     arrow
                 >
                     <SubMenu
-                        icon={<Category />}
+                        icon={<Category style={{ color: theme.palette.primary.second }} />}
                         label="Genres"
-                        style={{
-                            color: theme.palette.primary.second
-                        }}
+
                     >
                         {
                             genres && genres.map(genre => (
@@ -117,11 +115,8 @@ const SideNav = () => {
                     arrow
                 >
                     <SubMenu
-                        icon={<Search />}
+                        icon={<Search style={{ color: theme.palette.primary.second }} />}
                         label="Search"
-                        style={{
-                            color: theme.palette.primary.second
-                        }}
                     >
                         <MenuItem>
                             <Box sx={{ display: "flex", flexDirection: "row" }}>

@@ -130,7 +130,7 @@ export const StylingProvider = ({ children }) => {
                         xs: 0,   // Extra small devices (portrait phones)
                         sm: 600, // Small devices (landscape phones)
                         md: 960, // Medium devices (tablets)
-                        lg: 1280, // Large devices (desktops)
+                        lg: 1400, // Large devices (desktops)
                         xl: 1600 // largest desktops
                     },
                 },
@@ -184,7 +184,7 @@ export const StylingProvider = ({ children }) => {
                         xs: 0,   // Extra small devices (portrait phones)
                         sm: 600, // Small devices (landscape phones)
                         md: 960, // Medium devices (tablets)
-                        lg: 1280, // Large devices (desktops)
+                        lg: 1400, // Large devices (desktops)
                         xl: 1600 // largest desktops
                     },
                 },
@@ -193,8 +193,6 @@ export const StylingProvider = ({ children }) => {
 
         themeSettings = createTheme(themeSettings);
 
-        console.log(themeSettings.breakpoints.down("xl"))
-
         themeSettings = createTheme({
             ...themeSettings,
             typography: {
@@ -202,26 +200,29 @@ export const StylingProvider = ({ children }) => {
                 fontSize: 12,
                 h1: {
                     fontSize: 40,
+                    //! these must be listed in decending order or else they will not work
+                    [themeSettings.breakpoints.down("xl")]: {
+                        fontSize: 30
+                    },
                     [themeSettings.breakpoints.down("sm")]: {
                         fontSize: 20
                     },
-                    [themeSettings.breakpoints.down("xl")]: {
-                        fontSize: 30
-                    }
                 },
                 h2: {
                     fontSize: 32,
+                    //! these must be listed in decending order or else they will not work
+                    [themeSettings.breakpoints.down("xl")]: {
+                        fontSize: 25
+                    },
                     [themeSettings.breakpoints.down("sm")]: {
                         fontSize: 20
                     },
-                    [themeSettings.breakpoints.down("xl")]: {
-                        fontSize: 25
-                    }
                 },
                 h3: {
                     fontSize: 24,
-                    [themeSettings.breakpoints.down("lg")]: {
-                        fontSize: 20
+                    //! these must be listed in decending order or else they will not work
+                    [themeSettings.breakpoints.down("xl")]: {
+                        fontSize: 17.5
                     },
                 },
                 h4: {
@@ -236,7 +237,7 @@ export const StylingProvider = ({ children }) => {
             },
         })
 
-        // return responsiveFontSizes(themeSettings);
+
         return themeSettings;
     }
 
