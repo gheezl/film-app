@@ -1,7 +1,14 @@
-import { Box, BottomNavigation, BottomNavigationAction } from "@mui/material";
-import { Home } from "@mui/icons-material";
+import { Box, BottomNavigation, BottomNavigationAction, useTheme } from "@mui/material";
+import { Brightness2, Home, Star, Visibility } from "@mui/icons-material";
+import { useContext, useState } from "react";
+import { StylingContext } from "../../contexts/StylingProvider";
 
 const BottomNav = () => {
+    const [value, setValue] = useState(0)
+
+    const theme = useTheme();
+    const { toggleMode, currentMode } = useContext(StylingContext);
+
     return (
         <Box
             sx={{
@@ -12,11 +19,15 @@ const BottomNav = () => {
                 width: '100%',
             }}
         >
-            <BottomNavigation value={1} onChange={() => { }}>
-                <BottomNavigationAction label="Home" icon={<Home />} />
-                <BottomNavigationAction label="Explore" icon={<Home />} />
-                <BottomNavigationAction label="Notifications" icon={<Home />} />
-                <BottomNavigationAction label="Profile" icon={<Home />} />
+            <BottomNavigation value={value} onChange={() => setValue(2)}
+                sx={{
+                    backgroundColor: theme.palette.background.second
+                }}
+            >
+                <BottomNavigationAction label="Home" icon={<Home style={{ color: theme.palette.primary.second }} />} />
+                <BottomNavigationAction label="Viewed" icon={<Visibility style={{ color: theme.palette.primary.second }} />} />
+                <BottomNavigationAction label="Recommendations" icon={<Star style={{ color: theme.palette.primary.second }} />} />
+                <BottomNavigationAction onClick={() => toggleMode()} label="Theme" icon={<Brightness2 style={{ color: theme.palette.primary.second }} />} />
             </BottomNavigation>
         </Box>
     )
