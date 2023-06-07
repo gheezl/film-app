@@ -65,7 +65,6 @@ export const TmdbProvider = ({ children }) => {
             setRecentlyViewed([film, ...filtered]);
         }
         else if (recentlyViewed[0]) {
-            console.log("HERE", recentlyViewed[0], recentlyViewed);
             setRecentlyViewed([film, ...recentlyViewed]);
         }
         else {

@@ -1,4 +1,4 @@
-import { createTheme, responsiveFontSizes } from "@mui/material";
+import { createTheme, responsiveFontSizes, useMediaQuery } from "@mui/material";
 import { createContext, useEffect, useState } from "react";
 
 export const StylingContext = createContext();
@@ -73,7 +73,11 @@ export const StylingProvider = ({ children }) => {
         }
     })
     const [theme, setTheme] = useState("");
-    const [currentMode, setCurrentMode] = useState("light")
+    const [currentMode, setCurrentMode] = useState("light");
+    const [isBelowXs, setIsBelowXs] = useState("");
+    const [isBelowSm, setIsBelowSm] = useState("");
+    const [isBelowMd, setIsBelowMd] = useState("");
+    const [isBelowLg, setIsBelowLg] = useState("");
 
     useEffect(() => {
         toggleMode(currentMode);
@@ -237,9 +241,13 @@ export const StylingProvider = ({ children }) => {
             },
         })
 
-
         return themeSettings;
     }
+
+    // setIsBelowXs(useMediaQuery(theme.breakpoints.down("xs")));
+    // setIsBelowSm(useMediaQuery(theme.breakpoints.down("sm")));
+    // setIsBelowMd(useMediaQuery(theme.breakpoints.down("md")));
+    // setIsBelowLg(useMediaQuery(theme.breakpoints.down("lg")));
 
     const toggleMode = () => {
         const newMode = currentMode === "dark" ? "light" : "dark"
@@ -252,7 +260,11 @@ export const StylingProvider = ({ children }) => {
             value={{
                 toggleMode,
                 currentMode,
-                theme
+                theme,
+                isBelowXs,
+                isBelowSm,
+                isBelowMd,
+                isBelowLg
             }}
         >
             {children}

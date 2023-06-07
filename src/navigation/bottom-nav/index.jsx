@@ -1,13 +1,31 @@
 import { Box, BottomNavigation, BottomNavigationAction, useTheme } from "@mui/material";
 import { Brightness2, Home, Star, Visibility } from "@mui/icons-material";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { StylingContext } from "../../contexts/StylingProvider";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const BottomNav = () => {
     const [value, setValue] = useState(0)
 
     const theme = useTheme();
-    const { toggleMode, currentMode } = useContext(StylingContext);
+    const { toggleMode } = useContext(StylingContext);
+    const navigate = useNavigate();
+
+    const handleNav = (event, newValue) => {
+        if (newValue === 0) {
+            navigate('/');
+        }
+        else if (newValue === 1) {
+            navigate('/recently-viewed');
+        }
+        else if (newValue === 2) {
+            navigate('/recommendations');
+        }
+        else if (newValue === 3) {
+            toggleMode();
+        }
+        setValue(newValue)
+    }
 
     return (
         <Box
@@ -19,15 +37,15 @@ const BottomNav = () => {
                 width: '100%',
             }}
         >
-            <BottomNavigation value={value} onChange={() => setValue(2)}
+            <BottomNavigation value={value} onChange={handleNav}
                 sx={{
                     backgroundColor: theme.palette.background.second
                 }}
             >
-                <BottomNavigationAction label="Home" icon={<Home style={{ color: theme.palette.primary.second }} />} />
-                <BottomNavigationAction label="Viewed" icon={<Visibility style={{ color: theme.palette.primary.second }} />} />
-                <BottomNavigationAction label="Recommendations" icon={<Star style={{ color: theme.palette.primary.second }} />} />
-                <BottomNavigationAction onClick={() => toggleMode()} label="Theme" icon={<Brightness2 style={{ color: theme.palette.primary.second }} />} />
+                <BottomNavigationAction sx={{ color: theme.palette.primary.second }} icon={<Home />} />
+                <BottomNavigationAction sx={{ color: theme.palette.primary.second }} icon={<Visibility />} />
+                <BottomNavigationAction sx={{ color: theme.palette.primary.second }} icon={<Star />} />
+                <BottomNavigationAction sx={{ color: theme.palette.primary.second }} onClick={() => toggleMode()} icon={<Brightness2 />} />
             </BottomNavigation>
         </Box>
     )

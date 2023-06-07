@@ -22,20 +22,10 @@ import BottomNav from './navigation/bottom-nav';
 const App = () => {
   const { theme } = useContext(StylingContext);
 
-  const isBelowXS = useMediaQuery(theme.breakpoints.down("xs"));
-  const isBelowSm = useMediaQuery(theme.breakpoints.down("sm"));
-  const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
-  const isBelowLg = useMediaQuery(theme.breakpoints.down("lg"));
-
   return (
     <ThemeProvider theme={theme} >
       <CssBaseline />
       <PageBorder>
-        {
-          isBelowMd
-            ? <BottomNav />
-            : <SideNav />
-        }
         <Box
           sx={{
             width: "100%",
