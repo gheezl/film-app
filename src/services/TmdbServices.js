@@ -29,7 +29,6 @@ export const getUpcomingFilms = async () => {
     const response = await fetch('https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1', GETOPTIONS);
     const jsonData = await response.json();
     return jsonData;
-
 }
 
 // Calls made for the trending page
@@ -46,8 +45,20 @@ export const getIndividualFilm = async (filmNameQuery) => {
     return jsonData;
 }
 
+export const getFilmById = async (filmId) => {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${filmId}?language=en-US`, GETOPTIONS);
+    const jsonData = await response.json();
+    return jsonData;
+}
+
 export const getFilmsByGenre = async (genreId) => {
     const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}`, GETOPTIONS);
     const jsonData = await response.json();
     return jsonData;
+}
+
+export const getGenres = async () => {
+    const response = await fetch("https://api.themoviedb.org/3/genre/movie/list?include_adult=false&language=en-US", GETOPTIONS);
+    const jsonData = await response.json();
+    return jsonData.genres;
 }
