@@ -298,8 +298,16 @@ const Film = ({ match }) => {
         //     <FullPageDisplay headLine="Similar Films" alternateHeadline="No Similar Films to Display" films={similarFilms} showInfo={false} />
         // </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Box sx={{ display: "flex", flexDirection: isBelowLg ? "column" : "row", padding: '20px', marginBottom: '20px' }}>
-                <Box sx={{ marginBottom: '20px' }}>
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: isBelowLg ? "column" : "row",
+                    padding: '20px',
+                    marginBottom: '20px',
+
+                }}
+            >
+                <Box sx={{ marginBottom: '20px', marginRight: isBelowLg ? "0px" : "25px" }}>
                     <Paper
                         sx={{
                             backgroundColor: theme.palette.background.second,
@@ -312,13 +320,13 @@ const Film = ({ match }) => {
                     >
                         <img
                             alt="alt"
-                            style={{ width: "450px", borderRadius: '25px' }}
+                            style={{ width: isBelowSm ? "250px" : "450px", borderRadius: '25px' }}
                             src={`https://image.tmdb.org/t/p/w1280${selectedFilm.poster_path}`}
                         />
                     </Paper>
                 </Box>
 
-                <Grid container spacing={2} ml="25px">
+                <Grid container spacing={2}>
                     {/* Header */}
                     <Grid item xs={12} md={12}>
                         <Paper
@@ -345,35 +353,36 @@ const Film = ({ match }) => {
                         </Paper>
                     </Grid>
 
-                    {/* Description and Rating */}
-                    <Grid item xs={12} md={12} lg={12}>
-                        <Box sx={{ display: 'flex', flexDirection: isBelowLg ? "column" : "row", gap: '20px' }}>
-                            <Paper
-                                sx={{
-                                    backgroundColor: theme.palette.background.second,
-                                    padding: '15px',
-                                    borderRadius: '25px',
-                                    height: '250px',
-                                    overflowY: 'scroll',
-                                    flex: '1',
-                                }}
-                            >
-                                <Typography variant="h2">
-                                    {selectedFilm.overview ? selectedFilm.overview : 'No description to display.'}
-                                </Typography>
-                            </Paper>
-                            <Box>
-                                <ProgressCircle
-                                    progress={selectedFilm.vote_average}
-                                    votes={selectedFilm.vote_count ? selectedFilm.vote_count : 0}
-                                    size="250"
-                                />
-                            </Box>
-                        </Box>
+                    {/* Description */}
+                    <Grid item xs={12} md={12} lg={8}>
+                        <Paper
+                            sx={{
+                                backgroundColor: theme.palette.background.second,
+                                padding: '15px',
+                                borderRadius: '25px',
+                                height: '250px',
+                                overflowY: 'scroll',
+                                flex: '1',
+                            }}
+                        >
+                            <Typography variant="h2">
+                                {selectedFilm.overview ? selectedFilm.overview : 'No description to display.'}
+                            </Typography>
+                        </Paper>
+
+                    </Grid>
+
+                    {/* Rating */}
+                    <Grid item xs={12} md={6} lg={4} >
+                        <ProgressCircle
+                            progress={selectedFilm.vote_average}
+                            votes={selectedFilm.vote_count ? selectedFilm.vote_count : 0}
+                            size="250"
+                        />
                     </Grid>
 
                     {/* Play Button */}
-                    <Grid item xs={12} md={12} lg={2}>
+                    <Grid item xs={12} md={6} lg={3}>
                         <Paper
                             sx={{
                                 backgroundColor: theme.palette.background.second,
@@ -381,7 +390,7 @@ const Film = ({ match }) => {
                                 borderRadius: '25px',
                                 display: 'flex',
                                 justifyContent: 'space-between',
-                                height: "100%"
+                                height: '250px'
                             }}
                         >
                             <Button
@@ -400,7 +409,7 @@ const Film = ({ match }) => {
                     </Grid>
 
                     {/* Film Details */}
-                    <Grid item xs={12} md={12} lg={3}>
+                    <Grid item xs={12} md={12} lg={4}>
                         <Paper
                             sx={{
                                 backgroundColor: theme.palette.background.second,
@@ -417,7 +426,7 @@ const Film = ({ match }) => {
                     </Grid>
 
                     {/* Financial Performance */}
-                    <Grid item xs={12} md={12} lg={7}>
+                    <Grid item xs={12} md={12} lg={5}>
                         <Paper
                             sx={{
                                 backgroundColor: theme.palette.background.second,

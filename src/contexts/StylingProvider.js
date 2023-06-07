@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import { createTheme, responsiveFontSizes } from "@mui/material";
 import { createContext, useEffect, useState } from "react";
 
 export const StylingContext = createContext();
@@ -123,25 +123,6 @@ export const StylingProvider = ({ children }) => {
                         fontFamily: "'Nunito', sans-serif",
                         color: "#FFFFFF"
                     },
-                    fontSize: 12,
-                    h1: {
-                        fontSize: 40,
-                    },
-                    h2: {
-                        fontSize: 32,
-                    },
-                    h3: {
-                        fontSize: 24,
-                    },
-                    h4: {
-                        fontSize: 20,
-                    },
-                    h5: {
-                        fontSize: 16,
-                    },
-                    h6: {
-                        fontSize: 14,
-                    },
                 },
                 shadows: ['none', `0 4px 8px ${darkMode.primary[300]}`],
                 breakpoints: {
@@ -195,25 +176,6 @@ export const StylingProvider = ({ children }) => {
                         fontFamily: "'Nunito', sans-serif",
                         color: "#000000"
                     },
-                    fontSize: 12,
-                    h1: {
-                        fontSize: 40,
-                    },
-                    h2: {
-                        fontSize: 32,
-                    },
-                    h3: {
-                        fontSize: 24,
-                    },
-                    h4: {
-                        fontSize: 20,
-                    },
-                    h5: {
-                        fontSize: 16,
-                    },
-                    h6: {
-                        fontSize: 14,
-                    },
                 },
                 shadows: ['none', `0 4px 8px ${lightMode.primary[300]}`],
                 breakpoints: {
@@ -227,12 +189,49 @@ export const StylingProvider = ({ children }) => {
             };
         }
 
-        return themeSettings;
+        themeSettings = createTheme(themeSettings);
+
+        themeSettings = createTheme({
+            ...themeSettings,
+            typography: {
+                ...themeSettings.typography,
+                fontSize: 12,
+                h1: {
+                    fontSize: 40,
+                    [themeSettings.breakpoints.down("lg")]: {
+                        fontSize: 20
+                    }
+                },
+                h2: {
+                    fontSize: 32,
+                    [themeSettings.breakpoints.down("lg")]: {
+                        fontSize: 20
+                    }
+                },
+                h3: {
+                    fontSize: 24,
+                    [themeSettings.breakpoints.down("lg")]: {
+                        fontSize: 20
+                    }
+                },
+                h4: {
+                    fontSize: 20,
+                },
+                h5: {
+                    fontSize: 16,
+                },
+                h6: {
+                    fontSize: 14,
+                },
+            },
+        })
+
+        return responsiveFontSizes(themeSettings);
     }
 
     const toggleMode = () => {
         const newMode = currentMode === "dark" ? "light" : "dark"
-        setTheme(createTheme(setThemeSettings(newMode)));
+        setTheme(setThemeSettings(newMode));
         setCurrentMode(newMode);
     }
 
