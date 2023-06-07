@@ -354,7 +354,7 @@ const Film = ({ match }) => {
                     </Grid>
 
                     {/* Description */}
-                    <Grid item xs={12} md={12} lg={8}>
+                    <Grid item xs={12} md={12} lg={6} xl={8}>
                         <Paper
                             sx={{
                                 backgroundColor: theme.palette.background.second,
@@ -373,7 +373,7 @@ const Film = ({ match }) => {
                     </Grid>
 
                     {/* Rating */}
-                    <Grid item xs={12} md={6} lg={4} >
+                    <Grid item xs={12} md={6} lg={6} xl={4} >
                         <ProgressCircle
                             progress={selectedFilm.vote_average}
                             votes={selectedFilm.vote_count ? selectedFilm.vote_count : 0}

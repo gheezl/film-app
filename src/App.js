@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Box, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { Box, CssBaseline, ThemeProvider, createTheme, useMediaQuery } from '@mui/material';
 
 import { Routes, Route } from "react-router-dom"
 
@@ -21,11 +21,20 @@ import PageBorder from './pages/page-border';
 const App = () => {
   const { theme } = useContext(StylingContext);
 
+  // const isBelowXS = useMediaQuery(theme.breakpoints.down("xs"));
+  // const isBelowSm = useMediaQuery(theme.breakpoints.down("sm"));
+  // const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
+  // const isBelowLg = useMediaQuery(theme.breakpoints.down("lg"));
+
   return (
     <ThemeProvider theme={theme} >
       <CssBaseline />
       <PageBorder>
-        <SideNav />
+        {
+          false
+            ? null
+            : <SideNav />
+        }
         <Box
           sx={{
             width: "100%",
