@@ -26,7 +26,8 @@ const App = () => {
         <Box
           sx={{
             width: "100%",
-            overflow: "scroll"
+            overflow: "scroll",
+            paddingBottom: "30px"
           }}
         >
           <Header />

@@ -13,7 +13,6 @@ const PageBorder = ({ children }) => {
                 justifyContent: "row",
                 height: "100vh",
                 backgroundColor: theme.palette ? theme.palette.background.main : null,
-                marginBottom: isBelowMd ? "25px" : "0px"
             }}
         >
             {
