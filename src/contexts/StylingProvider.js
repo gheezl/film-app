@@ -145,6 +145,16 @@ export const StylingProvider = ({ children }) => {
                         xl: 1600 // largest desktops
                     },
                 },
+                components: {
+                    MuiInput: {
+                        styleOverrides: {
+                            root: {
+                                color: "white",
+                                // backgroundColor: "white"
+                            },
+                        },
+                    }
+                }
             }
         }
         else if (mode === "light") {
@@ -199,6 +209,15 @@ export const StylingProvider = ({ children }) => {
                         xl: 1600 // largest desktops
                     },
                 },
+                components: {
+                    MuiInput: {
+                        styleOverrides: {
+                            root: {
+                                color: "black"
+                            },
+                        },
+                    }
+                }
             };
         }
 
@@ -246,15 +265,11 @@ export const StylingProvider = ({ children }) => {
                     fontSize: 14,
                 },
             },
+
         })
 
         return themeSettings;
     }
-
-    // setIsBelowXs(useMediaQuery(theme.breakpoints.down("xs")));
-    // setIsBelowSm(useMediaQuery(theme.breakpoints.down("sm")));
-    // setIsBelowMd(useMediaQuery(theme.breakpoints.down("md")));
-    // setIsBelowLg(useMediaQuery(theme.breakpoints.down("lg")));
 
     const toggleMode = () => {
         const newMode = currentMode === "dark" ? "light" : "dark"

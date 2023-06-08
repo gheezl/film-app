@@ -138,11 +138,16 @@ const SideNav = () => {
                     >
                         <MenuItem
                             style={{ backgroundColor: theme.palette.background.fourth }}>
-                            <Box sx={{ display: "flex", flexDirection: "row" }}>
+                            <Box sx={{ display: "flex", flexDirection: "row", }}>
                                 <Input
                                     value={searchInput}
                                     onChange={e => setSearchInput(e.target.value)}
-                                    placeholder="Search for a film"
+                                    placeholder="Enter film"
+                                    onKeyPress={event => {
+                                        if (event.key === "Enter") {
+                                            onSearch()
+                                        }
+                                    }}
                                 />
                                 <Button
                                     onClick={() => onSearch()}
