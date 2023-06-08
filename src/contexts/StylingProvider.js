@@ -1,9 +1,10 @@
-import { createTheme, responsiveFontSizes, useMediaQuery } from "@mui/material";
+import { createTheme } from "@mui/material";
 import { createContext, useEffect, useState } from "react";
 
 export const StylingContext = createContext();
 
 export const StylingProvider = ({ children }) => {
+    // eslint-disable-next-line
     const [darkMode, setDarkMode] = useState({
         surface: {
             100: "#121212",
@@ -38,6 +39,7 @@ export const StylingProvider = ({ children }) => {
             600: "#eab6b6"
         }
     });
+    // eslint-disable-next-line
     const [lightMode, setLightMode] = useState({
         surface: {
             100: "#ffffff",
@@ -74,13 +76,18 @@ export const StylingProvider = ({ children }) => {
     })
     const [theme, setTheme] = useState("");
     const [currentMode, setCurrentMode] = useState("light");
+    // eslint-disable-next-line
     const [isBelowXs, setIsBelowXs] = useState("");
+    // eslint-disable-next-line
     const [isBelowSm, setIsBelowSm] = useState("");
+    // eslint-disable-next-line
     const [isBelowMd, setIsBelowMd] = useState("");
+    // eslint-disable-next-line
     const [isBelowLg, setIsBelowLg] = useState("");
 
     useEffect(() => {
         toggleMode(currentMode);
+        // eslint-disable-next-line
     }, [])
 
     const setThemeSettings = (mode) => {

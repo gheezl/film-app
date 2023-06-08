@@ -1,6 +1,4 @@
-import { useContext } from "react"
 import { Box, useTheme, useMediaQuery } from "@mui/material"
-import { StylingContext } from "../../contexts/StylingProvider"
 import BottomNav from "../../navigation/bottom-nav";
 import SideNav from "../../navigation/side-nav";
 

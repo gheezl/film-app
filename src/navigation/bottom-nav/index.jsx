@@ -1,8 +1,8 @@
 import { Box, BottomNavigation, BottomNavigationAction, useTheme } from "@mui/material";
 import { Brightness2, Home, Star, Visibility } from "@mui/icons-material";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { StylingContext } from "../../contexts/StylingProvider";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const BottomNav = () => {
     const [value, setValue] = useState(0)

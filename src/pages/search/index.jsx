@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { TmdbContext } from "../../contexts/TmdbProvider";
 import FullPageDisplay from "../../components/film-set-display-full-page";
 

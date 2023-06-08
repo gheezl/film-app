@@ -99,6 +99,8 @@ export const determineMostViewedGenres = (films) => {
             else {
                 genres[genre.id] = 1;
             }
+
+            return null;
         })
     }
 

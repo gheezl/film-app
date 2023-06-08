@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useEffect, useState } from "react";
 import { TmdbContext } from "../../contexts/TmdbProvider";
-import { Box, Button, Tooltip, List, ListItem, ListItemIcon, ListItemText, Paper, Typography, useTheme, Grid, useMediaQuery } from "@mui/material";
+import { Box, Button, Paper, Typography, useTheme, Grid, useMediaQuery } from "@mui/material";
 import ProgressCircle from "../../components/progress-circle";
 import FullPageDisplay from "../../components/film-set-display-full-page";
 import { getFilmById, getFilmsByGenre } from "../../services/TmdbServices";
@@ -8,7 +8,7 @@ import { getRandomItems, removeDuplicateObjects, formatDate, removeSpecificObjec
 import { useParams } from "react-router-dom";
 import BarChart from "../../components/bar-chart";
 import ItemList from "../../components/item-list";
-import { PlayCircle, InfoOutlined, Bookmark, BookmarkOutlined, BookmarkBorder } from "@mui/icons-material";
+import { PlayCircle } from "@mui/icons-material";
 import InfoTooltip from "../../components/info-tooltip";
 
 const Film = ({ match }) => {
@@ -19,9 +19,9 @@ const Film = ({ match }) => {
     const [barData, setBarData] = useState([]);
     const theme = useTheme();
 
-    const isBelowXS = useMediaQuery(theme.breakpoints.down("xs"));
+    // const isBelowXS = useMediaQuery(theme.breakpoints.down("xs"));
     const isBelowSm = useMediaQuery(theme.breakpoints.down("sm"));
-    const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
+    // const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
     const isBelowLg = useMediaQuery(theme.breakpoints.down("lg"));
 
     const { id } = useParams();
@@ -95,6 +95,7 @@ const Film = ({ match }) => {
 
         determineFinancialPerformance();
         getSimilarFilms();
+        // eslint-disable-next-line
     }, [selectedFilm])
 
     return (

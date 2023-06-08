@@ -1,4 +1,4 @@
-import { Typography, useTheme, Box, Paper } from "@mui/material";
+import { Typography, useTheme, Paper } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 
 const BarChart = ({ data }) => {

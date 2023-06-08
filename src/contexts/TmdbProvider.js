@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react';
 
 import { getGenres, getNowPlayingFilms, getPopularFilms, getTopRatedFilms, getTrendingFilms, getUpcomingFilms } from '../services/TmdbServices.js';
-import { removeDuplicateObjects, removeSpecificObject } from '../utilities/utilities.js';
+import { removeSpecificObject } from '../utilities/utilities.js';
 
 export const TmdbContext = createContext();
 

@@ -1,7 +1,5 @@
 import { Box, Paper, Tooltip, Typography, useTheme } from "@mui/material";
-import { useContext, useEffect, useState } from "react";
-
-import { TmdbContext } from "../../contexts/TmdbProvider";
+import { useState } from "react";
 
 import { Link } from "react-router-dom";
 

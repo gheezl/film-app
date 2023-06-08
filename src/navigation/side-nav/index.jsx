@@ -1,10 +1,10 @@
 import { MenuOutlined, Home, Star, Search, Category, Visibility, Brightness2 } from "@mui/icons-material";
-import { Button, Box, Input, Typography, useTheme, Tooltip, createTheme } from "@mui/material";
+import { Button, Box, Input, Typography, useTheme, Tooltip } from "@mui/material";
 import { useContext, useState } from "react";
 import { Sidebar, Menu, MenuItem, useProSidebar, SubMenu } from "react-pro-sidebar";
 import { Link, useNavigate } from "react-router-dom";
 import { TmdbContext } from "../../contexts/TmdbProvider";
-import { StylingContext } from "../../contexts/StylingProvider"
+import { StylingContext } from "../../contexts/StylingProvider";
 import { getIndividualFilm } from "../../services/TmdbServices";
 
 const SideNav = () => {
