@@ -43,19 +43,19 @@ export const StylingProvider = ({ children }) => {
     const [lightMode, setLightMode] = useState({
         surface: {
             100: "#ffffff",
-            200: "#f0f0f0",
+            200: "#e0e0e0",
             300: "#e0e0e0",
             400: "#d0d0d0",
             500: "#c0c0c0",
             600: "#b0b0b0"
         },
         primary: {
-            100: "#00bcd4",
-            200: "#47c4d9",
-            300: "#67cbde",
-            400: "#81d3e2",
-            500: "#99dae7",
-            600: "#afe2ec"
+            100: "#0097b0",
+            200: "#3eacb6",
+            300: "#5da9ba",
+            400: "#78b6c0",
+            500: "#8fc2c6",
+            600: "#a6cfd0"
         },
         mixed: {
             100: "#f4f5f5",
