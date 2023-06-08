@@ -12,7 +12,8 @@ const PageBorder = ({ children }) => {
                 display: "flex",
                 justifyContent: "row",
                 height: "100vh",
-                backgroundColor: theme.palette ? theme.palette.background.main : null
+                backgroundColor: theme.palette ? theme.palette.background.main : null,
+                marginBottom: isBelowMd ? "25px" : "0px"
             }}
         >
             {
@@ -20,6 +21,7 @@ const PageBorder = ({ children }) => {
                     ? <BottomNav />
                     : <SideNav />
             }
+
             {children}
         </Box>
     )

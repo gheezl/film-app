@@ -15,6 +15,7 @@ import Genre from './pages/genre';
 import { useContext, } from 'react';
 import { StylingContext } from './contexts/StylingProvider';
 import PageBorder from './pages/page-border';
+import BottomNav from './navigation/bottom-nav';
 
 const App = () => {
   const { theme } = useContext(StylingContext);
