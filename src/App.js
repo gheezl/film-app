@@ -1,3 +1,5 @@
+import { useContext, } from 'react';
+
 import './App.css';
 
 import { Box, CssBaseline, ThemeProvider, } from '@mui/material';
@@ -12,9 +14,10 @@ import Home from './pages/home';
 import Film from './pages/individual-film';
 import Search from './pages/search';
 import Genre from './pages/genre';
-import { useContext, } from 'react';
-import { StylingContext } from './contexts/StylingProvider';
 import PageBorder from './pages/page-border';
+
+import { StylingContext } from './contexts/StylingProvider';
+
 
 const App = () => {
   const { theme } = useContext(StylingContext);
@@ -27,7 +30,7 @@ const App = () => {
           sx={{
             width: "100%",
             overflow: "scroll",
-            paddingBottom: "30px"
+            paddingBottom: "40px"
           }}
         >
           <Header />

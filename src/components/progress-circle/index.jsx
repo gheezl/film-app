@@ -50,7 +50,7 @@ const ProgressCircle = ({ progress, votes, size }) => {
                             </>
                             :
                             <Typography
-                                variant="h2"
+                                variant="h3"
                             >
                                 No reviews
                             </Typography>

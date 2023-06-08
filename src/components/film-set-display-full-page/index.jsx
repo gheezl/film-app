@@ -1,4 +1,4 @@
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Grid } from "@mui/material";
 import FilmCard from "../film-card";
 import InfoTooltip from "../info-tooltip";
 
@@ -15,28 +15,25 @@ const FullPageDisplay = ({ headLine, alternateHeadline, films, showInfo, }) => {
                         : null
                 }
             </Box>
-            <Box
-                style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-                    gap: "50px",
-                    marginTop: "10px",
-                    paddingLeft: "10px",
-                    paddingRight: "10px",
-                }}
+            <Grid
+                container
+                spacing={2}
+                marginTop="10px"
+                paddingLeft="10px"
+                paddingRight="10px"
             >
-                {
-                    films[0]
-                        ? (
-                            films?.map(film => (
-                                film.poster_path
-                                    ? <FilmCard film={film} />
-                                    : null
-                            ))
+                {films[0]
+                    ?
+                    films.map(film => (
+                        film.poster_path && (
+                            <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={film.id}>
+                                <FilmCard film={film} />
+                            </Grid>
                         )
-                        : null
+                    ))
+                    : null
                 }
-            </Box>
+            </Grid>
         </Box>
     )
 }

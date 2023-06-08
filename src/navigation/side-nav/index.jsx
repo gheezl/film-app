@@ -27,10 +27,29 @@ const SideNav = () => {
         <Sidebar
             backgroundColor={theme.palette.background.second}
             style={{
-                border: "none"
+                border: "none",
             }}
+        // transitionDuration={500}
         >
-            <Menu iconShape="square">
+            <Menu
+                iconShape="square"
+                menuItemStyles={{
+                    button: ({ level, active, disabled }) => {
+                        if (level === 0) {
+                            return {
+                                // color: disabled ? "#eee" : "#455A64",
+                                // backgroundColor: active ? "#fff" : undefined,
+                                "&:hover": {
+                                    backgroundColor: `${theme.palette.background.fourth} !important`,
+                                    // color: "white !important",
+                                    // borderRadius: "8px !important",
+                                    // fontWeight: "bold !important" /
+                                },
+                            };
+                        }
+                    },
+                }}
+            >
                 <MenuItem
                     icon={<MenuOutlined />}
                     onClick={() => collapseSidebar()}
@@ -62,17 +81,16 @@ const SideNav = () => {
                     <SubMenu
                         icon={<Category style={{ color: theme.palette.primary.second }} />}
                         label="Genres"
-
                     >
                         {
                             genres && genres.map(genre => (
                                 <Link to={`/genre/${genre.name}/${genre.id}`}>
                                     <MenuItem
                                         style={{
-                                            color: theme.palette.primary.second
+                                            backgroundColor: theme.palette.background.third
                                         }}
                                     >
-                                        <Typography variant="h6" sx={{ color: theme.palette.primary.main }} >{genre.name}</Typography>
+                                        <Typography variant="h6" >{genre.name}</Typography>
                                     </MenuItem>
                                 </Link>
                             ))
@@ -118,7 +136,8 @@ const SideNav = () => {
                         icon={<Search style={{ color: theme.palette.primary.second }} />}
                         label="Search"
                     >
-                        <MenuItem>
+                        <MenuItem
+                            style={{ backgroundColor: theme.palette.background.fourth }}>
                             <Box sx={{ display: "flex", flexDirection: "row" }}>
                                 <Input
                                     value={searchInput}
@@ -149,7 +168,7 @@ const SideNav = () => {
                     </MenuItem>
                 </Tooltip>
             </Menu>
-        </Sidebar>
+        </Sidebar >
     )
 }
 
