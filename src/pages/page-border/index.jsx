@@ -21,7 +21,6 @@ const PageBorder = ({ children }) => {
                     ? <BottomNav />
                     : <SideNav />
             }
-
             {children}
         </Box>
     )
