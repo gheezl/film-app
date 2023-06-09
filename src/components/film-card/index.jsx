@@ -12,7 +12,7 @@ const FilmCard = ({ film }) => {
     const fadeAnimation = useSpring({
         opacity: 1,
         from: { opacity: 0 },
-        config: { duration: 500 },
+        config: { duration: 750 },
     })
 
     return (
