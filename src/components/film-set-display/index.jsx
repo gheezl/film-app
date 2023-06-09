@@ -3,16 +3,11 @@ import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 import FilmCard from "../../components/film-card";
 
 import HorizontalScroll from "react-scroll-horizontal";
-import { useEffect } from "react";
 
 const FilmSetDisplay = ({ headLine, films }) => {
     const theme = useTheme();
 
     const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
-
-    useEffect(() => {
-        console.log(films);
-    }, [films])
 
     return (
         <Box sx={{ padding: isBelowMd ? "0px 0px 20px 0px" : "20px", margin: isBelowMd ? "0px -20px 0px -20px" : "0px" }}>

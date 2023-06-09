@@ -1,8 +1,8 @@
-import { useContext, } from 'react';
+import { useContext } from 'react';
 
 import './App.css';
 
-import { Box, CssBaseline, ThemeProvider, } from '@mui/material';
+import { CssBaseline, ThemeProvider, } from '@mui/material';
 
 import { Routes, Route } from "react-router-dom"
 
@@ -26,23 +26,15 @@ const App = () => {
     <ThemeProvider theme={theme} >
       <CssBaseline />
       <PageBorder>
-        <Box
-          sx={{
-            width: "100%",
-            overflow: "scroll",
-            paddingBottom: "40px"
-          }}
-        >
-          <Header />
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/search' element={<Search />} />
-            <Route path='/film/:id' element={<Film />} />
-            <Route path='/genre/:name/:id' element={<Genre />} />
-            <Route path='/recently-viewed' element={<RecentlyViewed />} />
-            <Route path='/recommendations' element={<Recommendations />} />
-          </Routes>
-        </Box>
+        <Header />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/search' element={<Search />} />
+          <Route path='/film/:id' element={<Film />} />
+          <Route path='/genre/:name/:id' element={<Genre />} />
+          <Route path='/recently-viewed' element={<RecentlyViewed />} />
+          <Route path='/recommendations' element={<Recommendations />} />
+        </Routes>
       </PageBorder>
     </ThemeProvider>
   );

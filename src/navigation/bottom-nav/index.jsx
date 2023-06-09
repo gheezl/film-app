@@ -38,7 +38,6 @@ const BottomNav = () => {
             toggleMode();
         }
         else if (newValue === 4) {
-            console.log("GOT IT")
             setOpen(!open);
         }
         setValue(newValue)

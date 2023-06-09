@@ -28,8 +28,17 @@ const Film = ({ match }) => {
     const { addFilmToRecentlyViewed } = useContext(TmdbContext);
 
     const scrollToTopOfPage = () => {
-        window.scrollTo(0, 0);
+        console.log("HERE")
+        window.scroll(
+            {
+                top: 0,
+                left: 0,
+                // behavior: 'smooth'
+            }
+        );
+        console.log("HERE 2")
     }
+
 
     useEffect(() => {
         const getFilm = async () => {

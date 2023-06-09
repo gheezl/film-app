@@ -20,7 +20,15 @@ const PageBorder = ({ children }) => {
                     ? <BottomNav />
                     : <SideNav />
             }
-            {children}
+            <Box
+                sx={{
+                    width: "100%",
+                    overflow: "scroll",
+                    paddingBottom: "40px"
+                }}
+            >
+                {children}
+            </Box>
         </Box>
     )
 }
