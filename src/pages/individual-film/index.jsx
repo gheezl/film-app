@@ -28,18 +28,11 @@ const Film = ({ match }) => {
     const { addFilmToRecentlyViewed } = useContext(TmdbContext);
 
     const scrollToTopOfPage = () => {
-        setTimeout(() => {
-            window.scrollTo(0, 0);
-        }, 1000);
+        window.scrollTo(0, 0);
     }
 
     useEffect(() => {
         const getFilm = async () => {
-            let data;
-            console.log(data);
-            // if (film.media_type === "tv") {
-
-            // }
             const film = await getFilmById(id);
             setSelectedFilm(film);
         }
@@ -181,7 +174,7 @@ const Film = ({ match }) => {
                                             {selectedFilm.overview}
                                         </Typography>
                                     </Box>
-                                    : <Typography >'No description to display.'</Typography>
+                                    : <Typography variant="h2" >No description to display.</Typography>
                             }
 
                         </Paper>
