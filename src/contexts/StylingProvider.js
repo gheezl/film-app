@@ -152,6 +152,9 @@ export const StylingProvider = ({ children }) => {
                                 color: "white",
                                 // backgroundColor: "white"
                             },
+                            paper: {
+                                backgroundColor: darkMode.surface[200]
+                            }
                         },
                     }
                 }
