@@ -8,26 +8,27 @@ const FilmCard = ({ film }) => {
     const theme = useTheme();
 
     return (
-        <Link to={`/film/${film.id}`} >
-            <Box
-                sx={{
-                    display: "flex",
-                    justifyContent: "center"
-                }}
+
+        <Box
+            sx={{
+                display: "flex",
+                justifyContent: "center"
+            }}
+        >
+            <Tooltip
+                title={
+                    <Typography
+                        variant="h4"
+                        sx={{
+                            margin: "5px"
+                        }}
+                    >
+                        {film.title}
+                    </Typography>
+                }
+                arrow
             >
-                <Tooltip
-                    title={
-                        <Typography
-                            variant="h4"
-                            sx={{
-                                margin: "5px"
-                            }}
-                        >
-                            {film.title}
-                        </Typography>
-                    }
-                    arrow
-                >
+                <Link to={`/film/${film.id}`} >
                     <Paper
                         elevation={isHovered ? 0 : 1}
                         onMouseEnter={() => setIsHovered(true)}
@@ -44,10 +45,9 @@ const FilmCard = ({ film }) => {
                     >
                         <img alt="alt" style={{ width: "200px", borderRadius: "25px" }} src={`https://image.tmdb.org/t/p/w1280${film.poster_path}`} />
                     </Paper>
-                </Tooltip>
-            </Box>
-        </Link >
-
+                </Link >
+            </Tooltip>
+        </Box>
     )
 }
 
