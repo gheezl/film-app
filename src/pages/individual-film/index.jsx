@@ -10,6 +10,7 @@ import BarChart from "../../components/bar-chart";
 import ItemList from "../../components/item-list";
 import { PlayCircle } from "@mui/icons-material";
 import InfoTooltip from "../../components/info-tooltip";
+import { useSpring, animated } from "@react-spring/web";
 
 const Film = ({ match }) => {
     const [releaseDate, setReleaseDate] = useState("");
@@ -26,6 +27,12 @@ const Film = ({ match }) => {
 
     const { id } = useParams();
     const { addFilmToRecentlyViewed } = useContext(TmdbContext);
+
+    const fadeAnimation = useSpring({
+        opacity: 1,
+        from: { opacity: 0 },
+        config: { duration: 500 }
+    })
 
     const scrollToTopOfPage = () => {
         console.log("HERE")
@@ -107,13 +114,13 @@ const Film = ({ match }) => {
 
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-            <Box
-                sx={{
+            <animated.div
+                style={{
+                    ...fadeAnimation,
                     display: "flex",
                     flexDirection: isBelowLg ? "column" : "row",
                     padding: '20px',
                     marginBottom: '20px',
-
                 }}
             >
                 <Box sx={{ marginBottom: '20px', marginRight: isBelowLg ? "0px" : "25px" }}>
@@ -281,7 +288,7 @@ const Film = ({ match }) => {
                         </Paper>
                     </Grid>
                 </Grid>
-            </Box>
+            </animated.div>
             <FullPageDisplay
                 headLine="Similar Films"
                 alternateHeadline="No Similar Films to Display"
