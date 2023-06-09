@@ -62,6 +62,7 @@ const SideNav = () => {
                 <Tooltip
                     title={"Home"}
                     arrow
+                    placement="right"
                 >
                     <Link to="/">
                         <MenuItem
@@ -77,6 +78,7 @@ const SideNav = () => {
                 <Tooltip
                     title={"Genres"}
                     arrow
+                    placement="right"
                 >
                     <SubMenu
                         icon={<Category style={{ color: theme.palette.primary.second }} />}
@@ -101,6 +103,7 @@ const SideNav = () => {
                 <Tooltip
                     title="Recently Viewed"
                     arrow
+                    placement="right"
                 >
                     <Link to="/recently-viewed">
                         <MenuItem
@@ -116,6 +119,7 @@ const SideNav = () => {
                 <Tooltip
                     title={"Recommendations"}
                     arrow
+                    placement="right"
                 >
                     <Link to="/recommendations">
                         <MenuItem
@@ -131,6 +135,7 @@ const SideNav = () => {
                 <Tooltip
                     title="Search"
                     arrow
+                    placement="right"
                 >
                     <SubMenu
                         icon={<Search style={{ color: theme.palette.primary.second }} />}
@@ -161,6 +166,7 @@ const SideNav = () => {
                 <Tooltip
                     title={`change theme to ${currentMode === "dark" ? "light" : "dark"}`}
                     arrow
+                    placement="right"
                 >
                     <MenuItem
                         icon={<Brightness2 />}
