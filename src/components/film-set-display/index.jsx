@@ -3,11 +3,16 @@ import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 import FilmCard from "../../components/film-card";
 
 import HorizontalScroll from "react-scroll-horizontal";
+import { useEffect } from "react";
 
 const FilmSetDisplay = ({ headLine, films }) => {
     const theme = useTheme();
 
     const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
+
+    useEffect(() => {
+        console.log(films);
+    }, [films])
 
     return (
         <Box sx={{ padding: isBelowMd ? "0px 0px 20px 0px" : "20px", margin: isBelowMd ? "0px -20px 0px -20px" : "0px" }}>
@@ -29,8 +34,6 @@ const FilmSetDisplay = ({ headLine, films }) => {
                             display: "flex",
                             overflowX: "scroll",
                             height: "380px",
-                            borderLeft: isBelowMd ? "none" : `1px solid ${theme.palette.primary.second}`,
-                            borderRight: isBelowMd ? "none" : `1px solid ${theme.palette.primary.second}`,
                             borderRadius: "20px",
                             padding: "0px 10px 0px 10px"
                         }}
@@ -39,7 +42,7 @@ const FilmSetDisplay = ({ headLine, films }) => {
                             films?.results
                                 ? (
                                     films?.results.map(film => (
-                                        film.poster_path
+                                        film.poster_path && (film.media_type === "movie" || !film.hasOwnProperty("media_type"))
                                             ? <FilmCard film={film} />
                                             : null
                                     ))
@@ -61,7 +64,7 @@ const FilmSetDisplay = ({ headLine, films }) => {
                             films?.results
                                 ? (
                                     films?.results.map(film => (
-                                        film.poster_path
+                                        film.poster_path && (film.media_type === "movie" || !film.hasOwnProperty("media_type"))
                                             ? <FilmCard film={film} />
                                             : null
                                     ))

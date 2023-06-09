@@ -48,6 +48,7 @@ export const getIndividualFilm = async (filmNameQuery) => {
 export const getFilmById = async (filmId) => {
     const response = await fetch(`https://api.themoviedb.org/3/movie/${filmId}?language=en-US`, GETOPTIONS);
     const jsonData = await response.json();
+    console.log(jsonData, filmId);
     return jsonData;
 }
 

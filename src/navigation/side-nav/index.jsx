@@ -29,7 +29,6 @@ const SideNav = () => {
             style={{
                 border: "none",
             }}
-        // transitionDuration={500}
         >
             <Menu
                 iconShape="square"
@@ -37,13 +36,8 @@ const SideNav = () => {
                     button: ({ level, active, disabled }) => {
                         if (level === 0) {
                             return {
-                                // color: disabled ? "#eee" : "#455A64",
-                                // backgroundColor: active ? "#fff" : undefined,
                                 "&:hover": {
                                     backgroundColor: `${theme.palette.background.fourth} !important`,
-                                    // color: "white !important",
-                                    // borderRadius: "8px !important",
-                                    // fontWeight: "bold !important" /
                                 },
                             };
                         }

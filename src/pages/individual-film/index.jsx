@@ -35,6 +35,11 @@ const Film = ({ match }) => {
 
     useEffect(() => {
         const getFilm = async () => {
+            let data;
+            console.log(data);
+            // if (film.media_type === "tv") {
+
+            // }
             const film = await getFilmById(id);
             setSelectedFilm(film);
         }
