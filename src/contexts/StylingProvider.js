@@ -243,6 +243,13 @@ export const StylingProvider = ({ children }) => {
                             borderRadius: "25px"
                         }
                     }
+                },
+                MuiTooltip: {
+                    styleOverrides: {
+                        tooltip: {
+                            backgroundColor: themeSettings.palette.background.fourth
+                        }
+                    }
                 }
             },
             shadows: ['none', `0 4px 8px ${lightMode.primary[300]}`],

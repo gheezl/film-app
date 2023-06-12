@@ -54,8 +54,13 @@ const SideNav = () => {
                     <Typography variant="h4" >Navigation Menu</Typography>
                 </MenuItem>
                 <Tooltip
-                    title={"Home"}
-                    arrow
+                    title={
+                        <Typography
+                            variant="h5"
+                        >
+                            Home
+                        </Typography>
+                    }
                     placement="right"
                 >
                     <Link to="/">
@@ -70,8 +75,13 @@ const SideNav = () => {
                     </Link>
                 </Tooltip>
                 <Tooltip
-                    title={"Genres"}
-                    arrow
+                    title={
+                        <Typography
+                            variant="h5"
+                        >
+                            Genres
+                        </Typography>
+                    }
                     placement="right"
                 >
                     <SubMenu
@@ -95,8 +105,13 @@ const SideNav = () => {
                     </SubMenu>
                 </Tooltip>
                 <Tooltip
-                    title="Recently Viewed"
-                    arrow
+                    title={
+                        <Typography
+                            variant="h5"
+                        >
+                            Recently Viewed
+                        </Typography>
+                    }
                     placement="right"
                 >
                     <Link to="/recently-viewed">
@@ -111,8 +126,13 @@ const SideNav = () => {
                     </Link>
                 </Tooltip>
                 <Tooltip
-                    title={"Recommendations"}
-                    arrow
+                    title={
+                        <Typography
+                            variant="h5"
+                        >
+                            Recommendations
+                        </Typography>
+                    }
                     placement="right"
                 >
                     <Link to="/recommendations">
@@ -127,8 +147,13 @@ const SideNav = () => {
                     </Link>
                 </Tooltip>
                 <Tooltip
-                    title="Search"
-                    arrow
+                    title={
+                        <Typography
+                            variant="h5"
+                        >
+                            Search
+                        </Typography>
+                    }
                     placement="right"
                 >
                     <SubMenu
@@ -158,8 +183,13 @@ const SideNav = () => {
                     </SubMenu>
                 </Tooltip>
                 <Tooltip
-                    title={`change theme to ${currentMode === "dark" ? "light" : "dark"}`}
-                    arrow
+                    title={
+                        <Typography
+                            variant="h5"
+                        >
+                            {`change theme to ${currentMode === "dark" ? "light" : "dark"}`}
+                        </Typography>
+                    }
                     placement="right"
                 >
                     <MenuItem

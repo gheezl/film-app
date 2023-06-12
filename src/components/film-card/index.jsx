@@ -33,7 +33,6 @@ const FilmCard = ({ film }) => {
                         {film.title}
                     </Typography>
                 }
-                arrow
             >
                 <Link to={`/film/${film.id}`} >
                     <animated.div style={{ ...fadeAnimation }} >
