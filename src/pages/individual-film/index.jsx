@@ -34,26 +34,12 @@ const Film = ({ match }) => {
         config: { duration: 750 }
     })
 
-    const scrollToTopOfPage = () => {
-        console.log("HERE")
-        window.scroll(
-            {
-                top: 0,
-                left: 0,
-                // behavior: 'smooth'
-            }
-        );
-        console.log("HERE 2")
-    }
-
-
     useEffect(() => {
         const getFilm = async () => {
             const film = await getFilmById(id);
             setSelectedFilm(film);
         }
 
-        scrollToTopOfPage();
         getFilm();
     }, [id])
 
