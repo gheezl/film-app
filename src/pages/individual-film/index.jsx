@@ -112,9 +112,9 @@ const Film = ({ match }) => {
                 <Box sx={{ marginBottom: '20px', marginRight: isBelowLg ? "0px" : "25px" }}>
                     <Paper
                         sx={{
-                            backgroundColor: theme.palette.background.second,
-                            padding: '15px',
-                            borderRadius: '25px',
+                            // backgroundColor: theme.palette.background.second,
+                            // padding: '15px',
+                            // borderRadius: '25px',
                             width: 'fit-content',
                             height: 'fit-content',
                             mx: 'auto', // Center horizontally
@@ -133,9 +133,6 @@ const Film = ({ match }) => {
                     <Grid item xs={12} md={12}>
                         <Paper
                             sx={{
-                                backgroundColor: theme.palette.background.second,
-                                padding: '30px 15px',
-                                borderRadius: '25px',
                                 display: 'flex',
                                 flexDirection: isBelowLg ? "column" : "row",
                                 gap: "10px",
@@ -159,9 +156,6 @@ const Film = ({ match }) => {
                     <Grid item xs={12} md={12} lg={6} xl={8}>
                         <Paper
                             sx={{
-                                backgroundColor: theme.palette.background.second,
-                                padding: '15px',
-                                borderRadius: '25px',
                                 height: '250px',
                                 overflowY: 'scroll',
                                 flex: '1',
@@ -187,9 +181,6 @@ const Film = ({ match }) => {
                     <Grid item xs={12} md={6} lg={6} xl={4} >
                         <Paper
                             sx={{
-                                backgroundColor: theme.palette.background.second,
-                                padding: '15px',
-                                borderRadius: '25px',
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 height: '250px'
@@ -207,9 +198,6 @@ const Film = ({ match }) => {
                     <Grid item xs={12} md={6} lg={3}>
                         <Paper
                             sx={{
-                                backgroundColor: theme.palette.background.second,
-                                padding: '15px',
-                                borderRadius: '25px',
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 height: '250px'
@@ -234,9 +222,6 @@ const Film = ({ match }) => {
                     <Grid item xs={12} md={12} lg={4}>
                         <Paper
                             sx={{
-                                backgroundColor: theme.palette.background.second,
-                                padding: '15px',
-                                borderRadius: '25px',
                                 height: '250px',
                                 overflowY: 'scroll',
                             }}
@@ -251,11 +236,7 @@ const Film = ({ match }) => {
                     <Grid item xs={12} md={12} lg={5}>
                         <Paper
                             sx={{
-                                backgroundColor: theme.palette.background.second,
-                                padding: '15px',
-                                borderRadius: '25px',
                                 height: '250px',
-                                // overflowY: 'scroll',
                             }}
                         >
                             <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>

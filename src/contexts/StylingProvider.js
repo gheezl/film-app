@@ -135,29 +135,6 @@ export const StylingProvider = ({ children }) => {
                         color: "#FFFFFF"
                     },
                 },
-                shadows: ['none', `0 4px 8px ${darkMode.primary[300]}`],
-                breakpoints: {
-                    values: {
-                        xs: 0,   // Extra small devices (portrait phones)
-                        sm: 600, // Small devices (landscape phones)
-                        md: 960, // Medium devices (tablets)
-                        lg: 1400, // Large devices (desktops)
-                        xl: 1600 // largest desktops
-                    },
-                },
-                components: {
-                    MuiInput: {
-                        styleOverrides: {
-                            root: {
-                                color: "white",
-                                // backgroundColor: "white"
-                            },
-                            paper: {
-                                backgroundColor: darkMode.surface[200]
-                            }
-                        },
-                    }
-                }
             }
         }
         else if (mode === "light") {
@@ -202,25 +179,7 @@ export const StylingProvider = ({ children }) => {
                         color: "#000000"
                     },
                 },
-                shadows: ['none', `0 4px 8px ${lightMode.primary[300]}`],
-                breakpoints: {
-                    values: {
-                        xs: 0,   // Extra small devices (portrait phones)
-                        sm: 600, // Small devices (landscape phones)
-                        md: 960, // Medium devices (tablets)
-                        lg: 1400, // Large devices (desktops)
-                        xl: 1600 // largest desktops
-                    },
-                },
-                components: {
-                    MuiInput: {
-                        styleOverrides: {
-                            root: {
-                                color: "black"
-                            },
-                        },
-                    }
-                }
+
             };
         }
 
@@ -268,7 +227,34 @@ export const StylingProvider = ({ children }) => {
                     fontSize: 14,
                 },
             },
-
+            components: {
+                MuiInput: {
+                    styleOverrides: {
+                        root: {
+                            color: "black"
+                        },
+                    },
+                },
+                MuiPaper: {
+                    styleOverrides: {
+                        root: {
+                            backgroundColor: themeSettings.palette.background.second,
+                            padding: "15px",
+                            borderRadius: "25px"
+                        }
+                    }
+                }
+            },
+            shadows: ['none', `0 4px 8px ${lightMode.primary[300]}`],
+            breakpoints: {
+                values: {
+                    xs: 0,   // Extra small devices (portrait phones)
+                    sm: 600, // Small devices (landscape phones)
+                    md: 960, // Medium devices (tablets)
+                    lg: 1400, // Large devices (desktops)
+                    xl: 1600 // largest desktops
+                },
+            },
         })
 
         return themeSettings;

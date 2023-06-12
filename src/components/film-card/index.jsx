@@ -1,4 +1,4 @@
-import { Box, Paper, Tooltip, Typography, useTheme } from "@mui/material";
+import { Box, Paper, Tooltip, Typography } from "@mui/material";
 import { useState } from "react";
 
 import { Link } from "react-router-dom";
@@ -7,7 +7,6 @@ import { useSpring, animated } from '@react-spring/web'
 
 const FilmCard = ({ film }) => {
     const [isHovered, setIsHovered] = useState(false);
-    const theme = useTheme();
 
     const fadeAnimation = useSpring({
         opacity: 1,
@@ -44,12 +43,7 @@ const FilmCard = ({ film }) => {
                             onMouseLeave={() => setIsHovered(false)}
                             sx={{
                                 margin: "20px 10px 20px 10px",
-                                backgroundColor: theme.palette.background.second,
-                                padding: "15px",
-                                borderRadius: "25px",
                                 cursor: isHovered ? "pointer" : null,
-                                width: "fit-content",
-                                height: "fit-content"
                             }}
                         >
                             <img alt="alt" style={{ width: "200px", borderRadius: "25px" }} src={`https://image.tmdb.org/t/p/w1280${film.poster_path}`} />
