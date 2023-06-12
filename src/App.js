@@ -1,8 +1,8 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 import './App.css';
 
-import { CssBaseline, ThemeProvider, } from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 
 import { Routes, Route } from "react-router-dom"
 
@@ -17,25 +17,39 @@ import Genre from './pages/genre';
 import PageBorder from './pages/page-border';
 
 import { StylingContext } from './contexts/StylingProvider';
+import Loader from './components/loader';
+
 
 
 const App = () => {
   const { theme } = useContext(StylingContext);
 
+  useEffect(() => {
+    console.log(theme);
+  }, [theme])
+
   return (
     <ThemeProvider theme={theme} >
       <CssBaseline />
-      <PageBorder>
-        <Header />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/search' element={<Search />} />
-          <Route path='/film/:id' element={<Film />} />
-          <Route path='/genre/:name/:id' element={<Genre />} />
-          <Route path='/recently-viewed' element={<RecentlyViewed />} />
-          <Route path='/recommendations' element={<Recommendations />} />
-        </Routes>
-      </PageBorder>
+      {
+        theme.hasOwnProperty("palette")
+          ?
+          (
+            <PageBorder>
+              <Header />
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/search' element={<Search />} />
+                <Route path='/film/:id' element={<Film />} />
+                <Route path='/genre/:name/:id' element={<Genre />} />
+                <Route path='/recently-viewed' element={<RecentlyViewed />} />
+                <Route path='/recommendations' element={<Recommendations />} />
+              </Routes>
+            </PageBorder>
+          )
+          : <Loader />
+      }
+
     </ThemeProvider>
   );
 }

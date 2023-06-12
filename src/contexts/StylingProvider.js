@@ -74,7 +74,7 @@ export const StylingProvider = ({ children }) => {
             600: "#ff0d0d"
         }
     })
-    const [theme, setTheme] = useState("");
+    const [theme, setTheme] = useState({});
     const [currentMode, setCurrentMode] = useState("light");
     // eslint-disable-next-line
     const [isBelowXs, setIsBelowXs] = useState("");
