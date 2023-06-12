@@ -166,7 +166,7 @@ const SideNav = () => {
                                 <Input
                                     value={searchInput}
                                     onChange={e => setSearchInput(e.target.value)}
-                                    placeholder="Enter film"
+                                    placeholder={"Enter film"}
                                     onKeyPress={event => {
                                         if (event.key === "Enter") {
                                             onSearch()

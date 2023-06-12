@@ -16,8 +16,6 @@ const InfoTooltip = ({ text }) => {
                     {text}
                 </Typography>
             }
-
-            arrow
         >
             <InfoOutlined
                 style={{

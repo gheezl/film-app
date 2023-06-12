@@ -231,7 +231,7 @@ export const StylingProvider = ({ children }) => {
                 MuiInput: {
                     styleOverrides: {
                         root: {
-                            color: "black"
+                            color: "white"
                         },
                     },
                 },
@@ -247,10 +247,11 @@ export const StylingProvider = ({ children }) => {
                 MuiTooltip: {
                     styleOverrides: {
                         tooltip: {
-                            backgroundColor: themeSettings.palette.background.fourth
+                            backgroundColor: themeSettings.palette.background.fourth,
+                            borderRadius: "5px"
                         }
                     }
-                }
+                },
             },
             shadows: ['none', `0 4px 8px ${lightMode.primary[300]}`],
             breakpoints: {
