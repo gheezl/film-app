@@ -45,7 +45,7 @@ const FilmCard = ({ film }) => {
                                 cursor: isHovered ? "pointer" : null,
                             }}
                         >
-                            <img alt="alt" style={{ height: "296px", borderRadius: "25px" }} src={`https://image.tmdb.org/t/p/w1280${film.poster_path}`} />
+                            <img alt="alt" style={{ height: "300px", borderRadius: "25px" }} src={`https://image.tmdb.org/t/p/w1280${film.poster_path}`} />
                         </Paper>
                     </animated.div>
                 </Link >
