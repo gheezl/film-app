@@ -49,9 +49,10 @@ const FilmSetDisplay = ({ headLine, films }) => {
                     <HorizontalScroll
                         style={{
                             height: "380px",
-                            borderLeft: isBelowMd ? "none" : `1px solid ${theme.palette.primary.second}`,
-                            borderRight: isBelowMd ? "none" : `1px solid ${theme.palette.primary.second}`,
+                            borderLeft: `1px solid ${theme.palette.primary.second}`,
+                            borderRight: `1px solid ${theme.palette.primary.second}`,
                             borderRadius: "20px",
+                            // boxShadow: `0 0 10px ${theme.palette.primary.second}`,
                             padding: "0px 10px 0px 10px"
                         }}
                     >
