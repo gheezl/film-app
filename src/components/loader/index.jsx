@@ -1,7 +1,11 @@
 import { Box } from '@mui/material';
 import { CircleLoader } from 'react-spinners';
+import { useTheme } from "@mui/material";
+
 
 const Loader = () => {
+    const theme = useTheme();
+
     return (
         <Box
             sx={{
@@ -9,7 +13,7 @@ const Loader = () => {
                 height: "100vh",
                 justifyContent: "center",
                 alignItems: "center",
-                backgroundColor: "#121212"
+                backgroundColor: theme.palette.background.main ? theme.palette.background.main : "#121212"
             }}
         >
             <CircleLoader color="#00bcd4" size={150} />

@@ -38,12 +38,20 @@ const Film = ({ match }) => {
     })
 
     useEffect(() => {
+        let mounted = true;
+
         const getFilm = async () => {
             const film = await getFilmById(id);
-            setSelectedFilm(film);
+            if (mounted) {
+                setSelectedFilm(film);
+            }
         }
 
         getFilm();
+
+        return () => {
+            mounted = false;
+        }
     }, [id])
 
     useEffect(() => {
