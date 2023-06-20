@@ -105,10 +105,7 @@ const Film = ({ match }) => {
             <animated.div
                 style={{
                     ...fadeAnimation,
-                    display: "flex",
-                    flexDirection: isBelowLg ? "column" : "row",
-                    padding: '20px',
-                    marginBottom: '20px',
+                    ...styles.animationDiv(isBelowLg)
                 }}
             >
                 <Box sx={styles.imageBorder(isBelowLg)}>
@@ -185,10 +182,7 @@ const Film = ({ match }) => {
                     {/* Film Details */}
                     <Grid item xs={12} md={12} lg={4}>
                         <Paper
-                            sx={{
-                                height: '250px',
-                                overflowY: 'scroll',
-                            }}
+                            sx={styles.detailsBorder}
                         >
                             <ItemList items={selectedFilm.genres} headLine="Genres" />
                             <ItemList items={selectedFilm.spoken_languages} headLine="Spoken Languages" />
@@ -199,12 +193,10 @@ const Film = ({ match }) => {
                     {/* Financial Performance */}
                     <Grid item xs={12} md={12} lg={5}>
                         <Paper
-                            sx={{
-                                height: '250px',
-                            }}
+                            sx={styles.financialPerformanceBorder}
                         >
-                            <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-                                <Box sx={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                            <Box sx={styles.chartBorder}>
+                                <Box sx={styles.chartHeader}>
                                     <Typography variant="h2">Financial Performance</Typography>
                                     <InfoTooltip text="We use the standard method of calculating a film's profitability threshold by multiplying its budget by 2.5 as a way of factoring in uncounted expenses such as marketing. Usually, in other words, in order for a film to break even, its revenue must exceed its budget by 2.5 times." />
                                 </Box>

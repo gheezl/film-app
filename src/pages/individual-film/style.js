@@ -4,6 +4,12 @@ const styles = {
         display: "flex",
         flexDirection: "column"
     },
+    animationDiv: (isBelowLg) => ({
+        display: "flex",
+        flexDirection: isBelowLg ? "column" : "row",
+        padding: '20px',
+        marginBottom: '20px',
+    }),
     imageBorder: (isBelowLg) => ({
         marginBottom: "20px",
         marginRight: isBelowLg ? "0px" : "25px"
@@ -57,6 +63,21 @@ const styles = {
     },
     playIcon: {
         fontSize: '150px'
+    },
+    detailsBorder: {
+        height: '250px',
+        overflowY: 'scroll',
+    },
+    financialPerformanceBorder: {
+        height: "250px"
+    },
+    chartBorder: {
+        display: 'flex', flexDirection: 'column', height: '100%'
+    },
+    chartHeader: {
+        display: 'flex',
+        gap: '10px',
+        alignItems: 'center'
     }
 }
 
