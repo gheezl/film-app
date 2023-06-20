@@ -11,6 +11,7 @@ import ItemList from "../../components/item-list";
 import { PlayCircle } from "@mui/icons-material";
 import InfoTooltip from "../../components/info-tooltip";
 import { useSpring, animated } from "@react-spring/web";
+import styles from "./style";
 
 const Film = ({ match }) => {
     const [releaseDate, setReleaseDate] = useState("");
@@ -95,11 +96,12 @@ const Film = ({ match }) => {
 
         determineFinancialPerformance();
         getSimilarFilms();
+        console.log(styles.imageBorder(isBelowLg));
         // eslint-disable-next-line
     }, [selectedFilm])
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Box sx={styles.pageBorder}>
             <animated.div
                 style={{
                     ...fadeAnimation,
@@ -109,20 +111,11 @@ const Film = ({ match }) => {
                     marginBottom: '20px',
                 }}
             >
-                <Box sx={{ marginBottom: '20px', marginRight: isBelowLg ? "0px" : "25px" }}>
-                    <Paper
-                        sx={{
-                            // backgroundColor: theme.palette.background.second,
-                            // padding: '15px',
-                            // borderRadius: '25px',
-                            width: 'fit-content',
-                            height: 'fit-content',
-                            mx: 'auto', // Center horizontally
-                        }}
-                    >
+                <Box sx={styles.imageBorder(isBelowLg)}>
+                    <Paper sx={styles.imageCard} >
                         <img
                             alt="alt"
-                            style={{ width: isBelowSm ? "100%" : "450px", borderRadius: '25px' }}
+                            style={styles.image(isBelowSm)}
                             src={`https://image.tmdb.org/t/p/w1280${selectedFilm.poster_path}`}
                         />
                     </Paper>
@@ -131,19 +124,12 @@ const Film = ({ match }) => {
                 <Grid container spacing={2}>
                     {/* Header */}
                     <Grid item xs={12} md={12}>
-                        <Paper
-                            sx={{
-                                display: 'flex',
-                                flexDirection: isBelowLg ? "column" : "row",
-                                gap: "10px",
-                                justifyContent: 'space-between',
-                            }}
-                        >
-                            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                        <Paper sx={styles.headerBorder(isBelowLg)} >
+                            <Box>
                                 <Typography variant="h1">{selectedFilm.title}</Typography>
                                 <Typography
                                     variant="h4"
-                                    sx={{ marginTop: '10px', color: theme.palette.primary.third }}
+                                    sx={styles.headerRunTime(theme.palette.primary.third)}
                                 >
                                     {runtime}
                                 </Typography>
@@ -154,18 +140,12 @@ const Film = ({ match }) => {
 
                     {/* Description */}
                     <Grid item xs={12} md={12} lg={6} xl={8}>
-                        <Paper
-                            sx={{
-                                height: '250px',
-                                overflowY: 'scroll',
-                                flex: '1',
-                            }}
-                        >
+                        <Paper sx={styles.desciptionBorder}>
                             {
                                 selectedFilm.overview
                                     ?
                                     <Box>
-                                        <Typography variant="h2" sx={{ marginBottom: "10px" }} >Description</Typography>
+                                        <Typography variant="h2" sx={styles.descriptionHeaderSpacing} >Description</Typography>
                                         <Typography variant="h3">
                                             {selectedFilm.overview}
                                         </Typography>
@@ -174,18 +154,11 @@ const Film = ({ match }) => {
                             }
 
                         </Paper>
-
                     </Grid>
 
                     {/* Rating */}
                     <Grid item xs={12} md={6} lg={6} xl={4} >
-                        <Paper
-                            sx={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                height: '250px'
-                            }}
-                        >
+                        <Paper sx={styles.ratingBorder}>
                             <ProgressCircle
                                 progress={selectedFilm.vote_average}
                                 votes={selectedFilm.vote_count ? selectedFilm.vote_count : 0}
@@ -197,22 +170,13 @@ const Film = ({ match }) => {
                     {/* Play Button */}
                     <Grid item xs={12} md={6} lg={3}>
                         <Paper
-                            sx={{
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                height: '250px'
-                            }}
+                            sx={styles.playButtonBorder}
                         >
                             <Button
-                                sx={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    width: '100%',
-                                    borderRadius: '25px',
-                                }}
+                                sx={styles.playButton}
                                 onClick={() => window.open(selectedFilm.homepage, '_blank')}
                             >
-                                <PlayCircle sx={{ fontSize: '150px' }} />
+                                <PlayCircle sx={styles.playIcon} />
                                 <Typography variant="h2">Play Film</Typography>
                             </Button>
                         </Paper>
@@ -262,7 +226,7 @@ const Film = ({ match }) => {
                 films={similarFilms}
                 showInfo={false}
             />
-        </Box>
+        </Box >
     )
 }
 

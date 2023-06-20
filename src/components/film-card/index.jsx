@@ -15,7 +15,6 @@ const FilmCard = ({ film }) => {
     })
 
     return (
-
         <Box
             sx={{
                 display: "flex",
