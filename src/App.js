@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 
 import './App.css';
 
@@ -23,10 +23,6 @@ import Loader from './components/loader';
 
 const App = () => {
   const { theme } = useContext(StylingContext);
-
-  useEffect(() => {
-    console.log(theme);
-  }, [theme])
 
   return (
     <ThemeProvider theme={theme} >

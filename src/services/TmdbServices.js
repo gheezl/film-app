@@ -46,16 +46,12 @@ export const getIndividualFilm = async (filmNameQuery) => {
 }
 
 export const getFilmById = async (filmId) => {
+    console.log("HERE", filmId);
     const response = await fetch(`https://api.themoviedb.org/3/movie/${filmId}?language=en-US`, GETOPTIONS);
     const jsonData = await response.json();
+    console.log("HERE AGAIN", jsonData);
     return jsonData;
 }
-
-// export const getTVShowById = async (tvShowId) => {
-//     const response = await fetch(`https://api.themoviedb.org/3/tv/${tvShowId}?language=en-US`, GETOPTIONS);
-//     const jsonData = await response.json();
-//     return jsonData;
-// };
 
 export const getFilmsByGenre = async (genreId) => {
     const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genreId}`, GETOPTIONS);

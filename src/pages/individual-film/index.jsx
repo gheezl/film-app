@@ -11,6 +11,8 @@ import ItemList from "../../components/item-list";
 import { PlayCircle } from "@mui/icons-material";
 import InfoTooltip from "../../components/info-tooltip";
 import { useSpring, animated } from "@react-spring/web";
+import Loader from "../../components/loader";
+
 import styles from "./style";
 
 const Film = ({ match }) => {
@@ -96,130 +98,134 @@ const Film = ({ match }) => {
 
         determineFinancialPerformance();
         getSimilarFilms();
-        console.log(styles.imageBorder(isBelowLg));
         // eslint-disable-next-line
     }, [selectedFilm])
 
-    return (
-        <Box sx={styles.pageBorder}>
-            <animated.div
-                style={{
-                    ...fadeAnimation,
-                    ...styles.animationDiv(isBelowLg)
-                }}
-            >
-                <Box sx={styles.imageBorder(isBelowLg)}>
-                    <Paper sx={styles.imageCard} >
-                        <img
-                            alt="alt"
-                            style={styles.image(isBelowSm)}
-                            src={`https://image.tmdb.org/t/p/w1280${selectedFilm.poster_path}`}
-                        />
-                    </Paper>
-                </Box>
-
-                <Grid container spacing={2}>
-                    {/* Header */}
-                    <Grid item xs={12} md={12}>
-                        <Paper sx={styles.headerBorder(isBelowLg)} >
-                            <Box>
-                                <Typography variant="h1">{selectedFilm.title}</Typography>
-                                <Typography
-                                    variant="h4"
-                                    sx={styles.headerRunTime(theme.palette.primary.third)}
-                                >
-                                    {runtime}
-                                </Typography>
-                            </Box>
-                            <Typography variant="h1">{releaseDate}</Typography>
-                        </Paper>
-                    </Grid>
-
-                    {/* Description */}
-                    <Grid item xs={12} md={12} lg={6} xl={8}>
-                        <Paper sx={styles.desciptionBorder}>
-                            {
-                                selectedFilm.overview
-                                    ?
-                                    <Box>
-                                        <Typography variant="h2" sx={styles.descriptionHeaderSpacing} >Description</Typography>
-                                        <Typography variant="h3">
-                                            {selectedFilm.overview}
-                                        </Typography>
-                                    </Box>
-                                    : <Typography variant="h2" >No description to display.</Typography>
-                            }
-
-                        </Paper>
-                    </Grid>
-
-                    {/* Rating */}
-                    <Grid item xs={12} md={6} lg={6} xl={4} >
-                        <Paper sx={styles.ratingBorder}>
-                            <ProgressCircle
-                                progress={selectedFilm.vote_average}
-                                votes={selectedFilm.vote_count ? selectedFilm.vote_count : 0}
-                                size="200"
+    if (selectedFilm.poster_path) {
+        return (
+            <Box sx={styles.pageBorder}>
+                <animated.div
+                    style={{
+                        ...fadeAnimation,
+                        ...styles.animationDiv(isBelowLg)
+                    }}
+                >
+                    <Box sx={styles.imageBorder(isBelowLg)}>
+                        <Paper sx={styles.imageCard} >
+                            <img
+                                alt="alt"
+                                style={styles.image(isBelowSm)}
+                                src={`https://image.tmdb.org/t/p/w1280${selectedFilm.poster_path}`}
                             />
                         </Paper>
-                    </Grid>
+                    </Box>
 
-                    {/* Play Button */}
-                    <Grid item xs={12} md={6} lg={3}>
-                        <Paper
-                            sx={styles.playButtonBorder}
-                        >
-                            <Button
-                                sx={styles.playButton}
-                                onClick={() => window.open(selectedFilm.homepage, '_blank')}
-                            >
-                                <PlayCircle sx={styles.playIcon} />
-                                <Typography variant="h2">Play Film</Typography>
-                            </Button>
-                        </Paper>
-                    </Grid>
-
-                    {/* Film Details */}
-                    <Grid item xs={12} md={12} lg={4}>
-                        <Paper
-                            sx={styles.detailsBorder}
-                        >
-                            <ItemList items={selectedFilm.genres} headLine="Genres" />
-                            <ItemList items={selectedFilm.spoken_languages} headLine="Spoken Languages" />
-                            <ItemList items={selectedFilm.production_companies} headLine="Production Companies" />
-                        </Paper>
-                    </Grid>
-
-                    {/* Financial Performance */}
-                    <Grid item xs={12} md={12} lg={5}>
-                        <Paper
-                            sx={styles.financialPerformanceBorder}
-                        >
-                            <Box sx={styles.chartBorder}>
-                                <Box sx={styles.chartHeader}>
-                                    <Typography variant="h2">Financial Performance</Typography>
-                                    <InfoTooltip text="We use the standard method of calculating a film's profitability threshold by multiplying its budget by 2.5 as a way of factoring in uncounted expenses such as marketing. Usually, in other words, in order for a film to break even, its revenue must exceed its budget by 2.5 times." />
-                                </Box>
-                                {barData[0] ? (
-                                    <BarChart data={barData} />
-                                ) : (
-                                    <Typography sx={{ color: theme.palette.primary.third }} variant="h4">
-                                        Insufficient data.
+                    <Grid container spacing={2}>
+                        {/* Header */}
+                        <Grid item xs={12} md={12}>
+                            <Paper sx={styles.headerBorder(isBelowLg)} >
+                                <Box>
+                                    <Typography variant="h1">{selectedFilm.title}</Typography>
+                                    <Typography
+                                        variant="h4"
+                                        sx={styles.headerRunTime(theme.palette.primary.third)}
+                                    >
+                                        {runtime}
                                     </Typography>
-                                )}
-                            </Box>
-                        </Paper>
+                                </Box>
+                                <Typography variant="h1">{releaseDate}</Typography>
+                            </Paper>
+                        </Grid>
+
+                        {/* Description */}
+                        <Grid item xs={12} md={12} lg={6} xl={8}>
+                            <Paper sx={styles.desciptionBorder}>
+                                {
+                                    selectedFilm.overview
+                                        ?
+                                        <Box>
+                                            <Typography variant="h2" sx={styles.descriptionHeaderSpacing} >Description</Typography>
+                                            <Typography variant="h3">
+                                                {selectedFilm.overview}
+                                            </Typography>
+                                        </Box>
+                                        : <Typography variant="h2" >No description to display.</Typography>
+                                }
+
+                            </Paper>
+                        </Grid>
+
+                        {/* Rating */}
+                        <Grid item xs={12} md={6} lg={6} xl={4} >
+                            <Paper sx={styles.ratingBorder}>
+                                <ProgressCircle
+                                    progress={selectedFilm.vote_average}
+                                    votes={selectedFilm.vote_count ? selectedFilm.vote_count : 0}
+                                    size="200"
+                                />
+                            </Paper>
+                        </Grid>
+
+                        {/* Play Button */}
+                        <Grid item xs={12} md={6} lg={3}>
+                            <Paper
+                                sx={styles.playButtonBorder}
+                            >
+                                <Button
+                                    sx={styles.playButton}
+                                    onClick={() => window.open(selectedFilm.homepage, '_blank')}
+                                >
+                                    <PlayCircle sx={styles.playIcon} />
+                                    <Typography variant="h2">Play Film</Typography>
+                                </Button>
+                            </Paper>
+                        </Grid>
+
+                        {/* Film Details */}
+                        <Grid item xs={12} md={12} lg={4}>
+                            <Paper
+                                sx={styles.detailsBorder}
+                            >
+                                <ItemList items={selectedFilm.genres} headLine="Genres" />
+                                <ItemList items={selectedFilm.spoken_languages} headLine="Spoken Languages" />
+                                <ItemList items={selectedFilm.production_companies} headLine="Production Companies" />
+                            </Paper>
+                        </Grid>
+
+                        {/* Financial Performance */}
+                        <Grid item xs={12} md={12} lg={5}>
+                            <Paper
+                                sx={styles.financialPerformanceBorder}
+                            >
+                                <Box sx={styles.chartBorder}>
+                                    <Box sx={styles.chartHeader}>
+                                        <Typography variant="h2">Financial Performance</Typography>
+                                        <InfoTooltip text="We use the standard method of calculating a film's profitability threshold by multiplying its budget by 2.5 as a way of factoring in uncounted expenses such as marketing. Usually, in other words, in order for a film to break even, its revenue must exceed its budget by 2.5 times." />
+                                    </Box>
+                                    {barData[0] ? (
+                                        <BarChart data={barData} />
+                                    ) : (
+                                        <Typography sx={{ color: theme.palette.primary.third }} variant="h4">
+                                            Insufficient data.
+                                        </Typography>
+                                    )}
+                                </Box>
+                            </Paper>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </animated.div>
-            <FullPageDisplay
-                headLine="Similar Films"
-                alternateHeadline="No Similar Films to Display"
-                films={similarFilms}
-                showInfo={false}
-            />
-        </Box >
-    )
+                </animated.div>
+                <FullPageDisplay
+                    headLine="Similar Films"
+                    alternateHeadline="No Similar Films to Display"
+                    films={similarFilms}
+                    showInfo={false}
+                />
+            </Box >
+        )
+    }
+    else {
+        return <Loader />
+    }
 }
 
 export default Film;
