@@ -4,8 +4,7 @@ import { createContext, useEffect, useState } from "react";
 export const StylingContext = createContext();
 
 export const StylingProvider = ({ children }) => {
-    // eslint-disable-next-line
-    const [darkMode, setDarkMode] = useState({
+    const darkMode = {
         surface: {
             100: "#121212",
             200: "#282828",
@@ -38,9 +37,8 @@ export const StylingProvider = ({ children }) => {
             500: "#c78f8f",
             600: "#eab6b6"
         }
-    });
-    // eslint-disable-next-line
-    const [lightMode, setLightMode] = useState({
+    }
+    const lightMode = {
         surface: {
             100: "#ffffff",
             200: "#e0e0e0",
@@ -73,24 +71,17 @@ export const StylingProvider = ({ children }) => {
             500: "#ff3333",
             600: "#ff0d0d"
         }
-    })
+    }
+
     const [theme, setTheme] = useState({});
     const [currentMode, setCurrentMode] = useState("light");
-    // eslint-disable-next-line
-    const [isBelowXs, setIsBelowXs] = useState("");
-    // eslint-disable-next-line
-    const [isBelowSm, setIsBelowSm] = useState("");
-    // eslint-disable-next-line
-    const [isBelowMd, setIsBelowMd] = useState("");
-    // eslint-disable-next-line
-    const [isBelowLg, setIsBelowLg] = useState("");
 
     useEffect(() => {
         toggleMode(currentMode);
         // eslint-disable-next-line
     }, [])
 
-    const setThemeSettings = (mode) => {
+    const setMode = (mode) => {
         let themeSettings;
 
         if (mode === "dark") {
@@ -270,7 +261,7 @@ export const StylingProvider = ({ children }) => {
 
     const toggleMode = () => {
         const newMode = currentMode === "dark" ? "light" : "dark"
-        setTheme(setThemeSettings(newMode));
+        setTheme(setMode(newMode));
         setCurrentMode(newMode);
     }
 
@@ -280,10 +271,6 @@ export const StylingProvider = ({ children }) => {
                 toggleMode,
                 currentMode,
                 theme,
-                isBelowXs,
-                isBelowSm,
-                isBelowMd,
-                isBelowLg
             }}
         >
             {children}
