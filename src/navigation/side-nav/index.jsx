@@ -8,6 +8,7 @@ import { StylingContext } from "../../contexts/StylingProvider";
 import { getIndividualFilm } from "../../services/TmdbServices";
 
 import style from "./style";
+import globalStyle from "../../styling/globalStyles";
 
 const SideNav = () => {
     const [searchInput, setSearchInput] = useState("");
@@ -47,7 +48,7 @@ const SideNav = () => {
                 <MenuItem
                     icon={<MenuOutlined />}
                     onClick={() => collapseSidebar()}
-                    style={style.setColor(theme.palette.primary.second)}
+                    style={globalStyle.setColor(theme.palette.primary.second)}
                 >
                     <Typography variant="h4" >Navigation Menu</Typography>
                 </MenuItem>
@@ -64,7 +65,7 @@ const SideNav = () => {
                     <Link to="/">
                         <MenuItem
                             icon={<Home />}
-                            style={style.setColor(theme.palette.primary.second)}
+                            style={globalStyle.setColor(theme.palette.primary.second)}
                         >
                             <Typography variant="h6" >Home</Typography>
                         </MenuItem>
@@ -81,14 +82,14 @@ const SideNav = () => {
                     placement="right"
                 >
                     <SubMenu
-                        icon={<Category style={style.setColor(theme.palette.primary.second)} />}
+                        icon={<Category style={globalStyle.setColor(theme.palette.primary.second)} />}
                         label="Genres"
                     >
                         {
                             genres && genres.map(genre => (
                                 <Link to={`/genre/${genre.name}/${genre.id}`}>
                                     <MenuItem
-                                        style={style.setBackgroundColor(theme.palette.background.third)}
+                                        style={globalStyle.setBackgroundColor(theme.palette.background.third)}
                                     >
                                         <Typography variant="h6" >{genre.name}</Typography>
                                     </MenuItem>
@@ -111,7 +112,7 @@ const SideNav = () => {
                     <Link to="/recently-viewed">
                         <MenuItem
                             icon={<Visibility />}
-                            style={style.setColor(theme.palette.primary.second)}
+                            style={globalStyle.setColor(theme.palette.primary.second)}
                         >
                             <Typography variant="h6" >Recently Viewed</Typography>
                         </MenuItem>
@@ -130,7 +131,7 @@ const SideNav = () => {
                     <Link to="/recommendations">
                         <MenuItem
                             icon={<Star />}
-                            style={style.setColor(theme.palette.primary.second)}
+                            style={globalStyle.setColor(theme.palette.primary.second)}
                         >
                             <Typography variant="h6" >Recommendations</Typography>
                         </MenuItem>
@@ -147,10 +148,10 @@ const SideNav = () => {
                     placement="right"
                 >
                     <SubMenu
-                        icon={<Search style={style.setColor(theme.palette.primary.second)} />}
+                        icon={<Search style={globalStyle.setColor(theme.palette.primary.second)} />}
                         label="Search"
                     >
-                        <MenuItem style={style.setBackgroundColor(theme.palette.background.fourth)} >
+                        <MenuItem style={globalStyle.setBackgroundColor(theme.palette.background.fourth)} >
                             <Box sx={{ display: "flex", flexDirection: "row", }}>
                                 <Input
                                     value={searchInput}
@@ -183,7 +184,7 @@ const SideNav = () => {
                 >
                     <MenuItem
                         icon={<Brightness2 />}
-                        style={style.setColor(theme.palette.primary.second)}
+                        style={globalStyle.setColor(theme.palette.primary.second)}
                         onClick={() => toggleMode()}
                     >
                         <Typography variant="h6" >Change theme to {currentMode === "dark" ? "light" : "dark"}</Typography>

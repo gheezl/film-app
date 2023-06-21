@@ -6,12 +6,6 @@ const style = {
         zIndex: 1,
         width: '100%',
     },
-    setBackgroundColor: (backgroundColor) => ({
-        backgroundColor: backgroundColor
-    }),
-    setColor: (color) => ({
-        color: color
-    })
 }
 
 export default style;

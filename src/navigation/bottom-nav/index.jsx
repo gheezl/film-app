@@ -7,6 +7,7 @@ import { getIndividualFilm } from "../../services/TmdbServices";
 import { TmdbContext } from "../../contexts/TmdbProvider";
 
 import style from "./style";
+import globalStyle from "../../styling/globalStyles";
 
 const BottomNav = () => {
     const [value, setValue] = useState(0);
@@ -50,15 +51,15 @@ const BottomNav = () => {
             <BottomNavigation
                 value={value}
                 onChange={handleNav}
-                sx={style.setBackgroundColor(theme.palette.background.second)}
+                sx={globalStyle.setBackgroundColor(theme.palette.background.second)}
             >
-                <BottomNavigationAction sx={style.setColor(theme.palette.primary.second)} icon={<Home />} />
-                <BottomNavigationAction sx={style.setColor(theme.palette.primary.second)} icon={<Visibility />} />
-                <BottomNavigationAction sx={style.setColor(theme.palette.primary.second)} icon={<Star />} />
-                <BottomNavigationAction sx={style.setColor(theme.palette.primary.second)} icon={<Brightness2 />} />
-                <BottomNavigationAction sx={style.setColor(theme.palette.primary.second)} icon={<Search />} />
+                <BottomNavigationAction sx={globalStyle.setColor(theme.palette.primary.second)} icon={<Home />} />
+                <BottomNavigationAction sx={globalStyle.setColor(theme.palette.primary.second)} icon={<Visibility />} />
+                <BottomNavigationAction sx={globalStyle.setColor(theme.palette.primary.second)} icon={<Star />} />
+                <BottomNavigationAction sx={globalStyle.setColor(theme.palette.primary.second)} icon={<Brightness2 />} />
+                <BottomNavigationAction sx={globalStyle.setColor(theme.palette.primary.second)} icon={<Search />} />
             </BottomNavigation>
-            <Dialog PaperProps={{ style: style.setBackgroundColor(theme.palette.background.second) }} open={open} onClose={() => setOpen(false)}>
+            <Dialog PaperProps={{ style: globalStyle.setBackgroundColor(theme.palette.background.second) }} open={open} onClose={() => setOpen(false)}>
                 <DialogTitle>Search for a film</DialogTitle>
                 <DialogContent>
                     <Input
