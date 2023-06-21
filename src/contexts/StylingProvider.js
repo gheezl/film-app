@@ -270,7 +270,7 @@ export const StylingProvider = ({ children }) => {
             value={{
                 toggleMode,
                 currentMode,
-                theme,
+                theme
             }}
         >
             {children}
