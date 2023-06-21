@@ -8,20 +8,8 @@ const ProgressCircle = ({ progress, votes, size }) => {
 
     return (
         <Box sx={style.progressCircleBorder}>
-            <Box sx={
-                style.progressCircleCompleted(theme.palette.primary.main, theme.palette.secondary.main, theme.palette.background.main, angle, size)
-            }
-            >
-                <Box
-                    sx={{
-                        width: `${size}px`,
-                        height: `${size}px`,
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        alignItems: "center"
-                    }}
-                >
+            <Box sx={style.progressCircle(theme.palette.primary.main, theme.palette.secondary.main, theme.palette.background.main, angle, size)}>
+                <Box sx={style.votesBorder(size)}>
                     {
                         votes
                             ?
