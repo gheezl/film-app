@@ -42,7 +42,7 @@ const styles = {
         overflowY: 'scroll',
         flex: '1',
     },
-    descriptionHeaderSpacing: {
+    descriptionHeader: {
         marginBottom: "10px"
     },
     ratingBorder: {

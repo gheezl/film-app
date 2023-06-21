@@ -152,14 +152,13 @@ const Film = ({ match }) => {
                                     selectedFilm.overview
                                         ?
                                         <Box>
-                                            <Typography variant="h2" sx={styles.descriptionHeaderSpacing} >Description</Typography>
+                                            <Typography variant="h2" sx={styles.descriptionHeader} >Description</Typography>
                                             <Typography variant="h3">
                                                 {selectedFilm.overview}
                                             </Typography>
                                         </Box>
                                         : <Typography variant="h2" >No description to display.</Typography>
                                 }
-
                             </Paper>
                         </Grid>
 
@@ -188,7 +187,6 @@ const Film = ({ match }) => {
                                 </Button>
                             </Paper>
                         </Grid>
-
                         {/* Film Details */}
                         <Grid item xs={12} md={12} lg={4}>
                             <Paper
@@ -199,7 +197,6 @@ const Film = ({ match }) => {
                                 <ItemList items={selectedFilm.production_companies} headLine="Production Companies" />
                             </Paper>
                         </Grid>
-
                         {/* Financial Performance */}
                         <Grid item xs={12} md={12} lg={5}>
                             <Paper

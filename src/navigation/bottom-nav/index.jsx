@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { getIndividualFilm } from "../../services/TmdbServices";
 import { TmdbContext } from "../../contexts/TmdbProvider";
 
+import style from "./style";
+
 const BottomNav = () => {
     const [value, setValue] = useState(0);
     const [searchInput, setSearchInput] = useState();
@@ -44,27 +46,19 @@ const BottomNav = () => {
     }
 
     return (
-        <Box
-            sx={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                zIndex: 1,
-                width: '100%',
-            }}
-        >
-            <BottomNavigation value={value} onChange={handleNav}
-                sx={{
-                    backgroundColor: theme.palette.background.second
-                }}
+        <Box sx={style.navBorder} >
+            <BottomNavigation
+                value={value}
+                onChange={handleNav}
+                sx={style.setBackgroundColor(theme.palette.background.second)}
             >
-                <BottomNavigationAction sx={{ color: theme.palette.primary.second }} icon={<Home />} />
-                <BottomNavigationAction sx={{ color: theme.palette.primary.second }} icon={<Visibility />} />
-                <BottomNavigationAction sx={{ color: theme.palette.primary.second }} icon={<Star />} />
-                <BottomNavigationAction sx={{ color: theme.palette.primary.second }} icon={<Brightness2 />} />
-                <BottomNavigationAction sx={{ color: theme.palette.primary.second }} icon={<Search />} />
+                <BottomNavigationAction sx={style.setColor(theme.palette.primary.second)} icon={<Home />} />
+                <BottomNavigationAction sx={style.setColor(theme.palette.primary.second)} icon={<Visibility />} />
+                <BottomNavigationAction sx={style.setColor(theme.palette.primary.second)} icon={<Star />} />
+                <BottomNavigationAction sx={style.setColor(theme.palette.primary.second)} icon={<Brightness2 />} />
+                <BottomNavigationAction sx={style.setColor(theme.palette.primary.second)} icon={<Search />} />
             </BottomNavigation>
-            <Dialog PaperProps={{ style: { backgroundColor: theme.palette.background.second } }} open={open} onClose={() => setOpen(false)}>
+            <Dialog PaperProps={{ style: style.setBackgroundColor(theme.palette.background.second) }} open={open} onClose={() => setOpen(false)}>
                 <DialogTitle>Search for a film</DialogTitle>
                 <DialogContent>
                     <Input

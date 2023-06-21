@@ -3,12 +3,13 @@ import { TmdbContext } from "../../contexts/TmdbProvider";
 import { Box } from "@mui/material";
 
 import FilmSetDisplay from "../../components/film-set-display";
+import style from "./styles";
 
 const Home = () => {
     const { nowPlaying, popularFilms, topRatedFilms, upcomingFilms, trendingFilms } = useContext(TmdbContext)
 
     return (
-        <Box sx={{ padding: "20px", marginBottom: "20px" }}>
+        <Box sx={style.pageBorder}>
             <FilmSetDisplay headLine={"Films Now Playing"} films={nowPlaying} />
             <FilmSetDisplay headLine={"Popular Films"} films={popularFilms} />
             <FilmSetDisplay headLine={"Trending Films"} films={trendingFilms} />

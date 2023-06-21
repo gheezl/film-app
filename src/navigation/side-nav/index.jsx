@@ -7,6 +7,8 @@ import { TmdbContext } from "../../contexts/TmdbProvider";
 import { StylingContext } from "../../contexts/StylingProvider";
 import { getIndividualFilm } from "../../services/TmdbServices";
 
+import style from "./style";
+
 const SideNav = () => {
     const [searchInput, setSearchInput] = useState("");
     const { setSearchedFilms, genres } = useContext(TmdbContext);
@@ -26,9 +28,7 @@ const SideNav = () => {
     return (
         <Sidebar
             backgroundColor={theme.palette.background.second}
-            style={{
-                border: "none",
-            }}
+            style={style.sideBarBorder}
         >
             <Menu
                 iconShape="square"
@@ -47,9 +47,7 @@ const SideNav = () => {
                 <MenuItem
                     icon={<MenuOutlined />}
                     onClick={() => collapseSidebar()}
-                    style={{
-                        color: theme.palette.primary.second
-                    }}
+                    style={style.setColor(theme.palette.primary.second)}
                 >
                     <Typography variant="h4" >Navigation Menu</Typography>
                 </MenuItem>
@@ -66,9 +64,7 @@ const SideNav = () => {
                     <Link to="/">
                         <MenuItem
                             icon={<Home />}
-                            style={{
-                                color: theme.palette.primary.second
-                            }}
+                            style={style.setColor(theme.palette.primary.second)}
                         >
                             <Typography variant="h6" >Home</Typography>
                         </MenuItem>
@@ -85,16 +81,14 @@ const SideNav = () => {
                     placement="right"
                 >
                     <SubMenu
-                        icon={<Category style={{ color: theme.palette.primary.second }} />}
+                        icon={<Category style={style.setColor(theme.palette.primary.second)} />}
                         label="Genres"
                     >
                         {
                             genres && genres.map(genre => (
                                 <Link to={`/genre/${genre.name}/${genre.id}`}>
                                     <MenuItem
-                                        style={{
-                                            backgroundColor: theme.palette.background.third
-                                        }}
+                                        style={style.setBackgroundColor(theme.palette.background.third)}
                                     >
                                         <Typography variant="h6" >{genre.name}</Typography>
                                     </MenuItem>
@@ -117,9 +111,7 @@ const SideNav = () => {
                     <Link to="/recently-viewed">
                         <MenuItem
                             icon={<Visibility />}
-                            style={{
-                                color: theme.palette.primary.second
-                            }}
+                            style={style.setColor(theme.palette.primary.second)}
                         >
                             <Typography variant="h6" >Recently Viewed</Typography>
                         </MenuItem>
@@ -138,9 +130,7 @@ const SideNav = () => {
                     <Link to="/recommendations">
                         <MenuItem
                             icon={<Star />}
-                            style={{
-                                color: theme.palette.primary.second
-                            }}
+                            style={style.setColor(theme.palette.primary.second)}
                         >
                             <Typography variant="h6" >Recommendations</Typography>
                         </MenuItem>
@@ -157,11 +147,10 @@ const SideNav = () => {
                     placement="right"
                 >
                     <SubMenu
-                        icon={<Search style={{ color: theme.palette.primary.second }} />}
+                        icon={<Search style={style.setColor(theme.palette.primary.second)} />}
                         label="Search"
                     >
-                        <MenuItem
-                            style={{ backgroundColor: theme.palette.background.fourth }}>
+                        <MenuItem style={style.setBackgroundColor(theme.palette.background.fourth)} >
                             <Box sx={{ display: "flex", flexDirection: "row", }}>
                                 <Input
                                     value={searchInput}
@@ -194,9 +183,7 @@ const SideNav = () => {
                 >
                     <MenuItem
                         icon={<Brightness2 />}
-                        style={{
-                            color: theme.palette.primary.second,
-                        }}
+                        style={style.setColor(theme.palette.primary.second)}
                         onClick={() => toggleMode()}
                     >
                         <Typography variant="h6" >Change theme to {currentMode === "dark" ? "light" : "dark"}</Typography>
