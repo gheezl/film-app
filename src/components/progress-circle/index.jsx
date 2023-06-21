@@ -1,27 +1,16 @@
 import { Box, Typography, useTheme } from "@mui/material";
 
+import style from "./style";
+
 const ProgressCircle = ({ progress, votes, size }) => {
     const theme = useTheme();
     const angle = (progress * 0.1) * 360;
 
     return (
-        <Box
-            sx={{
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center"
-            }}
-        >
-            <Box sx={{
-                background: `radial-gradient(${theme.palette.background.main} 55%, transparent 56%),
-                conic-gradient(transparent 0deg ${angle}deg, ${theme.palette.secondary.main} ${angle}deg 360deg),
-                ${theme.palette.primary.main}`,
-                borderRadius: "50%",
-                width: `${size}px`,
-                height: `${size}px`,
-            }}
+        <Box sx={style.progressCircleBorder}>
+            <Box sx={
+                style.progressCircleCompleted(theme.palette.primary.main, theme.palette.secondary.main, theme.palette.background.main, angle, size)
+            }
             >
                 <Box
                     sx={{
