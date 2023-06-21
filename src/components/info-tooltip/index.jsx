@@ -1,6 +1,8 @@
 import { InfoOutlined } from "@mui/icons-material";
 import { Tooltip, Typography, useTheme } from "@mui/material";
 
+import styles from "./styles";
+
 const InfoTooltip = ({ text }) => {
     const theme = useTheme();
 
@@ -9,20 +11,13 @@ const InfoTooltip = ({ text }) => {
             title={
                 <Typography
                     variant="h4"
-                    sx={{
-                        margin: "5px"
-                    }}
+                    sx={styles.infoText}
                 >
                     {text}
                 </Typography>
             }
         >
-            <InfoOutlined
-                style={{
-                    color: theme.palette.primary.main,
-                    fontSize: "25px"
-                }}
-            />
+            <InfoOutlined style={styles.infoIcon(theme.palette.primary.main)} />
         </Tooltip>
     )
 }
