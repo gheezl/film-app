@@ -2,22 +2,16 @@ import { useContext } from "react";
 import { TmdbContext } from "../../contexts/TmdbProvider";
 import { Box, Button } from "@mui/material";
 import FullPageDisplay from "../../components/film-set-display-full-page";
+import style from "./style";
 
 const RecentlyViewed = () => {
     const { recentlyViewed, removeRecentlyViewed } = useContext(TmdbContext)
 
     return (
-        <Box
-            sx={{
-                width: "100%",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center"
-            }}
-        >
+        <Box sx={style.pageBorder} >
             {
                 recentlyViewed[0]
-                    ? < Button sx={{ margin: "20px" }} onClick={() => removeRecentlyViewed()} >Remove Recently Viewed</Button>
+                    ? < Button sx={style.clearButton} onClick={() => removeRecentlyViewed()} >Remove Recently Viewed</Button>
                     : null
             }
             <FullPageDisplay

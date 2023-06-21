@@ -2,30 +2,21 @@ import { Box, useTheme, useMediaQuery } from "@mui/material"
 import BottomNav from "../../navigation/bottom-nav";
 import SideNav from "../../navigation/side-nav";
 
+import style from "./style";
+
 const PageBorder = ({ children }) => {
     const theme = useTheme();
     const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
 
     return (
-        <Box
-            sx={{
-                display: "flex",
-                justifyContent: "row",
-                height: "100vh",
-                backgroundColor: theme.palette ? theme.palette.background.main : null,
-            }}
-        >
+        <Box sx={style.border(theme.palette.background.main)} >
             {
                 isBelowMd
                     ? <BottomNav />
                     : <SideNav />
             }
             <Box
-                sx={{
-                    width: "100%",
-                    overflow: "scroll",
-                    paddingBottom: "40px"
-                }}
+                sx={style.childrenBorder}
             >
                 {children}
             </Box>
