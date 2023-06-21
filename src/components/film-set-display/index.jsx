@@ -3,6 +3,7 @@ import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
 import FilmCard from "../../components/film-card";
 
 import HorizontalScroll from "react-scroll-horizontal";
+import style from "./style";
 
 const FilmSetDisplay = ({ headLine, films }) => {
     const theme = useTheme();
@@ -10,29 +11,17 @@ const FilmSetDisplay = ({ headLine, films }) => {
     const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
 
     return (
-        <Box sx={{ padding: isBelowMd ? "0px 0px 20px 0px" : "20px", margin: isBelowMd ? "0px -20px 0px -20px" : "0px" }}>
+        <Box sx={style.displayBorder(isBelowMd)}>
             <Typography
                 variant="h2"
-                sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    margin: "-15px 0px 10px 0px",
-                }}
+                sx={style.headlineBorder}
             >
                 {headLine}
             </Typography>
             {
                 isBelowMd
                     ?
-                    <Box
-                        sx={{
-                            display: "flex",
-                            overflowX: "scroll",
-                            height: "380px",
-                            borderRadius: "20px",
-                            padding: "0px 10px 0px 10px"
-                        }}
-                    >
+                    <Box sx={style.mobileScrollBorder}>
                         {
                             films?.results
                                 ? (
@@ -46,16 +35,7 @@ const FilmSetDisplay = ({ headLine, films }) => {
                         }
                     </Box>
                     :
-                    <HorizontalScroll
-                        style={{
-                            height: "380px",
-                            borderLeft: `1px solid ${theme.palette.primary.second}`,
-                            borderRight: `1px solid ${theme.palette.primary.second}`,
-                            borderRadius: "20px",
-                            // boxShadow: `0 0 10px ${theme.palette.primary.second}`,
-                            padding: "0px 10px 0px 10px"
-                        }}
-                    >
+                    <HorizontalScroll style={style.desktopScrollBorder(theme.palette.primary.second)} >
                         {
                             films?.results
                                 ? (

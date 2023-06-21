@@ -2,12 +2,12 @@ import { Typography, Box, Grid } from "@mui/material";
 import FilmCard from "../film-card";
 import InfoTooltip from "../info-tooltip";
 
+import style from "./style";
+
 const FullPageDisplay = ({ headLine, alternateHeadline, films, showInfo, }) => {
     return (
-        <Box sx={{ padding: "20px", }}>
-            <Box
-                sx={{ display: "flex", justifyContent: "center", gap: "10px", alignItems: "center" }}
-            >
+        <Box sx={style.displayBorder}>
+            <Box sx={style.headLineBorder}>
                 <Typography variant="h2" >{films[0] ? headLine : alternateHeadline}</Typography>
                 {
                     showInfo
@@ -18,9 +18,7 @@ const FullPageDisplay = ({ headLine, alternateHeadline, films, showInfo, }) => {
             <Grid
                 container
                 spacing={2}
-                marginTop="10px"
-                paddingLeft="10px"
-                paddingRight="10px"
+                style={style.gridBorder}
             >
                 {films[0]
                     ?
