@@ -8,7 +8,10 @@ const Loader = () => {
 
     return (
         <Box sx={styles.loaderBorder(theme.palette.background.main)}>
-            <CircleLoader color="#00bcd4" size={150} />
+            <CircleLoader
+                color={theme.palette.primary.main ? theme.palette.primary.main : "#00bcd4"}
+                size={150}
+            />
         </Box>
     )
 }

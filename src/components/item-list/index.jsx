@@ -1,48 +1,29 @@
 import { useTheme, Box, Typography, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 
+import styles from "./style";
+
 const ItemList = ({ items, headLine }) => {
     const theme = useTheme();
 
     return (
-        <Box
-        // sx={{
-        //     width: "100%"
-        // }}
-        >
+        <Box>
             <Typography variant="h2">{headLine}</Typography>
             <List>
                 {
                     items && items[0]
                         ? items.map(item => (
-                            <ListItem
-                                sx={{
-                                    padding: "5px 0px 5px 10px"
-                                }}
-                            >
+                            <ListItem sx={styles.listItem}>
                                 <ListItemIcon>
-                                    <span
-                                        style={{
-                                            width: "8px",
-                                            height: "8px",
-                                            borderRadius: "50%",
-                                            backgroundColor: theme.palette.primary.second,
-                                        }}
-                                    />
+                                    <span style={styles.listItemIcon(theme.palette.primary.second)} />
                                 </ListItemIcon>
                                 <ListItemText
-                                    sx={{
-                                        margin: "0px 0px 0px -35px",
-                                    }}
+                                    sx={styles.listItemText}
                                     primary={item.name}
                                 />
                             </ListItem>
                         ))
-                        : <Typography sx={{ color: theme.palette.primary.third }} variant="h4">No data.</Typography>
+                        : <Typography sx={styles.noData(theme.palette.primary.third)} variant="h4">No data.</Typography>
                 }
-                {/* {
-                    items[0]
-
-                } */}
             </List>
         </Box>
     )
