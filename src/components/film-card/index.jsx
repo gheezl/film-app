@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useSpring, animated } from '@react-spring/web'
+import style from "./style";
 
 const FilmCard = ({ film }) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -15,19 +16,12 @@ const FilmCard = ({ film }) => {
     })
 
     return (
-        <Box
-            sx={{
-                display: "flex",
-                justifyContent: "center"
-            }}
-        >
+        <Box sx={style.cardBorder}>
             <Tooltip
                 title={
                     <Typography
                         variant="h4"
-                        sx={{
-                            margin: "5px"
-                        }}
+                        sx={style.title}
                     >
                         {film.title}
                     </Typography>
@@ -39,12 +33,13 @@ const FilmCard = ({ film }) => {
                             elevation={isHovered ? 0 : 1}
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
-                            sx={{
-                                margin: "20px 10px 20px 10px",
-                                cursor: isHovered ? "pointer" : null,
-                            }}
+                            sx={style.imageBorder}
                         >
-                            <img alt="alt" style={{ height: "300px", borderRadius: "25px" }} src={`https://image.tmdb.org/t/p/w1280${film.poster_path}`} />
+                            <img
+                                alt="alt"
+                                style={style.image}
+                                src={`https://image.tmdb.org/t/p/w1280${film.poster_path}`}
+                            />
                         </Paper>
                     </animated.div>
                 </Link >

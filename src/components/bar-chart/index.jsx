@@ -1,5 +1,6 @@
 import { Typography, useTheme, Paper } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
+import style from "./style";
 
 const BarChart = ({ data }) => {
     const theme = useTheme();
@@ -64,11 +65,7 @@ const BarChart = ({ data }) => {
             ]}
             tooltip={bar => (
                 <Paper
-                    sx={{
-                        backgroundColor: theme.palette.background.second,
-                        padding: "8px",
-                        borderRadius: "5px",
-                    }}
+                    sx={style.toolTipBorder(theme.palette.background.second)}
                 >
                     <Typography>{`${bar.data.category}: $${bar.value.toLocaleString()}`}</Typography>
                 </Paper>
