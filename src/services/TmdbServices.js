@@ -1,6 +1,7 @@
 const GETOPTIONS = {
     method: 'GET',
     headers: {
+        // 'Cache-Control': 'max-age=300',
         accept: 'application/json',
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYjZmM2I3YzRjMTg2YjkxMGM5NDJlZTE3MzU4MTQ2YSIsInN1YiI6IjY0NjM4YmQ4ZGJiYjQyMDBmYzg5MThiMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.3Uclsrx78iyyEzeGWIz5rs6iwWaRteSoeNhLolesB6k'
     }

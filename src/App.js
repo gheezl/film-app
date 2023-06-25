@@ -19,8 +19,6 @@ import PageBorder from './pages/page-border';
 import { StylingContext } from './contexts/StylingProvider';
 import Loader from './components/loader';
 
-
-
 const App = () => {
   const { theme } = useContext(StylingContext);
 
