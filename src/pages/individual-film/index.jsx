@@ -136,7 +136,7 @@ const Film = ({ match }) => {
                                     <Typography variant="h1">{selectedFilm.title}</Typography>
                                     <Typography
                                         variant="h4"
-                                        sx={styles.headerRunTime(theme.palette.primary.third)}
+                                        sx={styles.headerRunTime}
                                     >
                                         {runtime}
                                     </Typography>

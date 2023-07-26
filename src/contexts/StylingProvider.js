@@ -233,7 +233,7 @@ export const StylingProvider = ({ children }) => {
                             padding: "15px",
                             borderRadius: "25px"
                         }
-                    }
+                    },
                 },
                 MuiTooltip: {
                     styleOverrides: {
@@ -243,6 +243,13 @@ export const StylingProvider = ({ children }) => {
                         }
                     }
                 },
+                MuiBox: {
+                    styleOverrides: {
+                        root: {
+                            backgroundColor: themeSettings.palette.background.main
+                        }
+                    }
+                }
             },
             shadows: ['none', `0 4px 8px ${lightMode.primary[300]}`],
             breakpoints: {

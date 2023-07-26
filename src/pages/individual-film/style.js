@@ -33,10 +33,14 @@ const styles = {
         display: 'flex',
         flexDirection: 'column'
     },
-    headerRunTime: (color) => ({
+    // headerRunTime: (color) => ({
+    //     marginTop: "10px",
+    //     color: color
+    // }),
+    headerRunTime: {
         marginTop: "10px",
-        color: color
-    }),
+        color: "primary.third"
+    },
     desciptionBorder: {
         height: '250px',
         overflowY: 'scroll',
