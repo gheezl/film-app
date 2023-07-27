@@ -15,20 +15,13 @@ const style = {
         borderRadius: "20px",
         padding: "0px 10px 0px 10px"
     },
-    // desktopScrollBorder: (color) => ({
-    //     height: "380px",
-    //     borderLeft: `1px solid ${color}`,
-    //     borderRight: `1px solid ${color}`,
-    //     borderRadius: "20px",
-    //     padding: "0px 10px 0px 10px"
-    // }),
     desktopScrollBorder: {
         height: "380px",
-        borderLeft: "1px solid primary.second",
-        borderRight: "1px solid primary.second",
+        borderLeft: "1px solid",
+        borderLeftColor: "primary.second",
+        borderRight: "1px solid",
+        borderRightColor: "primary.second",
         borderRadius: "20px",
-        padding: "0px 10px 0px 10px"
-
     }
 }
 

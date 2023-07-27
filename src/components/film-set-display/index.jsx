@@ -35,19 +35,22 @@ const FilmSetDisplay = ({ headLine, films }) => {
                         }
                     </Box>
                     :
-                    <HorizontalScroll style={style.desktopScrollBorder} >
-                        {
-                            films?.results
-                                ? (
-                                    films?.results.map(film => (
-                                        film.poster_path && (film.media_type === "movie" || !film.hasOwnProperty("media_type"))
-                                            ? <FilmCard film={film} />
-                                            : null
-                                    ))
-                                )
-                                : null
-                        }
-                    </HorizontalScroll>
+                    <Box sx={style.desktopScrollBorder}>
+                        <HorizontalScroll>
+                            {
+                                films?.results
+                                    ? (
+                                        films?.results.map(film => (
+                                            film.poster_path && (film.media_type === "movie" || !film.hasOwnProperty("media_type"))
+                                                ? <FilmCard film={film} />
+                                                : null
+                                        ))
+                                    )
+                                    : null
+                            }
+                        </HorizontalScroll>
+                    </Box>
+
             }
         </Box>
     )
