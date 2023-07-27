@@ -22,14 +22,14 @@ const ProgressCircle = ({ progress, votes }) => {
     useEffect(() => {
         setData([
             {
-                id: "Postive",
+                id: `${(progress * 10).toFixed(0)} %`,
                 label: "Postive",
-                value: progress.toFixed(1),
+                value: (progress * 10).toFixed(0),
             },
             {
-                id: "Negative",
+                id: `${(100 - progress * 10).toFixed(0)} %`,
                 label: "Negative",
-                value: (10 - progress).toFixed(1),
+                value: (100 - progress * 10).toFixed(0),
             },
         ])
 
@@ -77,7 +77,6 @@ const ProgressCircle = ({ progress, votes }) => {
                     {votes.toLocaleString()} reviews
                 </Typography>
             </Box>
-
             <ResponsivePie
                 data={data}
                 theme={{
@@ -108,7 +107,7 @@ const ProgressCircle = ({ progress, votes }) => {
                         },
                     },
                 }}
-                margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+                margin={{ top: 15, right: 80, bottom: 45, left: 80 }}
                 innerRadius={0.5}
                 padAngle={0.7}
                 cornerRadius={3}
@@ -124,19 +123,14 @@ const ProgressCircle = ({ progress, votes }) => {
                     ]
                 }}
                 arcLinkLabelsSkipAngle={10}
-                arcLinkLabelsTextColor={theme.palette.primary.second}
-                arcLinkLabelsThickness={2}
+                enableArcLabels={false}
+                arcLinkLabelsTextColor={"white"}
+                arcLinkLabelsThickness={5}
                 arcLinkLabelsColor={{ from: 'color' }}
                 arcLabelsSkipAngle={10}
-                arcLabelsTextColor={{
-                    from: 'color',
-                    modifiers: [
-                        [
-                            'darker',
-                            2
-                        ]
-                    ]
-                }}
+                arcLabel={bar => (
+                    <Typography variant="h1" >{bar.value}</Typography>
+                )}
                 colors={[theme.palette.primary.second, theme.palette.error.third]}
                 animate={false}
                 tooltip={bar => (
@@ -146,32 +140,13 @@ const ProgressCircle = ({ progress, votes }) => {
                         <Typography>{`${bar.value}`}</Typography>
                     </Paper>
                 )}
-            // legends={[
-            //     {
-            //         anchor: 'bottom',
-            //         direction: 'row',
-            //         justify: false,
-            //         translateX: 0,
-            //         translateY: 56,
-            //         itemsSpacing: 0,
-            //         itemWidth: 100,
-            //         itemHeight: 18,
-            //         itemTextColor: theme.palette.primary.second,
-            //         itemDirection: 'left-to-right',
-            //         itemOpacity: 1,
-            //         symbolSize: 18,
-            //         symbolShape: 'circle',
-            //         effects: [
-            //             {
-            //                 on: 'hover',
-            //                 style: {
-            //                     itemTextColor: '#000'
-            //                 }
-            //             }
-            //         ]
-            //     }
-            // ]}
             />
+            <style>
+                {`.nivo_pie__label text {
+                        font-size: 150px;
+                        fill: white;
+                    }`}
+            </style>
         </Box>
     )
 }
