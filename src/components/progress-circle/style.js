@@ -3,8 +3,11 @@ const style = {
         width: "100%",
         height: "100%",
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        // border: "1px solid white",
+        marginTop: "20px"
     },
     progressCircle: (primary, secondary, background, angle, size) => ({
         background: `radial-gradient(${background} 55%, transparent 56%),
