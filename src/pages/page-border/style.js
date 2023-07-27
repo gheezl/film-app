@@ -8,7 +8,7 @@ const style = {
     childrenBorder: {
         width: "100%",
         overflow: "scroll",
-        paddingBottom: "40px"
+        // paddingBottom: "40px"
     }
 }
 
