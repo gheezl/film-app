@@ -4,8 +4,6 @@ import { Tooltip, Typography, useTheme } from "@mui/material";
 import styles from "./styles";
 
 const InfoTooltip = ({ text }) => {
-    const theme = useTheme();
-
     return (
         <Tooltip
             title={
@@ -17,7 +15,7 @@ const InfoTooltip = ({ text }) => {
                 </Typography>
             }
         >
-            <InfoOutlined style={styles.infoIcon(theme.palette.primary.main)} />
+            <InfoOutlined sx={styles.infoIcon} />
         </Tooltip>
     )
 }
