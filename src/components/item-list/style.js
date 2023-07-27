@@ -1,19 +1,19 @@
 const styles = {
     listItem: {
-        padding: "5px 0px 5px 10px"
+        padding: "5px 0px 5px 10px",
     },
-    listItemIcon: (color) => ({
+    listItemIcon: {
         width: "8px",
         height: "8px",
         borderRadius: "50%",
-        backgroundColor: color,
-    }),
-    listItemText: {
-        margin: "0px 0px 0px -35px"
+        backgroundColor: "primary.second",
     },
-    noData: (color) => ({
-        color: color
-    })
+    listItemText: {
+        margin: "0px 0px 0px -35px",
+    },
+    noData: {
+        color: "primary.third"
+    }
 }
 
 export default styles;

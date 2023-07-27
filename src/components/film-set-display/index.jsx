@@ -35,7 +35,7 @@ const FilmSetDisplay = ({ headLine, films }) => {
                         }
                     </Box>
                     :
-                    <HorizontalScroll style={style.desktopScrollBorder(theme.palette.primary.second)} >
+                    <HorizontalScroll style={style.desktopScrollBorder} >
                         {
                             films?.results
                                 ? (

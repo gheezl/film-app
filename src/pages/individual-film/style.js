@@ -33,10 +33,6 @@ const styles = {
         display: 'flex',
         flexDirection: 'column'
     },
-    // headerRunTime: (color) => ({
-    //     marginTop: "10px",
-    //     color: color
-    // }),
     headerRunTime: {
         marginTop: "10px",
         color: "primary.third"

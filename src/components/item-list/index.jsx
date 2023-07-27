@@ -14,7 +14,7 @@ const ItemList = ({ items, headLine }) => {
                         ? items.map(item => (
                             <ListItem sx={styles.listItem}>
                                 <ListItemIcon>
-                                    <span style={styles.listItemIcon(theme.palette.primary.second)} />
+                                    <Typography sx={styles.listItemIcon} />
                                 </ListItemIcon>
                                 <ListItemText
                                     sx={styles.listItemText}
@@ -22,7 +22,7 @@ const ItemList = ({ items, headLine }) => {
                                 />
                             </ListItem>
                         ))
-                        : <Typography sx={styles.noData(theme.palette.primary.third)} variant="h4">No data.</Typography>
+                        : <Typography sx={styles.noData} variant="h4">No data.</Typography>
                 }
             </List>
         </Box>
