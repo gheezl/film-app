@@ -1,6 +1,7 @@
 const style = {
     sideBarBorder: {
-        border: "none"
+        border: "none",
+        backgroundColor: "background.second"
     },
 }
 

@@ -1,13 +1,11 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 import style from "./style";
 
 const Header = () => {
-    const theme = useTheme();
-
     return (
         <Box
-            sx={style.border(theme.palette.background.second)}
+            sx={style.topNavBorder}
         >
             <Typography
                 variant="h1"

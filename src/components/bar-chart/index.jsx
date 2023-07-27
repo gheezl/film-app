@@ -65,7 +65,7 @@ const BarChart = ({ data }) => {
             ]}
             tooltip={bar => (
                 <Paper
-                    sx={style.toolTipBorder(theme.palette.background.second)}
+                    sx={style.toolTipBorder}
                 >
                     <Typography>{`${bar.data.category}: $${bar.value.toLocaleString()}`}</Typography>
                 </Paper>

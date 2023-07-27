@@ -9,7 +9,7 @@ const PageBorder = ({ children }) => {
     const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
 
     return (
-        <Box sx={style.border(theme.palette.background.main)} >
+        <Box sx={style.border} >
             {
                 isBelowMd
                     ? <BottomNav />

@@ -1,10 +1,8 @@
-import { useTheme, Box, Typography, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import { Box, Typography, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 
 import styles from "./style";
 
 const ItemList = ({ items, headLine }) => {
-    const theme = useTheme();
-
     return (
         <Box>
             <Typography variant="h2">{headLine}</Typography>

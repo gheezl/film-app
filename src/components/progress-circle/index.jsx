@@ -2,14 +2,14 @@ import { Box, Typography, useTheme } from "@mui/material";
 
 import style from "./style";
 
-const ProgressCircle = ({ progress, votes, size }) => {
+const ProgressCircle = ({ progress, votes }) => {
     const theme = useTheme();
     const angle = (progress * 0.1) * 360;
 
     return (
         <Box sx={style.progressCircleBorder}>
-            <Box sx={style.progressCircle(theme.palette.primary.main, theme.palette.secondary.main, theme.palette.background.main, angle, size)}>
-                <Box sx={style.votesBorder(size)}>
+            <Box sx={style.progressCircle(theme.palette.primary.main, theme.palette.secondary.main, theme.palette.background.main, angle)}>
+                <Box sx={style.votesBorder}>
                     {
                         votes
                             ?

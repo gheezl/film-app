@@ -4,7 +4,8 @@ const styles = {
         height: "100vh",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: color ? color : "#121212"
+        // backgroundColor: color ? color : "#121212"
+        backgroundColor: "background.main" ? "background.main" : "#121212"
     })
 }
 

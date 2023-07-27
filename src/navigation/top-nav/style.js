@@ -1,8 +1,9 @@
 const style = {
-    border: (color) => ({
-        borderBottom: `1px solid ${color}`,
+    topNavBorder: {
+        borderBottom: `1px solid`,
+        borderBottomColor: "background.second",
         margin: "10px"
-    }),
+    },
     textBorder: {
         display: "flex",
         justifyContent: "center",

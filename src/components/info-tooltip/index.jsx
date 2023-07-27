@@ -1,5 +1,5 @@
 import { InfoOutlined } from "@mui/icons-material";
-import { Tooltip, Typography, useTheme } from "@mui/material";
+import { Tooltip, Typography } from "@mui/material";
 
 import styles from "./styles";
 

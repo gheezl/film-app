@@ -1,10 +1,10 @@
 const style = {
-    border: (color) => ({
+    border: {
         display: "flex",
         justifyContent: "row",
         height: "100vh",
-        backgroundColor: color
-    }),
+        backgroundColor: "background.main"
+    },
     childrenBorder: {
         width: "100%",
         overflow: "scroll",

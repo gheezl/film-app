@@ -168,7 +168,6 @@ const Film = ({ match }) => {
                                 <ProgressCircle
                                     progress={selectedFilm.vote_average}
                                     votes={selectedFilm.vote_count ? selectedFilm.vote_count : 0}
-                                    size="200"
                                 />
                             </Paper>
                         </Grid>
@@ -210,7 +209,7 @@ const Film = ({ match }) => {
                                     {barData[0] ? (
                                         <BarChart data={barData} />
                                     ) : (
-                                        <Typography sx={{ color: theme.palette.primary.third }} variant="h4">
+                                        <Typography sx={styles.insufficientData} variant="h4">
                                             Insufficient data.
                                         </Typography>
                                     )}

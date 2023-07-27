@@ -78,6 +78,9 @@ const styles = {
         display: 'flex',
         gap: '10px',
         alignItems: 'center'
+    },
+    insufficientData: {
+        color: "primary.third"
     }
 }
 
