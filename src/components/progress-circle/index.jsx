@@ -5,16 +5,7 @@ import style from "./style";
 import { useEffect, useState } from "react";
 
 const ProgressCircle = ({ progress, votes }) => {
-    const [data, setData] = useState([
-        {
-            id: "Postive",
-            label: "Postive",
-        },
-        {
-            id: "Negative",
-            label: "Negative",
-        },
-    ])
+    const [data, setData] = useState([])
 
     const theme = useTheme();
     // const angle = (progress * 0.1) * 360;
@@ -35,35 +26,7 @@ const ProgressCircle = ({ progress, votes }) => {
 
     }, [progress, votes])
 
-    return (
-        // <Box sx={style.progressCircleBorder}>
-        //     <Box sx={style.progressCircle(theme.palette.primary.main, theme.palette.secondary.main, theme.palette.background.main, angle)}>
-        //         <Box sx={style.votesBorder}>
-        //             {
-        //                 votes
-        //                     ?
-        //                     <>
-        //                         <Typography
-        //                             variant="h2"
-        //                         >
-        //                             {progress % 1 === 0 ? progress : progress.toFixed(1)} / 10
-        //                         </Typography>
-        //                         <Typography
-        //                             variant="h5"
-        //                         >
-        //                             {votes.toLocaleString()} reviews
-        //                         </Typography>
-        //                     </>
-        //                     :
-        //                     <Typography
-        //                         variant="h3"
-        //                     >
-        //                         No reviews
-        //                     </Typography>
-        //             }
-        //         </Box>
-        //     </Box>
-        // </Box>
+    if (votes > 1) return (
         <Box sx={style.progressCircleBorder}>
             <Box
                 sx={{
@@ -137,7 +100,7 @@ const ProgressCircle = ({ progress, votes }) => {
                     <Paper
                         sx={style.toolTipBorder}
                     >
-                        <Typography>{`${bar.value}`}</Typography>
+                        <Typography>{`${bar.id}`}</Typography>
                     </Paper>
                 )}
             />
@@ -147,6 +110,20 @@ const ProgressCircle = ({ progress, votes }) => {
                         fill: white;
                     }`}
             </style>
+        </Box>
+    )
+    else return (
+        <Box
+            sx={{
+                width: "100%",
+                justifyContent: "start"
+            }}
+        >
+            <Typography
+                variant="h2"
+            >
+                No reviews.
+            </Typography>
         </Box>
     )
 }
