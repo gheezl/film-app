@@ -6,7 +6,6 @@ const style = {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        // border: "1px solid white",
         marginTop: "20px"
     },
     progressCircle: (primary, secondary, background, angle, size) => ({

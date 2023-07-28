@@ -26,7 +26,7 @@ const ProgressCircle = ({ progress, votes }) => {
 
     }, [progress, votes])
 
-    if (votes > 1) return (
+    if (votes > 0) return (
         <Box sx={style.progressCircleBorder}>
             <Box
                 sx={{
@@ -70,7 +70,7 @@ const ProgressCircle = ({ progress, votes }) => {
                         },
                     },
                 }}
-                margin={{ top: 15, right: 80, bottom: 45, left: 80 }}
+                margin={{ top: 15, right: 80, bottom: 50, left: 80 }}
                 innerRadius={0.5}
                 padAngle={0.7}
                 cornerRadius={3}
