@@ -38,7 +38,7 @@ const BarChart = ({ data }) => {
             }}
             keys={["type"]}
             indexBy="category"
-            margin={{ bottom: 50, top: 50 }}
+            margin={{ bottom: 60, top: 50 }}
             // padding={0.3}
             valueScale={{ type: "linear" }}
             indexScale={{ type: "band", round: true }}

@@ -203,7 +203,7 @@ const Film = ({ match }) => {
                             >
                                 <Box sx={styles.chartBorder}>
                                     <Box sx={styles.chartHeader}>
-                                        <Typography variant="h2">Financial Performance</Typography>
+                                        <Typography variant="h2">Financials</Typography>
                                         <InfoTooltip text="We use the standard method of calculating a film's profitability threshold by multiplying its budget by 2.5 as a way of factoring in uncounted expenses such as marketing. Usually, in other words, in order for a film to break even, its revenue must exceed its budget by 2.5 times." />
                                     </Box>
                                     {barData[0] ? (
