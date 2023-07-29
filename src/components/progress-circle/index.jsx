@@ -107,16 +107,9 @@ const ProgressCircle = ({ progress, votes }) => {
         </Box>
     )
     else return (
-        <Box
-            sx={{
-                width: "100%",
-                justifyContent: "start"
-            }}
-        >
-            <Typography
-                variant="h2"
-            >
-                No reviews.
+        <Box sx={style.noReviewsBorder} >
+            <Typography variant="h2" >
+                No reviews
             </Typography>
         </Box>
     )
