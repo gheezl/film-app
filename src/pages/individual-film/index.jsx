@@ -61,8 +61,10 @@ const Film = ({ match }) => {
         }
         setRuntime(formatRuntime(selectedFilm.runtime));
 
-        const determineFinancialPerformance = () => {
-            if (selectedFilm.budget && selectedFilm.revenue && selectedFilm.revenue - (selectedFilm.budget * 2.5)) {
+        const determineFinancials = () => {
+            const profit = selectedFilm.revenue - (selectedFilm.budget * 2.5)
+
+            if (selectedFilm.budget && selectedFilm.revenue && profit) {
                 setBarData(
                     [
                         {
@@ -77,8 +79,8 @@ const Film = ({ match }) => {
                         },
                         {
                             category: "Profit",
-                            type: selectedFilm.revenue - (selectedFilm.budget * 2.5),
-                            typeColor: selectedFilm.revenue - (selectedFilm.budget * 2.5) < 0 ? theme.palette.error.third : theme.palette.primary.second,
+                            type: profit,
+                            typeColor: profit < 0 ? theme.palette.error.third : theme.palette.primary.second,
                         },
                     ]
                 )
@@ -104,7 +106,7 @@ const Film = ({ match }) => {
             }
         }
 
-        determineFinancialPerformance();
+        determineFinancials();
         getSimilarFilms();
         // eslint-disable-next-line
     }, [selectedFilm])
