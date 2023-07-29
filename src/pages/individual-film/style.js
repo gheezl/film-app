@@ -47,8 +47,13 @@ const styles = {
     },
     ratingBorder: {
         display: 'flex',
+        flexDirection: "column",
         justifyContent: 'space-between',
         height: '250px'
+    },
+    noReviewsBorder: {
+        width: "100%",
+        justifyContent: "start"
     },
     playButtonBorder: {
         display: 'flex',

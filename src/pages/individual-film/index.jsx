@@ -21,6 +21,7 @@ const Film = ({ match }) => {
     const [selectedFilm, setSelectedFilm] = useState({});
     const [runtime, setRuntime] = useState("");
     const [barData, setBarData] = useState([]);
+    const [progressData, setProgressData] = useState([]);
     const theme = useTheme();
 
     // const isBelowXS = useMediaQuery(theme.breakpoints.down("xs"));
@@ -90,6 +91,21 @@ const Film = ({ match }) => {
             }
         }
 
+        const determineReviews = () => {
+            setProgressData([
+                {
+                    id: `${(selectedFilm.vote_average * 10).toFixed(0)} %`,
+                    label: "Favorable",
+                    value: (selectedFilm.vote_average * 10).toFixed(0),
+                },
+                {
+                    id: `${(100 - selectedFilm.vote_average * 10).toFixed(0)} %`,
+                    label: "Unfavorable",
+                    value: (100 - selectedFilm.vote_average * 10).toFixed(0),
+                },
+            ])
+        }
+
         const getSimilarFilms = async () => {
             setSimilarFilms([]);
             if (selectedFilm.genres) {
@@ -107,6 +123,7 @@ const Film = ({ match }) => {
         }
 
         determineFinancials();
+        determineReviews();
         getSimilarFilms();
         // eslint-disable-next-line
     }, [selectedFilm])
@@ -166,12 +183,37 @@ const Film = ({ match }) => {
 
                         {/* Rating */}
                         <Grid item xs={12} md={6} lg={6} xl={4} >
-                            <Paper sx={styles.ratingBorder}>
-                                <ProgressCircle
-                                    progress={selectedFilm.vote_average}
-                                    votes={selectedFilm.vote_count ? selectedFilm.vote_count : 0}
-                                />
-                            </Paper>
+                            {
+                                selectedFilm.vote_count
+                                    ?
+                                    <Paper sx={styles.ratingBorder}>
+                                        <Box
+                                            sx={{
+                                                width: "100%",
+                                                justifyContent: "start"
+                                            }}
+                                        >
+                                            <Typography
+                                                variant="h2"
+                                            >
+                                                {selectedFilm.vote_count.toLocaleString()} reviews
+                                            </Typography>
+                                        </Box>
+                                        <ProgressCircle
+                                            data={progressData}
+                                            votes={selectedFilm.vote_count ? selectedFilm.vote_count : 0}
+                                        />
+                                    </Paper>
+                                    :
+                                    <Paper sx={styles.ratingBorder}>
+                                        <Box sx={styles.noReviewsBorder} >
+                                            <Typography variant="h2" >
+                                                No reviews
+                                            </Typography>
+                                        </Box>
+                                    </Paper>
+                            }
+
                         </Grid>
 
                         {/* Play Button */}

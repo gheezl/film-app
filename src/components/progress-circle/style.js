@@ -6,7 +6,6 @@ const style = {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "20px"
     },
     noReviewsBorder: {
         width: "100%",
