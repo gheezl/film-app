@@ -14,12 +14,12 @@ const ProgressCircle = ({ progress, votes }) => {
         setData([
             {
                 id: `${(progress * 10).toFixed(0)} %`,
-                label: "Postive",
+                label: "Favorable",
                 value: (progress * 10).toFixed(0),
             },
             {
                 id: `${(100 - progress * 10).toFixed(0)} %`,
-                label: "Negative",
+                label: "Unfavorable",
                 value: (100 - progress * 10).toFixed(0),
             },
         ])
@@ -91,25 +91,19 @@ const ProgressCircle = ({ progress, votes }) => {
                 arcLinkLabelsThickness={5}
                 arcLinkLabelsColor={{ from: 'color' }}
                 arcLabelsSkipAngle={10}
-                arcLabel={bar => (
-                    <Typography variant="h1" >{bar.value}</Typography>
-                )}
+                // arcLabel={bar => (
+                //     // <Typography variant="h1" >{bar}</Typography>
+                // )}
                 colors={[theme.palette.primary.second, theme.palette.error.third]}
                 animate={false}
                 tooltip={bar => (
                     <Paper
                         sx={style.toolTipBorder}
                     >
-                        <Typography>{`${bar.id}`}</Typography>
+                        <Typography>{bar.datum.label}</Typography>
                     </Paper>
                 )}
             />
-            <style>
-                {`.nivo_pie__label text {
-                        font-size: 150px;
-                        fill: white;
-                    }`}
-            </style>
         </Box>
     )
     else return (

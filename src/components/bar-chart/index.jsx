@@ -22,11 +22,11 @@ const BarChart = ({ data }) => {
                     },
                     ticks: {
                         line: {
-                            stroke: theme.palette.primary.second,
-                            strokeWidth: 1,
+                            stroke: "white",
+                            strokeWidth: 0,
                         },
                         text: {
-                            fill: theme.palette.primary.second,
+                            fill: "white",
                         },
                     },
                 },
@@ -39,7 +39,6 @@ const BarChart = ({ data }) => {
             keys={["type"]}
             indexBy="category"
             margin={{ bottom: 60, top: 50 }}
-            // padding={0.3}
             valueScale={{ type: "linear" }}
             indexScale={{ type: "band", round: true }}
             colors={(bar) => bar.data.typeColor}
