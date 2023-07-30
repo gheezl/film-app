@@ -146,7 +146,6 @@ const Film = ({ match }) => {
                             />
                         </Paper>
                     </Box>
-
                     <Grid container spacing={2}>
                         {/* Header */}
                         <Grid item xs={12} md={12}>
@@ -163,7 +162,6 @@ const Film = ({ match }) => {
                                 <Typography variant="h1">{releaseDate}</Typography>
                             </Paper>
                         </Grid>
-
                         {/* Description */}
                         <Grid item xs={12} md={12} lg={6} xl={8}>
                             <Paper sx={styles.desciptionBorder}>
@@ -180,7 +178,6 @@ const Film = ({ match }) => {
                                 }
                             </Paper>
                         </Grid>
-
                         {/* Rating */}
                         <Grid item xs={12} md={6} lg={6} xl={4} >
                             {
@@ -215,7 +212,6 @@ const Film = ({ match }) => {
                             }
 
                         </Grid>
-
                         {/* Play Button */}
                         <Grid item xs={12} md={6} lg={3}>
                             <Paper
