@@ -146,7 +146,19 @@ const Film = ({ match }) => {
                             />
                         </Paper>
                     </Box>
-                    <Grid container spacing={2}>
+                    <Grid height="405px" container spacing={2}>
+                        {/* Place the Box and img within the grid
+                        <Grid item xs={12} md={6} lg={4}>
+                            <Box sx={styles.imageBorder(isBelowLg)}>
+                                <Paper sx={styles.imageCard} >
+                                    <img
+                                        alt="alt"
+                                        style={styles.image(isBelowSm)}
+                                        src={`https://image.tmdb.org/t/p/w1280${selectedFilm.poster_path}`}
+                                    />
+                                </Paper>
+                            </Box>
+                        </Grid> */}
                         {/* Header */}
                         <Grid item xs={12} md={12}>
                             <Paper sx={styles.headerBorder(isBelowLg)} >

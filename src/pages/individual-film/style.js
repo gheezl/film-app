@@ -20,7 +20,7 @@ const styles = {
         mx: "auto"
     },
     image: (isBelowSm) => ({
-        width: isBelowSm ? "100%" : "450px",
+        width: isBelowSm ? "100%" : "405px",
         borderRadius: '25px'
     }),
     headerBorder: (isBelowLg) => ({
